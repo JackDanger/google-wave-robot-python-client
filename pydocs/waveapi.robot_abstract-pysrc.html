@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>waveapi.robot_abstract</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="waveapi-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="waveapi-module.html">Package&nbsp;waveapi</a> ::
+        Module&nbsp;robot_abstract
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="waveapi.robot_abstract-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="waveapi.robot_abstract-module.html">Module waveapi.robot_abstract</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment">#!/usr/bin/python2.4</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-comment">#</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-comment"># Copyright 2009 Google Inc. All Rights Reserved.</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-docstring">"""Defines the generic robot classes.</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-docstring">This module provides the Robot class and RobotListener interface,</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-docstring">as well as some helper functions for web requests and responses.</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-name">__author__</tt> <tt class="py-op">=</tt> <tt class="py-string">'davidbyttow@google.com (David Byttow)'</tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt id="link-0" class="py-name" targets="Module waveapi.model=waveapi.model-module.html"><a title="waveapi.model" class="py-name" href="#" onclick="return doclink('link-0', 'model', 'link-0');">model</a></tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt id="link-1" class="py-name" targets="Module waveapi.ops=waveapi.ops-module.html"><a title="waveapi.ops" class="py-name" href="#" onclick="return doclink('link-1', 'ops', 'link-1');">ops</a></tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt id="link-2" class="py-name" targets="Package waveapi.simplejson=waveapi.simplejson-module.html"><a title="waveapi.simplejson" class="py-name" href="#" onclick="return doclink('link-2', 'simplejson', 'link-2');">simplejson</a></tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt id="link-3" class="py-name" targets="Module waveapi.util=waveapi.util-module.html"><a title="waveapi.util" class="py-name" href="#" onclick="return doclink('link-3', 'util', 'link-3');">util</a></tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"> </tt>
+<a name="ParseJSONBody"></a><div id="ParseJSONBody-def"><a name="L19"></a><tt class="py-lineno"> 19</tt> <a class="py-toggle" href="#" id="ParseJSONBody-toggle" onclick="return toggle('ParseJSONBody');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="waveapi.robot_abstract-module.html#ParseJSONBody">ParseJSONBody</a><tt class="py-op">(</tt><tt class="py-param">json_body</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ParseJSONBody-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="ParseJSONBody-expanded"><a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line">  <tt class="py-docstring">"""Parse a JSON string and return a context and an event list."""</tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line">  <tt class="py-name">json</tt> <tt class="py-op">=</tt> <tt id="link-4" class="py-name"><a title="waveapi.simplejson" class="py-name" href="#" onclick="return doclink('link-4', 'simplejson', 'link-2');">simplejson</a></tt><tt class="py-op">.</tt><tt id="link-5" class="py-name" targets="Function waveapi.simplejson.loads()=waveapi.simplejson-module.html#loads"><a title="waveapi.simplejson.loads" class="py-name" href="#" onclick="return doclink('link-5', 'loads', 'link-5');">loads</a></tt><tt class="py-op">(</tt><tt class="py-name">json_body</tt><tt class="py-op">)</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line">  <tt class="py-comment"># TODO(davidbyttow): Remove this once no longer needed.</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"><tt class="py-comment"></tt>  <tt class="py-name">data</tt> <tt class="py-op">=</tt> <tt id="link-6" class="py-name"><a title="waveapi.util" class="py-name" href="#" onclick="return doclink('link-6', 'util', 'link-3');">util</a></tt><tt class="py-op">.</tt><tt id="link-7" class="py-name" targets="Function waveapi.util.CollapseJavaCollections()=waveapi.util-module.html#CollapseJavaCollections"><a title="waveapi.util.CollapseJavaCollections" class="py-name" href="#" onclick="return doclink('link-7', 'CollapseJavaCollections', 'link-7');">CollapseJavaCollections</a></tt><tt class="py-op">(</tt><tt class="py-name">json</tt><tt class="py-op">)</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line">  <tt class="py-name">context</tt> <tt class="py-op">=</tt> <tt id="link-8" class="py-name"><a title="waveapi.ops" class="py-name" href="#" onclick="return doclink('link-8', 'ops', 'link-1');">ops</a></tt><tt class="py-op">.</tt><tt id="link-9" class="py-name" targets="Function waveapi.ops.CreateContext()=waveapi.ops-module.html#CreateContext"><a title="waveapi.ops.CreateContext" class="py-name" href="#" onclick="return doclink('link-9', 'CreateContext', 'link-9');">CreateContext</a></tt><tt class="py-op">(</tt><tt class="py-name">data</tt><tt class="py-op">)</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line">  <tt id="link-10" class="py-name" targets="Module waveapi.events=waveapi.events-module.html"><a title="waveapi.events" class="py-name" href="#" onclick="return doclink('link-10', 'events', 'link-10');">events</a></tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt id="link-11" class="py-name"><a title="waveapi.model" class="py-name" href="#" onclick="return doclink('link-11', 'model', 'link-0');">model</a></tt><tt class="py-op">.</tt><tt id="link-12" class="py-name" targets="Function waveapi.model.CreateEvent()=waveapi.model-module.html#CreateEvent"><a title="waveapi.model.CreateEvent" class="py-name" href="#" onclick="return doclink('link-12', 'CreateEvent', 'link-12');">CreateEvent</a></tt><tt class="py-op">(</tt><tt class="py-name">event_data</tt><tt class="py-op">)</tt> <tt class="py-keyword">for</tt> <tt class="py-name">event_data</tt> <tt class="py-keyword">in</tt> <tt class="py-name">data</tt><tt class="py-op">[</tt><tt class="py-string">'events'</tt><tt class="py-op">]</tt><tt class="py-op">]</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line">  <tt class="py-keyword">return</tt> <tt class="py-name">context</tt><tt class="py-op">,</tt> <tt id="link-13" class="py-name"><a title="waveapi.events" class="py-name" href="#" onclick="return doclink('link-13', 'events', 'link-10');">events</a></tt> </tt>
+</div><a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line"> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line"> </tt>
+<a name="SerializeContext"></a><div id="SerializeContext-def"><a name="L29"></a><tt class="py-lineno"> 29</tt> <a class="py-toggle" href="#" id="SerializeContext-toggle" onclick="return toggle('SerializeContext');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="waveapi.robot_abstract-module.html#SerializeContext">SerializeContext</a><tt class="py-op">(</tt><tt class="py-param">context</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SerializeContext-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="SerializeContext-expanded"><a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line">  <tt class="py-docstring">"""Return a JSON string representing the given context."""</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line">  <tt class="py-name">context_dict</tt> <tt class="py-op">=</tt> <tt id="link-14" class="py-name"><a title="waveapi.util" class="py-name" href="#" onclick="return doclink('link-14', 'util', 'link-3');">util</a></tt><tt class="py-op">.</tt><tt id="link-15" class="py-name" targets="Method waveapi.document.Element.Serialize()=waveapi.document.Element-class.html#Serialize,Method waveapi.ops._ContextImpl.Serialize()=waveapi.ops._ContextImpl-class.html#Serialize,Function waveapi.util.Serialize()=waveapi.util-module.html#Serialize"><a title="waveapi.document.Element.Serialize
+waveapi.ops._ContextImpl.Serialize
+waveapi.util.Serialize" class="py-name" href="#" onclick="return doclink('link-15', 'Serialize', 'link-15');">Serialize</a></tt><tt class="py-op">(</tt><tt class="py-name">context</tt><tt class="py-op">)</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line">  <tt class="py-keyword">return</tt> <tt id="link-16" class="py-name"><a title="waveapi.simplejson" class="py-name" href="#" onclick="return doclink('link-16', 'simplejson', 'link-2');">simplejson</a></tt><tt class="py-op">.</tt><tt id="link-17" class="py-name" targets="Function waveapi.simplejson.dumps()=waveapi.simplejson-module.html#dumps"><a title="waveapi.simplejson.dumps" class="py-name" href="#" onclick="return doclink('link-17', 'dumps', 'link-17');">dumps</a></tt><tt class="py-op">(</tt><tt class="py-name">context_dict</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line"> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line"> </tt>
+<a name="RobotListener"></a><div id="RobotListener-def"><a name="L35"></a><tt class="py-lineno"> 35</tt> <a class="py-toggle" href="#" id="RobotListener-toggle" onclick="return toggle('RobotListener');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="waveapi.robot_abstract.RobotListener-class.html">RobotListener</a><tt class="py-op">(</tt><tt class="py-base-class">object</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="RobotListener-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="RobotListener-expanded"><a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line">  <tt class="py-docstring">"""Listener interface for robot events.</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line"><tt class="py-docstring">  The RobotListener is a high-level construct that hides away the details</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line"><tt class="py-docstring">  of events. Instead, a client will derive from this class and register</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line"><tt class="py-docstring">  it with the robot. All event handlers are automatically registered. When</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line"><tt class="py-docstring">  a relevant event comes in, logic is applied based on the incoming data and</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line"><tt class="py-docstring">  the appropriate function is invoked.</tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line"><tt class="py-docstring">  For example:</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line"><tt class="py-docstring">    If the user implements the "OnRobotAdded" method, the OnParticipantChanged</tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line"><tt class="py-docstring">    method of their subclass, this will automatically register the</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line"><tt class="py-docstring">    events.WAVELET_PARTICIPANTS_CHANGED handler and respond to any events</tt> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line"><tt class="py-docstring">    that add the robot.</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line"><tt class="py-docstring">    class MyRobotListener(robot.RobotListener):</tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line"><tt class="py-docstring">      def OnRobotAdded(self):</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line"><tt class="py-docstring">        wavelet = self.context.GetRootWavelet()</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line"><tt class="py-docstring">        blip = wavelet.CreateBlip()</tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line"><tt class="py-docstring">        blip.GetDocument.SetText("Thanks for adding me!")</tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line"><tt class="py-docstring">    robot = robots.Robot()</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line"><tt class="py-docstring">    robot.RegisterListener(MyRobotListener)</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line"><tt class="py-docstring">    robot.Run()</tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line"><tt class="py-docstring">  TODO(davidbyttow): Implement this functionality.</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line"><tt class="py-docstring">  """</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line"> </tt>
+<a name="RobotListener.__init__"></a><div id="RobotListener.__init__-def"><a name="L64"></a><tt class="py-lineno"> 64</tt> <a class="py-toggle" href="#" id="RobotListener.__init__-toggle" onclick="return toggle('RobotListener.__init__');">-</a><tt class="py-line">  <tt class="py-keyword">def</tt> <a class="py-def-name" href="waveapi.robot_abstract.RobotListener-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="RobotListener.__init__-collapsed" style="display:none;" pad="+++" indent="++++++"></div><div id="RobotListener.__init__-expanded"><a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line">    <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line"> </tt>
+<a name="RobotListener.OnRobotAdded"></a><div id="RobotListener.OnRobotAdded-def"><a name="L67"></a><tt class="py-lineno"> 67</tt> <a class="py-toggle" href="#" id="RobotListener.OnRobotAdded-toggle" onclick="return toggle('RobotListener.OnRobotAdded');">-</a><tt class="py-line">  <tt class="py-keyword">def</tt> <a class="py-def-name" href="waveapi.robot_abstract.RobotListener-class.html#OnRobotAdded">OnRobotAdded</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="RobotListener.OnRobotAdded-collapsed" style="display:none;" pad="+++" indent="++++++"></div><div id="RobotListener.OnRobotAdded-expanded"><a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">    <tt class="py-comment"># TODO(davidbyttow): Implement.</tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line"> </tt>
+<a name="RobotListener.OnRobotRemoved"></a><div id="RobotListener.OnRobotRemoved-def"><a name="L71"></a><tt class="py-lineno"> 71</tt> <a class="py-toggle" href="#" id="RobotListener.OnRobotRemoved-toggle" onclick="return toggle('RobotListener.OnRobotRemoved');">-</a><tt class="py-line">  <tt class="py-keyword">def</tt> <a class="py-def-name" href="waveapi.robot_abstract.RobotListener-class.html#OnRobotRemoved">OnRobotRemoved</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="RobotListener.OnRobotRemoved-collapsed" style="display:none;" pad="+++" indent="++++++"></div><div id="RobotListener.OnRobotRemoved-expanded"><a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">    <tt class="py-comment"># TODO(davidbyttow): Implement.</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-keyword">pass</tt> </tt>
+</div></div><a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line"> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line"> </tt>
+<a name="Robot"></a><div id="Robot-def"><a name="L76"></a><tt class="py-lineno"> 76</tt> <a class="py-toggle" href="#" id="Robot-toggle" onclick="return toggle('Robot');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="waveapi.robot_abstract.Robot-class.html">Robot</a><tt class="py-op">(</tt><tt class="py-base-class">object</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Robot-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="Robot-expanded"><a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">  <tt class="py-docstring">"""Robot metadata class.</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line"><tt class="py-docstring">  This class holds on to basic robot information like the name and profile.</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line"><tt class="py-docstring">  It also maintains the list of event handlers and cron jobs and</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line"><tt class="py-docstring">  dispatches events to the appropriate handlers.</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line"><tt class="py-docstring">  """</tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line"> </tt>
+<a name="Robot.__init__"></a><div id="Robot.__init__-def"><a name="L84"></a><tt class="py-lineno"> 84</tt> <a class="py-toggle" href="#" id="Robot.__init__-toggle" onclick="return toggle('Robot.__init__');">-</a><tt class="py-line">  <tt class="py-keyword">def</tt> <a class="py-def-name" href="waveapi.robot_abstract.Robot-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">name</tt><tt class="py-op">,</tt> <tt class="py-param">image_url</tt><tt class="py-op">=</tt><tt class="py-string">''</tt><tt class="py-op">,</tt> <tt class="py-param">profile_url</tt><tt class="py-op">=</tt><tt class="py-string">''</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Robot.__init__-collapsed" style="display:none;" pad="+++" indent="++++++"></div><div id="Robot.__init__-expanded"><a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line">    <tt class="py-docstring">"""Initializes self with robot information."""</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line">    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_handlers</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt><tt class="py-op">}</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">name</tt> <tt class="py-op">=</tt> <tt class="py-name">name</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line">    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">image_url</tt> <tt class="py-op">=</tt> <tt class="py-name">image_url</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line">    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">profile_url</tt> <tt class="py-op">=</tt> <tt class="py-name">profile_url</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">cron_jobs</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+</div><a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line"> </tt>
+<a name="Robot.RegisterHandler"></a><div id="Robot.RegisterHandler-def"><a name="L92"></a><tt class="py-lineno"> 92</tt> <a class="py-toggle" href="#" id="Robot.RegisterHandler-toggle" onclick="return toggle('Robot.RegisterHandler');">-</a><tt class="py-line">  <tt class="py-keyword">def</tt> <a class="py-def-name" href="waveapi.robot_abstract.Robot-class.html#RegisterHandler">RegisterHandler</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">event_type</tt><tt class="py-op">,</tt> <tt class="py-param">handler</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Robot.RegisterHandler-collapsed" style="display:none;" pad="+++" indent="++++++"></div><div id="Robot.RegisterHandler-expanded"><a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">    <tt class="py-docstring">"""Registers a handler on a specific event type.</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line"><tt class="py-docstring">    Multiple handlers may be registered on a single event type and are</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line"><tt class="py-docstring">    guaranteed to be called in order.</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line"><tt class="py-docstring">    The handler takes two arguments, the event properties and the Context of</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line"><tt class="py-docstring">    this session. For example:</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line"><tt class="py-docstring">    def OnParticipantsChanged(properties, context):</tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line"><tt class="py-docstring">      pass</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line"><tt class="py-docstring">    Args:</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line"><tt class="py-docstring">      event_type: An event type to listen for.</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line"><tt class="py-docstring">      handler: A function handler which takes two arguments, event properties</tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line"><tt class="py-docstring">          and the Context of this session.</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_handlers</tt><tt class="py-op">.</tt><tt class="py-name">setdefault</tt><tt class="py-op">(</tt><tt class="py-name">event_type</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">handler</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line"> </tt>
+<a name="Robot.RegisterCronJob"></a><div id="Robot.RegisterCronJob-def"><a name="L111"></a><tt class="py-lineno">111</tt> <a class="py-toggle" href="#" id="Robot.RegisterCronJob-toggle" onclick="return toggle('Robot.RegisterCronJob');">-</a><tt class="py-line">  <tt class="py-keyword">def</tt> <a class="py-def-name" href="waveapi.robot_abstract.Robot-class.html#RegisterCronJob">RegisterCronJob</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">path</tt><tt class="py-op">,</tt> <tt class="py-param">seconds</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Robot.RegisterCronJob-collapsed" style="display:none;" pad="+++" indent="++++++"></div><div id="Robot.RegisterCronJob-expanded"><a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line">    <tt class="py-docstring">"""Registers a cron job to surface in capabilities.xml."""</tt> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line">    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">cron_jobs</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-op">(</tt><tt class="py-name">path</tt><tt class="py-op">,</tt> <tt class="py-name">seconds</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line"> </tt>
+<a name="Robot.HandleEvent"></a><div id="Robot.HandleEvent-def"><a name="L115"></a><tt class="py-lineno">115</tt> <a class="py-toggle" href="#" id="Robot.HandleEvent-toggle" onclick="return toggle('Robot.HandleEvent');">-</a><tt class="py-line">  <tt class="py-keyword">def</tt> <a class="py-def-name" href="waveapi.robot_abstract.Robot-class.html#HandleEvent">HandleEvent</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">event</tt><tt class="py-op">,</tt> <tt class="py-param">context</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Robot.HandleEvent-collapsed" style="display:none;" pad="+++" indent="++++++"></div><div id="Robot.HandleEvent-expanded"><a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line">    <tt class="py-docstring">"""Calls all of the handlers associated with an event."""</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">handler</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_handlers</tt><tt class="py-op">.</tt><tt id="link-18" class="py-name" targets="Method waveapi.robot.RobotCapabilitiesHandler.get()=waveapi.robot.RobotCapabilitiesHandler-class.html#get,Method waveapi.robot.RobotEventHandler.get()=waveapi.robot.RobotEventHandler-class.html#get,Method waveapi.robot.RobotProfileHandler.get()=waveapi.robot.RobotProfileHandler-class.html#get"><a title="waveapi.robot.RobotCapabilitiesHandler.get
+waveapi.robot.RobotEventHandler.get
+waveapi.robot.RobotProfileHandler.get" class="py-name" href="#" onclick="return doclink('link-18', 'get', 'link-18');">get</a></tt><tt class="py-op">(</tt><tt class="py-name">event</tt><tt class="py-op">.</tt><tt class="py-name">type</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line">      <tt class="py-comment"># TODO(jacobly): pass the event in to the handlers directly</tt> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line"><tt class="py-comment"></tt>      <tt class="py-comment"># instead of passing the properties dictionary.</tt> </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line"><tt class="py-comment"></tt>      <tt class="py-name">handler</tt><tt class="py-op">(</tt><tt class="py-name">event</tt><tt class="py-op">.</tt><tt class="py-name">properties</tt><tt class="py-op">,</tt> <tt class="py-name">context</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line"> </tt>
+<a name="Robot.GetCapabilitiesXml"></a><div id="Robot.GetCapabilitiesXml-def"><a name="L122"></a><tt class="py-lineno">122</tt> <a class="py-toggle" href="#" id="Robot.GetCapabilitiesXml-toggle" onclick="return toggle('Robot.GetCapabilitiesXml');">-</a><tt class="py-line">  <tt class="py-keyword">def</tt> <a class="py-def-name" href="waveapi.robot_abstract.Robot-class.html#GetCapabilitiesXml">GetCapabilitiesXml</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Robot.GetCapabilitiesXml-collapsed" style="display:none;" pad="+++" indent="++++++"></div><div id="Robot.GetCapabilitiesXml-expanded"><a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line">    <tt class="py-docstring">"""Return this robot's capabilities as an XML string."""</tt> </tt>
+<a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line">    <tt class="py-name">lines</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-string">'&lt;w:capabilities&gt;'</tt><tt class="py-op">]</tt> </tt>
+<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">capability</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_handlers</tt><tt class="py-op">:</tt> </tt>
+<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line">      <tt class="py-name">lines</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-string">'  &lt;w:capability name="%s"/&gt;'</tt> <tt class="py-op">%</tt> <tt class="py-name">capability</tt><tt class="py-op">)</tt> </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line">    <tt class="py-name">lines</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-string">'&lt;/w:capabilities&gt;'</tt><tt class="py-op">)</tt> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line"> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">cron_jobs</tt><tt class="py-op">:</tt> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line">      <tt class="py-name">lines</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-string">'&lt;w:crons&gt;'</tt><tt class="py-op">)</tt> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line">      <tt class="py-keyword">for</tt> <tt class="py-name">job</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">cron_jobs</tt><tt class="py-op">:</tt> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line">        <tt class="py-name">lines</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-string">'  &lt;w:cron path="%s" timerinseconds="%s"/&gt;'</tt> <tt class="py-op">%</tt> <tt class="py-name">job</tt><tt class="py-op">)</tt> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line">      <tt class="py-name">lines</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-string">'&lt;/w:crons&gt;'</tt><tt class="py-op">)</tt> </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line"> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line">    <tt class="py-name">robot_attrs</tt> <tt class="py-op">=</tt> <tt class="py-string">' name="%s"'</tt> <tt class="py-op">%</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">name</tt> </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">image_url</tt><tt class="py-op">:</tt> </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line">      <tt class="py-name">robot_attrs</tt> <tt class="py-op">+=</tt> <tt class="py-string">' imageurl="%s"'</tt> <tt class="py-op">%</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">image_url</tt> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">profile_url</tt><tt class="py-op">:</tt> </tt>
+<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line">      <tt class="py-name">robot_attrs</tt> <tt class="py-op">+=</tt> <tt class="py-string">' profileurl="%s"'</tt> <tt class="py-op">%</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">profile_url</tt> </tt>
+<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line">    <tt class="py-name">lines</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-string">'&lt;w:profile%s/&gt;'</tt> <tt class="py-op">%</tt> <tt class="py-name">robot_attrs</tt><tt class="py-op">)</tt> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-op">(</tt><tt class="py-string">'&lt;?xml version="1.0"?&gt;\n'</tt> </tt>
+<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line">            <tt class="py-string">'&lt;w:robot xmlns:w="http://wave.google.com/extensions/robots/1.0"&gt;\n'</tt> </tt>
+<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line">            <tt class="py-string">'%s\n&lt;/w:robot&gt;\n'</tt><tt class="py-op">)</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-string">'\n'</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name">lines</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line"> </tt>
+<a name="Robot.GetProfileJson"></a><div id="Robot.GetProfileJson-def"><a name="L145"></a><tt class="py-lineno">145</tt> <a class="py-toggle" href="#" id="Robot.GetProfileJson-toggle" onclick="return toggle('Robot.GetProfileJson');">-</a><tt class="py-line">  <tt class="py-keyword">def</tt> <a class="py-def-name" href="waveapi.robot_abstract.Robot-class.html#GetProfileJson">GetProfileJson</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Robot.GetProfileJson-collapsed" style="display:none;" pad="+++" indent="++++++"></div><div id="Robot.GetProfileJson-expanded"><a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line">    <tt class="py-docstring">"""Returns JSON body for any profile handler.</tt> </tt>
+<a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line"><tt class="py-docstring">    Returns:</tt> </tt>
+<a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line"><tt class="py-docstring">      String of JSON to be sent as a response.</tt> </tt>
+<a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line">    <tt class="py-name">data</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt><tt class="py-op">}</tt> </tt>
+<a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line">    <tt class="py-name">data</tt><tt class="py-op">[</tt><tt class="py-string">'name'</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">name</tt> </tt>
+<a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line">    <tt class="py-name">data</tt><tt class="py-op">[</tt><tt class="py-string">'imageUrl'</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">image_url</tt> </tt>
+<a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line">    <tt class="py-name">data</tt><tt class="py-op">[</tt><tt class="py-string">'profileUrl'</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">profile_url</tt> </tt>
+<a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line">    <tt class="py-comment"># TODO(davidbyttow): Remove this java nonsense.</tt> </tt>
+<a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-name">data</tt><tt class="py-op">[</tt><tt class="py-string">'javaClass'</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-string">'com.google.wave.api.ParticipantProfile'</tt> </tt>
+<a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt id="link-19" class="py-name"><a title="waveapi.simplejson" class="py-name" href="#" onclick="return doclink('link-19', 'simplejson', 'link-2');">simplejson</a></tt><tt class="py-op">.</tt><tt id="link-20" class="py-name"><a title="waveapi.simplejson.dumps" class="py-name" href="#" onclick="return doclink('link-20', 'dumps', 'link-17');">dumps</a></tt><tt class="py-op">(</tt><tt class="py-name">data</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="waveapi-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1
+    on Wed May 27 22:42:21 2009
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

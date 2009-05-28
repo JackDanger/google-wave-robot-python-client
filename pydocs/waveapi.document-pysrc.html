@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>waveapi.document</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="waveapi-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="waveapi-module.html">Package&nbsp;waveapi</a> ::
+        Module&nbsp;document
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="waveapi.document-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="waveapi.document-module.html">Module waveapi.document</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment">#!/usr/bin/python2.4</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-comment">#</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-comment"># Copyright 2009 Google Inc. All Rights Reserved.</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-docstring">"""Defines document-based classes.</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-docstring">This module defines classes that are used to modify and describe documents and</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-docstring">their operations.</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-name">__author__</tt> <tt class="py-op">=</tt> <tt class="py-string">'davidbyttow@google.com (David Byttow)'</tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt id="link-0" class="py-name" targets="Module waveapi.util=waveapi.util-module.html"><a title="waveapi.util" class="py-name" href="#" onclick="return doclink('link-0', 'util', 'link-0');">util</a></tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"> </tt>
+<a name="Range"></a><div id="Range-def"><a name="L16"></a><tt class="py-lineno"> 16</tt> <a class="py-toggle" href="#" id="Range-toggle" onclick="return toggle('Range');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="waveapi.document.Range-class.html">Range</a><tt class="py-op">(</tt><tt class="py-base-class">object</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Range-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="Range-expanded"><a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line">  <tt class="py-docstring">"""Represents a start and end range with integers.</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"><tt class="py-docstring">  Ranges map positions in the document. A range must have at least a length</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"><tt class="py-docstring">  of zero. If zero, the range is considered to be a single point (collapsed).</tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"><tt class="py-docstring">  """</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line">  <tt id="link-1" class="py-name" targets="Variable waveapi.document.Annotation.java_class=waveapi.document.Annotation-class.html#java_class,Variable waveapi.document.Element.java_class=waveapi.document.Element-class.html#java_class,Variable waveapi.document.FormElement.java_class=waveapi.document.FormElement-class.html#java_class,Variable waveapi.document.Gadget.java_class=waveapi.document.Gadget-class.html#java_class,Variable waveapi.document.Image.java_class=waveapi.document.Image-class.html#java_class,Variable waveapi.document.Range.java_class=waveapi.document.Range-class.html#java_class,Variable waveapi.model.BlipData.java_class=waveapi.model.BlipData-class.html#java_class,Variable waveapi.model.WaveletData.java_class=waveapi.model.WaveletData-class.html#java_class,Variable waveapi.ops.Operation.java_class=waveapi.ops.Operation-class.html#java_class"><a title="waveapi.document.Annotation.java_class
+waveapi.document.Element.java_class
+waveapi.document.FormElement.java_class
+waveapi.document.Gadget.java_class
+waveapi.document.Image.java_class
+waveapi.document.Range.java_class
+waveapi.model.BlipData.java_class
+waveapi.model.WaveletData.java_class
+waveapi.ops.Operation.java_class" class="py-name" href="#" onclick="return doclink('link-1', 'java_class', 'link-1');">java_class</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'com.google.wave.api.Range'</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"> </tt>
+<a name="Range.__init__"></a><div id="Range.__init__-def"><a name="L25"></a><tt class="py-lineno"> 25</tt> <a class="py-toggle" href="#" id="Range.__init__-toggle" onclick="return toggle('Range.__init__');">-</a><tt class="py-line">  <tt class="py-keyword">def</tt> <a class="py-def-name" href="waveapi.document.Range-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">start</tt><tt class="py-op">=</tt><tt class="py-number">0</tt><tt class="py-op">,</tt> <tt class="py-param">end</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Range.__init__-collapsed" style="display:none;" pad="+++" indent="++++++"></div><div id="Range.__init__-expanded"><a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line">    <tt class="py-docstring">"""Initializes the range with a start and end position.</tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line"><tt class="py-docstring">    Args:</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line"><tt class="py-docstring">      start: Start index of the range.</tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line"><tt class="py-docstring">      end: End index of the range.</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"><tt class="py-docstring">    Raises:</tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line"><tt class="py-docstring">      ValueError: Value error if the range is invalid (less than zero).</tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line">    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">start</tt> <tt class="py-op">=</tt> <tt class="py-name">start</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line">    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">end</tt> <tt class="py-op">=</tt> <tt class="py-name">end</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">end</tt> <tt class="py-op">-</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">start</tt> <tt class="py-op">&lt;</tt> <tt class="py-number">0</tt><tt class="py-op">:</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line">      <tt class="py-keyword">raise</tt> <tt class="py-name">ValueError</tt><tt class="py-op">(</tt><tt class="py-string">'Range cannot be less than 0'</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line"> </tt>
+<a name="Range.__str__"></a><div id="Range.__str__-def"><a name="L40"></a><tt class="py-lineno"> 40</tt> <a class="py-toggle" href="#" id="Range.__str__-toggle" onclick="return toggle('Range.__str__');">-</a><tt class="py-line">  <tt class="py-keyword">def</tt> <a class="py-def-name" href="waveapi.document.Range-class.html#__str__">__str__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Range.__str__-collapsed" style="display:none;" pad="+++" indent="++++++"></div><div id="Range.__str__-expanded"><a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-string">'Range('</tt> <tt class="py-op">+</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">start</tt><tt class="py-op">)</tt> <tt class="py-op">+</tt> <tt class="py-string">', '</tt> <tt class="py-op">+</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">end</tt><tt class="py-op">)</tt> <tt class="py-op">+</tt> <tt class="py-string">')'</tt> </tt>
+</div><a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line"> </tt>
+<a name="Range.IsCollapsed"></a><div id="Range.IsCollapsed-def"><a name="L43"></a><tt class="py-lineno"> 43</tt> <a class="py-toggle" href="#" id="Range.IsCollapsed-toggle" onclick="return toggle('Range.IsCollapsed');">-</a><tt class="py-line">  <tt class="py-keyword">def</tt> <a class="py-def-name" href="waveapi.document.Range-class.html#IsCollapsed">IsCollapsed</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Range.IsCollapsed-collapsed" style="display:none;" pad="+++" indent="++++++"></div><div id="Range.IsCollapsed-expanded"><a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line">    <tt class="py-docstring">""""Returns true if this represents a single point as opposed to a range."""</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">end</tt> <tt class="py-op">==</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">start</tt> </tt>
+</div></div><a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line"> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line"> </tt>
+<a name="Annotation"></a><div id="Annotation-def"><a name="L48"></a><tt class="py-lineno"> 48</tt> <a class="py-toggle" href="#" id="Annotation-toggle" onclick="return toggle('Annotation');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="waveapi.document.Annotation-class.html">Annotation</a><tt class="py-op">(</tt><tt class="py-base-class">object</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Annotation-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="Annotation-expanded"><a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line">  <tt class="py-docstring">"""Represents an annotation on a document.</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line"><tt class="py-docstring">  Annotations are key/value pairs over a range of content. Annotations</tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line"><tt class="py-docstring">  can be used to store data or to be interpreted by a client when displaying</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line"><tt class="py-docstring">  the data.</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line"><tt class="py-docstring">  """</tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line"> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line">  <tt id="link-2" class="py-name"><a title="waveapi.document.Annotation.java_class
+waveapi.document.Element.java_class
+waveapi.document.FormElement.java_class
+waveapi.document.Gadget.java_class
+waveapi.document.Image.java_class
+waveapi.document.Range.java_class
+waveapi.model.BlipData.java_class
+waveapi.model.WaveletData.java_class
+waveapi.ops.Operation.java_class" class="py-name" href="#" onclick="return doclink('link-2', 'java_class', 'link-1');">java_class</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'com.google.wave.api.Annotation'</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line"> </tt>
+<a name="Annotation.__init__"></a><div id="Annotation.__init__-def"><a name="L58"></a><tt class="py-lineno"> 58</tt> <a class="py-toggle" href="#" id="Annotation.__init__-toggle" onclick="return toggle('Annotation.__init__');">-</a><tt class="py-line">  <tt class="py-keyword">def</tt> <a class="py-def-name" href="waveapi.document.Annotation-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">name</tt><tt class="py-op">,</tt> <tt class="py-param">value</tt><tt class="py-op">,</tt> <tt class="py-param">r</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Annotation.__init__-collapsed" style="display:none;" pad="+++" indent="++++++"></div><div id="Annotation.__init__-expanded"><a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">    <tt class="py-docstring">"""Initializes this annotation with a name and value pair and a range.</tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line"><tt class="py-docstring">    Args:</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line"><tt class="py-docstring">      name: Key name for this annotation.</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line"><tt class="py-docstring">      value: Value of this annotation.</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line"><tt class="py-docstring">      r: Range that this annotation is valid over.</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">name</tt> <tt class="py-op">=</tt> <tt class="py-name">name</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">value</tt> <tt class="py-op">=</tt> <tt class="py-name">value</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">range</tt> <tt class="py-op">=</tt> <tt class="py-name">r</tt> <tt class="py-keyword">or</tt> <tt id="link-3" class="py-name" targets="Class waveapi.document.Range=waveapi.document.Range-class.html"><a title="waveapi.document.Range" class="py-name" href="#" onclick="return doclink('link-3', 'Range', 'link-3');">Range</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line"> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line"> </tt>
+<a name="StringEnum"></a><div id="StringEnum-def"><a name="L71"></a><tt class="py-lineno"> 71</tt> <a class="py-toggle" href="#" id="StringEnum-toggle" onclick="return toggle('StringEnum');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="waveapi.document.StringEnum-class.html">StringEnum</a><tt class="py-op">(</tt><tt class="py-base-class">object</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="StringEnum-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="StringEnum-expanded"><a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">  <tt class="py-docstring">"""Enum like class that is configured with a list of values.</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line"><tt class="py-docstring">  This class effectively implements an enum for Elements, except for that</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line"><tt class="py-docstring">  the actual values of the enums will be the string values."""</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line"> </tt>
+<a name="StringEnum.__init__"></a><div id="StringEnum.__init__-def"><a name="L77"></a><tt class="py-lineno"> 77</tt> <a class="py-toggle" href="#" id="StringEnum.__init__-toggle" onclick="return toggle('StringEnum.__init__');">-</a><tt class="py-line">  <tt class="py-keyword">def</tt> <a class="py-def-name" href="waveapi.document.StringEnum-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-op">*</tt><tt class="py-param">values</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="StringEnum.__init__-collapsed" style="display:none;" pad="+++" indent="++++++"></div><div id="StringEnum.__init__-expanded"><a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">name</tt> <tt class="py-keyword">in</tt> <tt class="py-name">values</tt><tt class="py-op">:</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line">      <tt class="py-name">setattr</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt class="py-name">name</tt><tt class="py-op">,</tt> <tt class="py-name">name</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line"> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line"> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line"><tt id="link-4" class="py-name" targets="Variable waveapi.document.ELEMENT_TYPE=waveapi.document-module.html#ELEMENT_TYPE"><a title="waveapi.document.ELEMENT_TYPE" class="py-name" href="#" onclick="return doclink('link-4', 'ELEMENT_TYPE', 'link-4');">ELEMENT_TYPE</a></tt> <tt class="py-op">=</tt> <tt id="link-5" class="py-name" targets="Class waveapi.document.StringEnum=waveapi.document.StringEnum-class.html"><a title="waveapi.document.StringEnum" class="py-name" href="#" onclick="return doclink('link-5', 'StringEnum', 'link-5');">StringEnum</a></tt><tt class="py-op">(</tt><tt class="py-string">'INLINE_BLIP'</tt><tt class="py-op">,</tt> <tt class="py-string">'INPUT'</tt><tt class="py-op">,</tt> <tt class="py-string">'CHECK'</tt><tt class="py-op">,</tt> <tt class="py-string">'LABEL'</tt><tt class="py-op">,</tt> <tt class="py-string">'BUTTON'</tt><tt class="py-op">,</tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line">    <tt class="py-string">'RADIO_BUTTON'</tt><tt class="py-op">,</tt> <tt class="py-string">'RADIO_BUTTON_GROUP'</tt><tt class="py-op">,</tt><tt class="py-string">'PASSWORD'</tt><tt class="py-op">,</tt> <tt class="py-string">'GADGET'</tt><tt class="py-op">,</tt> <tt class="py-string">'IMAGE'</tt><tt class="py-op">)</tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line"> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line"> </tt>
+<a name="Element"></a><div id="Element-def"><a name="L86"></a><tt class="py-lineno"> 86</tt> <a class="py-toggle" href="#" id="Element-toggle" onclick="return toggle('Element');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="waveapi.document.Element-class.html">Element</a><tt class="py-op">(</tt><tt class="py-base-class">object</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Element-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="Element-expanded"><a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">  <tt class="py-docstring">"""Elements are non-text content within a document.</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line"><tt class="py-docstring">  These are generally abstracted from the Robot. Although a Robot can query the</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line"><tt class="py-docstring">  properties of an element it can only interact with the specific types that</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line"><tt class="py-docstring">  the element represents.</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line"><tt class="py-docstring">  Properties of elements are both accesible directly (image.url) and through</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line"><tt class="py-docstring">  the properties dictionary (image.properties['url']). In general Element</tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line"><tt class="py-docstring">  should not be instantiated by robots, but rather rely on the derrived classes.</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line"><tt class="py-docstring">  """</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line"> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line">  <tt id="link-6" class="py-name"><a title="waveapi.document.Annotation.java_class
+waveapi.document.Element.java_class
+waveapi.document.FormElement.java_class
+waveapi.document.Gadget.java_class
+waveapi.document.Image.java_class
+waveapi.document.Range.java_class
+waveapi.model.BlipData.java_class
+waveapi.model.WaveletData.java_class
+waveapi.ops.Operation.java_class" class="py-name" href="#" onclick="return doclink('link-6', 'java_class', 'link-1');">java_class</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'com.google.wave.api.Element'</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line"> </tt>
+<a name="Element.__init__"></a><div id="Element.__init__-def"><a name="L100"></a><tt class="py-lineno">100</tt> <a class="py-toggle" href="#" id="Element.__init__-toggle" onclick="return toggle('Element.__init__');">-</a><tt class="py-line">  <tt class="py-keyword">def</tt> <a class="py-def-name" href="waveapi.document.Element-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">element_type</tt><tt class="py-op">,</tt> <tt class="py-op">**</tt><tt class="py-param">properties</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Element.__init__-collapsed" style="display:none;" pad="+++" indent="++++++"></div><div id="Element.__init__-expanded"><a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line">    <tt class="py-docstring">"""Initializes self with the specified type and any properties."""</tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line">    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">type</tt> <tt class="py-op">=</tt> <tt class="py-name">element_type</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">key</tt><tt class="py-op">,</tt> <tt class="py-name">val</tt> <tt class="py-keyword">in</tt> <tt class="py-name">properties</tt><tt class="py-op">.</tt><tt class="py-name">items</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">      <tt class="py-name">setattr</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt class="py-name">key</tt><tt class="py-op">,</tt> <tt class="py-name">val</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line"> </tt>
+<a name="Element.Serialize"></a><div id="Element.Serialize-def"><a name="L106"></a><tt class="py-lineno">106</tt> <a class="py-toggle" href="#" id="Element.Serialize-toggle" onclick="return toggle('Element.Serialize');">-</a><tt class="py-line">  <tt class="py-keyword">def</tt> <a class="py-def-name" href="waveapi.document.Element-class.html#Serialize">Serialize</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Element.Serialize-collapsed" style="display:none;" pad="+++" indent="++++++"></div><div id="Element.Serialize-expanded"><a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">    <tt class="py-docstring">"""Custom serializer for Elements.</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line"><tt class="py-docstring">    Element need their non standard attributes returned in a dict named</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line"><tt class="py-docstring">    properties.</tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line">    <tt class="py-name">props</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt><tt class="py-op">}</tt> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line">    <tt class="py-name">data</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt><tt class="py-op">}</tt> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">attr</tt> <tt class="py-keyword">in</tt> <tt class="py-name">dir</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line">      <tt class="py-keyword">if</tt> <tt class="py-name">attr</tt><tt class="py-op">.</tt><tt class="py-name">startswith</tt><tt class="py-op">(</tt><tt class="py-string">'_'</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line">        <tt class="py-keyword">continue</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line">      <tt class="py-name">val</tt> <tt class="py-op">=</tt> <tt class="py-name">getattr</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt class="py-name">attr</tt><tt class="py-op">)</tt> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line">      <tt class="py-keyword">if</tt> <tt class="py-name">val</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt> <tt class="py-keyword">or</tt> <tt class="py-name">callable</tt><tt class="py-op">(</tt><tt class="py-name">val</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line">        <tt class="py-keyword">continue</tt> </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line">      <tt class="py-name">val</tt> <tt class="py-op">=</tt> <tt id="link-7" class="py-name"><a title="waveapi.util" class="py-name" href="#" onclick="return doclink('link-7', 'util', 'link-0');">util</a></tt><tt class="py-op">.</tt><tt id="link-8" class="py-name" targets="Method waveapi.document.Element.Serialize()=waveapi.document.Element-class.html#Serialize,Method waveapi.ops._ContextImpl.Serialize()=waveapi.ops._ContextImpl-class.html#Serialize,Function waveapi.util.Serialize()=waveapi.util-module.html#Serialize"><a title="waveapi.document.Element.Serialize
+waveapi.ops._ContextImpl.Serialize
+waveapi.util.Serialize" class="py-name" href="#" onclick="return doclink('link-8', 'Serialize', 'link-8');">Serialize</a></tt><tt class="py-op">(</tt><tt class="py-name">val</tt><tt class="py-op">)</tt> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line">      <tt class="py-keyword">if</tt> <tt class="py-name">attr</tt> <tt class="py-op">==</tt> <tt class="py-string">'type'</tt> <tt class="py-keyword">or</tt> <tt class="py-name">attr</tt> <tt class="py-op">==</tt> <tt class="py-string">'java_class'</tt><tt class="py-op">:</tt> </tt>
+<a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line">        <tt class="py-name">data</tt><tt class="py-op">[</tt><tt class="py-name">attr</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">val</tt> </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line">      <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line">        <tt class="py-name">props</tt><tt class="py-op">[</tt><tt class="py-name">attr</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">val</tt> </tt>
+<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line">    <tt class="py-name">data</tt><tt class="py-op">[</tt><tt class="py-string">'properties'</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt id="link-9" class="py-name"><a title="waveapi.util" class="py-name" href="#" onclick="return doclink('link-9', 'util', 'link-0');">util</a></tt><tt class="py-op">.</tt><tt id="link-10" class="py-name"><a title="waveapi.document.Element.Serialize
+waveapi.ops._ContextImpl.Serialize
+waveapi.util.Serialize" class="py-name" href="#" onclick="return doclink('link-10', 'Serialize', 'link-8');">Serialize</a></tt><tt class="py-op">(</tt><tt class="py-name">props</tt><tt class="py-op">)</tt> </tt>
+<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">data</tt> </tt>
+</div></div><a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line"> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line"> </tt>
+<a name="FormElement"></a><div id="FormElement-def"><a name="L129"></a><tt class="py-lineno">129</tt> <a class="py-toggle" href="#" id="FormElement-toggle" onclick="return toggle('FormElement');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="waveapi.document.FormElement-class.html">FormElement</a><tt class="py-op">(</tt><tt class="py-base-class">Element</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="FormElement-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="FormElement-expanded"><a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line"> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line">  <tt id="link-11" class="py-name"><a title="waveapi.document.Annotation.java_class
+waveapi.document.Element.java_class
+waveapi.document.FormElement.java_class
+waveapi.document.Gadget.java_class
+waveapi.document.Image.java_class
+waveapi.document.Range.java_class
+waveapi.model.BlipData.java_class
+waveapi.model.WaveletData.java_class
+waveapi.ops.Operation.java_class" class="py-name" href="#" onclick="return doclink('link-11', 'java_class', 'link-1');">java_class</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'com.google.wave.api.FormElement'</tt> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line"> </tt>
+<a name="FormElement.__init__"></a><div id="FormElement.__init__-def"><a name="L133"></a><tt class="py-lineno">133</tt> <a class="py-toggle" href="#" id="FormElement.__init__-toggle" onclick="return toggle('FormElement.__init__');">-</a><tt class="py-line">  <tt class="py-keyword">def</tt> <a class="py-def-name" href="waveapi.document.FormElement-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">element_type</tt><tt class="py-op">,</tt> <tt class="py-param">name</tt><tt class="py-op">,</tt> <tt class="py-param">value</tt><tt class="py-op">=</tt><tt class="py-string">''</tt><tt class="py-op">,</tt> <tt class="py-param">default_value</tt><tt class="py-op">=</tt><tt class="py-string">''</tt><tt class="py-op">,</tt> <tt class="py-param">label</tt><tt class="py-op">=</tt><tt class="py-string">''</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="FormElement.__init__-collapsed" style="display:none;" pad="+++" indent="++++++"></div><div id="FormElement.__init__-expanded"><a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line">    <tt class="py-name">super</tt><tt class="py-op">(</tt><tt id="link-12" class="py-name" targets="Class waveapi.document.FormElement=waveapi.document.FormElement-class.html"><a title="waveapi.document.FormElement" class="py-name" href="#" onclick="return doclink('link-12', 'FormElement', 'link-12');">FormElement</a></tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-13" class="py-name" targets="Method waveapi.document.Annotation.__init__()=waveapi.document.Annotation-class.html#__init__,Method waveapi.document.Element.__init__()=waveapi.document.Element-class.html#__init__,Method waveapi.document.FormElement.__init__()=waveapi.document.FormElement-class.html#__init__,Method waveapi.document.Gadget.__init__()=waveapi.document.Gadget-class.html#__init__,Method waveapi.document.Image.__init__()=waveapi.document.Image-class.html#__init__,Method waveapi.document.Range.__init__()=waveapi.document.Range-class.html#__init__,Method waveapi.document.StringEnum.__init__()=waveapi.document.StringEnum-class.html#__init__,Method waveapi.model.Blip.__init__()=waveapi.model.Blip-class.html#__init__,Method waveapi.model.BlipData.__init__()=waveapi.model.BlipData-class.html#__init__,Method waveapi.model.Context.__init__()=waveapi.model.Context-class.html#__init__,Method waveapi.model.Document.__init__()=waveapi.model.Document-class.html#__init__,Method waveapi.model.Event.__init__()=waveapi.model.Event-class.html#__init__,Method waveapi.model.Wave.__init__()=waveapi.model.Wave-class.html#__init__,Method waveapi.model.WaveData.__init__()=waveapi.model.WaveData-class.html#__init__,Method waveapi.model.Wavelet.__init__()=waveapi.model.Wavelet-class.html#__init__,Method waveapi.model.WaveletData.__init__()=waveapi.model.WaveletData-class.html#__init__,Method waveapi.module_test_runner.ModuleTestRunner.__init__()=waveapi.module_test_runner.ModuleTestRunner-class.html#__init__,Method waveapi.ops.OpBasedBlip.__init__()=waveapi.ops.OpBasedBlip-class.html#__init__,Method waveapi.ops.OpBasedDocument.__init__()=waveapi.ops.OpBasedDocument-class.html#__init__,Method waveapi.ops.OpBasedWave.__init__()=waveapi.ops.OpBasedWave-class.html#__init__,Method waveapi.ops.OpBasedWavelet.__init__()=waveapi.ops.OpBasedWavelet-class.html#__init__,Method waveapi.ops.OpBuilder.__init__()=waveapi.ops.OpBuilder-class.html#__init__,Method waveapi.ops.Operation.__init__()=waveapi.ops.Operation-class.html#__init__,Method waveapi.ops._ContextImpl.__init__()=waveapi.ops._ContextImpl-class.html#__init__,Method waveapi.robot.RobotCapabilitiesHandler.__init__()=waveapi.robot.RobotCapabilitiesHandler-class.html#__init__,Method waveapi.robot.RobotEventHandler.__init__()=waveapi.robot.RobotEventHandler-class.html#__init__,Method waveapi.robot.RobotProfileHandler.__init__()=waveapi.robot.RobotProfileHandler-class.html#__init__,Method waveapi.robot_abstract.Robot.__init__()=waveapi.robot_abstract.Robot-class.html#__init__,Method waveapi.robot_abstract.RobotListener.__init__()=waveapi.robot_abstract.RobotListener-class.html#__init__,Method waveapi.simplejson.decoder.JSONDecoder.__init__()=waveapi.simplejson.decoder.JSONDecoder-class.html#__init__,Method waveapi.simplejson.encoder.JSONEncoder.__init__()=waveapi.simplejson.encoder.JSONEncoder-class.html#__init__,Method waveapi.simplejson.jsonfilter.JSONFilter.__init__()=waveapi.simplejson.jsonfilter.JSONFilter-class.html#__init__,Method waveapi.simplejson.scanner.Scanner.__init__()=waveapi.simplejson.scanner.Scanner-class.html#__init__"><a title="waveapi.document.Annotation.__init__
+waveapi.document.Element.__init__
+waveapi.document.FormElement.__init__
+waveapi.document.Gadget.__init__
+waveapi.document.Image.__init__
+waveapi.document.Range.__init__
+waveapi.document.StringEnum.__init__
+waveapi.model.Blip.__init__
+waveapi.model.BlipData.__init__
+waveapi.model.Context.__init__
+waveapi.model.Document.__init__
+waveapi.model.Event.__init__
+waveapi.model.Wave.__init__
+waveapi.model.WaveData.__init__
+waveapi.model.Wavelet.__init__
+waveapi.model.WaveletData.__init__
+waveapi.module_test_runner.ModuleTestRunner.__init__
+waveapi.ops.OpBasedBlip.__init__
+waveapi.ops.OpBasedDocument.__init__
+waveapi.ops.OpBasedWave.__init__
+waveapi.ops.OpBasedWavelet.__init__
+waveapi.ops.OpBuilder.__init__
+waveapi.ops.Operation.__init__
+waveapi.ops._ContextImpl.__init__
+waveapi.robot.RobotCapabilitiesHandler.__init__
+waveapi.robot.RobotEventHandler.__init__
+waveapi.robot.RobotProfileHandler.__init__
+waveapi.robot_abstract.Robot.__init__
+waveapi.robot_abstract.RobotListener.__init__
+waveapi.simplejson.decoder.JSONDecoder.__init__
+waveapi.simplejson.encoder.JSONEncoder.__init__
+waveapi.simplejson.jsonfilter.JSONFilter.__init__
+waveapi.simplejson.scanner.Scanner.__init__" class="py-name" href="#" onclick="return doclink('link-13', '__init__', 'link-13');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">element_type</tt><tt class="py-op">,</tt> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line">        <tt class="py-name">name</tt><tt class="py-op">=</tt><tt class="py-name">name</tt><tt class="py-op">,</tt> <tt class="py-name">value</tt><tt class="py-op">=</tt><tt class="py-name">value</tt><tt class="py-op">,</tt> <tt class="py-name">default_value</tt><tt class="py-op">=</tt><tt class="py-name">default_value</tt><tt class="py-op">,</tt> <tt class="py-name">label</tt><tt class="py-op">=</tt><tt class="py-name">label</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line"> </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line"> </tt>
+<a name="Gadget"></a><div id="Gadget-def"><a name="L138"></a><tt class="py-lineno">138</tt> <a class="py-toggle" href="#" id="Gadget-toggle" onclick="return toggle('Gadget');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="waveapi.document.Gadget-class.html">Gadget</a><tt class="py-op">(</tt><tt class="py-base-class">Element</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Gadget-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="Gadget-expanded"><a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line"> </tt>
+<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line">  <tt id="link-14" class="py-name"><a title="waveapi.document.Annotation.java_class
+waveapi.document.Element.java_class
+waveapi.document.FormElement.java_class
+waveapi.document.Gadget.java_class
+waveapi.document.Image.java_class
+waveapi.document.Range.java_class
+waveapi.model.BlipData.java_class
+waveapi.model.WaveletData.java_class
+waveapi.ops.Operation.java_class" class="py-name" href="#" onclick="return doclink('link-14', 'java_class', 'link-1');">java_class</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'com.google.wave.api.Gadget'</tt> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line"> </tt>
+<a name="Gadget.__init__"></a><div id="Gadget.__init__-def"><a name="L142"></a><tt class="py-lineno">142</tt> <a class="py-toggle" href="#" id="Gadget.__init__-toggle" onclick="return toggle('Gadget.__init__');">-</a><tt class="py-line">  <tt class="py-keyword">def</tt> <a class="py-def-name" href="waveapi.document.Gadget-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">url</tt><tt class="py-op">=</tt><tt class="py-string">''</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Gadget.__init__-collapsed" style="display:none;" pad="+++" indent="++++++"></div><div id="Gadget.__init__-expanded"><a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line">    <tt class="py-name">super</tt><tt class="py-op">(</tt><tt id="link-15" class="py-name" targets="Class waveapi.document.Gadget=waveapi.document.Gadget-class.html"><a title="waveapi.document.Gadget" class="py-name" href="#" onclick="return doclink('link-15', 'Gadget', 'link-15');">Gadget</a></tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-16" class="py-name"><a title="waveapi.document.Annotation.__init__
+waveapi.document.Element.__init__
+waveapi.document.FormElement.__init__
+waveapi.document.Gadget.__init__
+waveapi.document.Image.__init__
+waveapi.document.Range.__init__
+waveapi.document.StringEnum.__init__
+waveapi.model.Blip.__init__
+waveapi.model.BlipData.__init__
+waveapi.model.Context.__init__
+waveapi.model.Document.__init__
+waveapi.model.Event.__init__
+waveapi.model.Wave.__init__
+waveapi.model.WaveData.__init__
+waveapi.model.Wavelet.__init__
+waveapi.model.WaveletData.__init__
+waveapi.module_test_runner.ModuleTestRunner.__init__
+waveapi.ops.OpBasedBlip.__init__
+waveapi.ops.OpBasedDocument.__init__
+waveapi.ops.OpBasedWave.__init__
+waveapi.ops.OpBasedWavelet.__init__
+waveapi.ops.OpBuilder.__init__
+waveapi.ops.Operation.__init__
+waveapi.ops._ContextImpl.__init__
+waveapi.robot.RobotCapabilitiesHandler.__init__
+waveapi.robot.RobotEventHandler.__init__
+waveapi.robot.RobotProfileHandler.__init__
+waveapi.robot_abstract.Robot.__init__
+waveapi.robot_abstract.RobotListener.__init__
+waveapi.simplejson.decoder.JSONDecoder.__init__
+waveapi.simplejson.encoder.JSONEncoder.__init__
+waveapi.simplejson.jsonfilter.JSONFilter.__init__
+waveapi.simplejson.scanner.Scanner.__init__" class="py-name" href="#" onclick="return doclink('link-16', '__init__', 'link-13');">__init__</a></tt><tt class="py-op">(</tt><tt id="link-17" class="py-name"><a title="waveapi.document.ELEMENT_TYPE" class="py-name" href="#" onclick="return doclink('link-17', 'ELEMENT_TYPE', 'link-4');">ELEMENT_TYPE</a></tt><tt class="py-op">.</tt><tt class="py-name">GADGET</tt><tt class="py-op">,</tt> <tt class="py-name">url</tt><tt class="py-op">=</tt><tt class="py-name">url</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line"> </tt>
+<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line"> </tt>
+<a name="Image"></a><div id="Image-def"><a name="L146"></a><tt class="py-lineno">146</tt> <a class="py-toggle" href="#" id="Image-toggle" onclick="return toggle('Image');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="waveapi.document.Image-class.html">Image</a><tt class="py-op">(</tt><tt class="py-base-class">Element</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Image-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="Image-expanded"><a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line"> </tt>
+<a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line">  <tt id="link-18" class="py-name"><a title="waveapi.document.Annotation.java_class
+waveapi.document.Element.java_class
+waveapi.document.FormElement.java_class
+waveapi.document.Gadget.java_class
+waveapi.document.Image.java_class
+waveapi.document.Range.java_class
+waveapi.model.BlipData.java_class
+waveapi.model.WaveletData.java_class
+waveapi.ops.Operation.java_class" class="py-name" href="#" onclick="return doclink('link-18', 'java_class', 'link-1');">java_class</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'com.google.wave.api.Image'</tt> </tt>
+<a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line"> </tt>
+<a name="Image.__init__"></a><div id="Image.__init__-def"><a name="L150"></a><tt class="py-lineno">150</tt> <a class="py-toggle" href="#" id="Image.__init__-toggle" onclick="return toggle('Image.__init__');">-</a><tt class="py-line">  <tt class="py-keyword">def</tt> <a class="py-def-name" href="waveapi.document.Image-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">url</tt><tt class="py-op">=</tt><tt class="py-string">''</tt><tt class="py-op">,</tt> <tt class="py-param">width</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-param">height</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> </tt>
+<a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line">      <tt class="py-param">attachment_id</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-param">caption</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Image.__init__-collapsed" style="display:none;" pad="+++" indent="++++++"></div><div id="Image.__init__-expanded"><a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line">    <tt class="py-name">super</tt><tt class="py-op">(</tt><tt id="link-19" class="py-name" targets="Class waveapi.document.Image=waveapi.document.Image-class.html"><a title="waveapi.document.Image" class="py-name" href="#" onclick="return doclink('link-19', 'Image', 'link-19');">Image</a></tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-20" class="py-name"><a title="waveapi.document.Annotation.__init__
+waveapi.document.Element.__init__
+waveapi.document.FormElement.__init__
+waveapi.document.Gadget.__init__
+waveapi.document.Image.__init__
+waveapi.document.Range.__init__
+waveapi.document.StringEnum.__init__
+waveapi.model.Blip.__init__
+waveapi.model.BlipData.__init__
+waveapi.model.Context.__init__
+waveapi.model.Document.__init__
+waveapi.model.Event.__init__
+waveapi.model.Wave.__init__
+waveapi.model.WaveData.__init__
+waveapi.model.Wavelet.__init__
+waveapi.model.WaveletData.__init__
+waveapi.module_test_runner.ModuleTestRunner.__init__
+waveapi.ops.OpBasedBlip.__init__
+waveapi.ops.OpBasedDocument.__init__
+waveapi.ops.OpBasedWave.__init__
+waveapi.ops.OpBasedWavelet.__init__
+waveapi.ops.OpBuilder.__init__
+waveapi.ops.Operation.__init__
+waveapi.ops._ContextImpl.__init__
+waveapi.robot.RobotCapabilitiesHandler.__init__
+waveapi.robot.RobotEventHandler.__init__
+waveapi.robot.RobotProfileHandler.__init__
+waveapi.robot_abstract.Robot.__init__
+waveapi.robot_abstract.RobotListener.__init__
+waveapi.simplejson.decoder.JSONDecoder.__init__
+waveapi.simplejson.encoder.JSONEncoder.__init__
+waveapi.simplejson.jsonfilter.JSONFilter.__init__
+waveapi.simplejson.scanner.Scanner.__init__" class="py-name" href="#" onclick="return doclink('link-20', '__init__', 'link-13');">__init__</a></tt><tt class="py-op">(</tt><tt id="link-21" class="py-name"><a title="waveapi.document.ELEMENT_TYPE" class="py-name" href="#" onclick="return doclink('link-21', 'ELEMENT_TYPE', 'link-4');">ELEMENT_TYPE</a></tt><tt class="py-op">.</tt><tt class="py-name">IMAGE</tt><tt class="py-op">,</tt> <tt class="py-name">url</tt><tt class="py-op">=</tt><tt class="py-name">url</tt><tt class="py-op">,</tt> <tt class="py-name">width</tt><tt class="py-op">=</tt><tt class="py-name">width</tt><tt class="py-op">,</tt> </tt>
+<a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line">        <tt class="py-name">height</tt><tt class="py-op">=</tt><tt class="py-name">height</tt><tt class="py-op">,</tt> <tt class="py-name">attachment_id</tt><tt class="py-op">=</tt><tt class="py-name">attachment_id</tt><tt class="py-op">,</tt> <tt class="py-name">caption</tt><tt class="py-op">=</tt><tt class="py-name">caption</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="waveapi-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1
+    on Wed May 27 22:42:20 2009
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

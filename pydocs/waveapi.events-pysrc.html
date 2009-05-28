@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>waveapi.events</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="waveapi-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="waveapi-module.html">Package&nbsp;waveapi</a> ::
+        Module&nbsp;events
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="waveapi.events-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="waveapi.events-module.html">Module waveapi.events</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-comment">#!/usr/bin/python2.4</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-comment">#</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-comment"># Copyright 2009 Google Inc. All Rights Reserved.</tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-docstring">"""Defines event types that are sent from the wave server.</tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt class="py-docstring">This module defines all of the event types currently supported by the wave</tt> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt class="py-docstring">server.</tt> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"><tt class="py-name">__author__</tt> <tt class="py-op">=</tt> <tt class="py-string">'davidbyttow@google.com (David Byttow)'</tt> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"> </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line"><tt class="py-comment"># Event Types</tt> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt id="link-0" class="py-name" targets="Variable waveapi.events.WAVELET_BLIP_CREATED=waveapi.events-module.html#WAVELET_BLIP_CREATED"><a title="waveapi.events.WAVELET_BLIP_CREATED" class="py-name" href="#" onclick="return doclink('link-0', 'WAVELET_BLIP_CREATED', 'link-0');">WAVELET_BLIP_CREATED</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'WAVELET_BLIP_CREATED'</tt> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line"><tt id="link-1" class="py-name" targets="Variable waveapi.events.WAVELET_BLIP_REMOVED=waveapi.events-module.html#WAVELET_BLIP_REMOVED"><a title="waveapi.events.WAVELET_BLIP_REMOVED" class="py-name" href="#" onclick="return doclink('link-1', 'WAVELET_BLIP_REMOVED', 'link-1');">WAVELET_BLIP_REMOVED</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'WAVELET_BLIP_REMOVED'</tt> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line"><tt id="link-2" class="py-name" targets="Variable waveapi.events.WAVELET_PARTICIPANTS_CHANGED=waveapi.events-module.html#WAVELET_PARTICIPANTS_CHANGED"><a title="waveapi.events.WAVELET_PARTICIPANTS_CHANGED" class="py-name" href="#" onclick="return doclink('link-2', 'WAVELET_PARTICIPANTS_CHANGED', 'link-2');">WAVELET_PARTICIPANTS_CHANGED</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'WAVELET_PARTICIPANTS_CHANGED'</tt> </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line"><tt id="link-3" class="py-name" targets="Variable waveapi.events.WAVELET_TIMESTAMP_CHANGED=waveapi.events-module.html#WAVELET_TIMESTAMP_CHANGED"><a title="waveapi.events.WAVELET_TIMESTAMP_CHANGED" class="py-name" href="#" onclick="return doclink('link-3', 'WAVELET_TIMESTAMP_CHANGED', 'link-3');">WAVELET_TIMESTAMP_CHANGED</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'WAVELET_TIMESTAMP_CHANGED'</tt> </tt>
+<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line"><tt id="link-4" class="py-name" targets="Variable waveapi.events.WAVELET_TITLE_CHANGED=waveapi.events-module.html#WAVELET_TITLE_CHANGED"><a title="waveapi.events.WAVELET_TITLE_CHANGED" class="py-name" href="#" onclick="return doclink('link-4', 'WAVELET_TITLE_CHANGED', 'link-4');">WAVELET_TITLE_CHANGED</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'WAVELET_TITLE_CHANGED'</tt> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line"><tt id="link-5" class="py-name" targets="Variable waveapi.events.WAVELET_VERSION_CHANGED=waveapi.events-module.html#WAVELET_VERSION_CHANGED"><a title="waveapi.events.WAVELET_VERSION_CHANGED" class="py-name" href="#" onclick="return doclink('link-5', 'WAVELET_VERSION_CHANGED', 'link-5');">WAVELET_VERSION_CHANGED</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'WAVELET_VERSION_CHANGED'</tt> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line"><tt id="link-6" class="py-name" targets="Variable waveapi.events.BLIP_CONTRIBUTORS_CHANGED=waveapi.events-module.html#BLIP_CONTRIBUTORS_CHANGED"><a title="waveapi.events.BLIP_CONTRIBUTORS_CHANGED" class="py-name" href="#" onclick="return doclink('link-6', 'BLIP_CONTRIBUTORS_CHANGED', 'link-6');">BLIP_CONTRIBUTORS_CHANGED</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'BLIP_CONTRIBUTORS_CHANGED'</tt> </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line"><tt id="link-7" class="py-name" targets="Variable waveapi.events.BLIP_DELETED=waveapi.events-module.html#BLIP_DELETED"><a title="waveapi.events.BLIP_DELETED" class="py-name" href="#" onclick="return doclink('link-7', 'BLIP_DELETED', 'link-7');">BLIP_DELETED</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'BLIP_DELETED'</tt> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line"><tt id="link-8" class="py-name" targets="Variable waveapi.events.BLIP_SUBMITTED=waveapi.events-module.html#BLIP_SUBMITTED"><a title="waveapi.events.BLIP_SUBMITTED" class="py-name" href="#" onclick="return doclink('link-8', 'BLIP_SUBMITTED', 'link-8');">BLIP_SUBMITTED</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'BLIP_SUBMITTED'</tt> </tt>
+<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line"><tt id="link-9" class="py-name" targets="Variable waveapi.events.BLIP_TIMESTAMP_CHANGED=waveapi.events-module.html#BLIP_TIMESTAMP_CHANGED"><a title="waveapi.events.BLIP_TIMESTAMP_CHANGED" class="py-name" href="#" onclick="return doclink('link-9', 'BLIP_TIMESTAMP_CHANGED', 'link-9');">BLIP_TIMESTAMP_CHANGED</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'BLIP_TIMESTAMP_CHANGED'</tt> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line"><tt id="link-10" class="py-name" targets="Variable waveapi.events.BLIP_VERSION_CHANGED=waveapi.events-module.html#BLIP_VERSION_CHANGED"><a title="waveapi.events.BLIP_VERSION_CHANGED" class="py-name" href="#" onclick="return doclink('link-10', 'BLIP_VERSION_CHANGED', 'link-10');">BLIP_VERSION_CHANGED</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'BLIP_VERSION_CHANGED'</tt> </tt>
+<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line"><tt id="link-11" class="py-name" targets="Variable waveapi.events.DOCUMENT_CHANGED=waveapi.events-module.html#DOCUMENT_CHANGED"><a title="waveapi.events.DOCUMENT_CHANGED" class="py-name" href="#" onclick="return doclink('link-11', 'DOCUMENT_CHANGED', 'link-11');">DOCUMENT_CHANGED</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'DOCUMENT_CHANGED'</tt> </tt>
+<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line"><tt id="link-12" class="py-name" targets="Variable waveapi.events.FORM_BUTTON_CLICKED=waveapi.events-module.html#FORM_BUTTON_CLICKED"><a title="waveapi.events.FORM_BUTTON_CLICKED" class="py-name" href="#" onclick="return doclink('link-12', 'FORM_BUTTON_CLICKED', 'link-12');">FORM_BUTTON_CLICKED</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'FORM_BUTTON_CLICKED'</tt> </tt>
+<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="waveapi-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1
+    on Wed May 27 22:42:20 2009
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>
