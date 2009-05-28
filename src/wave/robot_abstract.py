@@ -153,5 +153,5 @@ class Robot(object):
     data['imageUrl'] = self.image_url
     data['profileUrl'] = self.profile_url
     # TODO(davidbyttow): Remove this java nonsense.
-    data['javaClass'] = 'com.google.walkabout.api.ParticipantProfile'
+    data['javaClass'] = 'com.google.wave.api.ParticipantProfile'
     return simplejson.dumps(data)

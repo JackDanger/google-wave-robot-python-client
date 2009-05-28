@@ -125,6 +125,8 @@ def _SerializeAttributes(obj, key_writer=DefaultKeyWriter):
     if attr_name.startswith('_'):
       continue
     attr = getattr(obj, attr_name)
+    if attr is None:
+      continue
     if callable(attr):
       continue
     # Looks okay, serialize it.

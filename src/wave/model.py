@@ -15,7 +15,7 @@ import document
 import logging
 
 
-ROOT_WAVELET_ID_SUFFIX = 'conv+root'
+ROOT_WAVELET_ID_SUFFIX = '!conv+root'
 
 
 class WaveData(object):
