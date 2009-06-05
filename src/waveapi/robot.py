@@ -80,7 +80,8 @@ class RobotEventHandler(webapp.RequestHandler):
       except:
         logging.error(traceback.format_exc())
 
-    json_response = robot_abstract.SerializeContext(context)
+    json_response = robot_abstract.SerializeContext(context,
+                                                    self._robot.version)
     # Build the response.
     logging.info('Outgoing: ' + json_response)
     self.response.headers['Content-Type'] = 'application/json'

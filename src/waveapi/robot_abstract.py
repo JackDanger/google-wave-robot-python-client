@@ -26,9 +26,10 @@ def ParseJSONBody(json_body):
   return context, events
 
 
-def SerializeContext(context):
+def SerializeContext(context, version):
   """Return a JSON string representing the given context."""
   context_dict = util.Serialize(context)
+  context_dict['version'] = version
   return simplejson.dumps(context_dict)
 
 
@@ -81,10 +82,11 @@ class Robot(object):
   dispatches events to the appropriate handlers.
   """
 
-  def __init__(self, name, image_url='', profile_url=''):
+  def __init__(self, name, version, image_url='', profile_url=''):
     """Initializes self with robot information."""
     self._handlers = {}
     self.name = name
+    self.version = version
     self.image_url = image_url
     self.profile_url = profile_url
     self.cron_jobs = []
@@ -121,7 +123,9 @@ class Robot(object):
 
   def GetCapabilitiesXml(self):
     """Return this robot's capabilities as an XML string."""
-    lines = ['<w:capabilities>']
+    lines = ['<w:version>%s</w:version>' % self.version]
+    
+    lines.append('<w:capabilities>')
     for capability in self._handlers:
       lines.append('  <w:capability name="%s"/>' % capability)
     lines.append('</w:capabilities>')

@@ -59,7 +59,7 @@ class TestHelpers(unittest.TestCase):
 class TestGetCapabilitiesXml(unittest.TestCase):
 
   def setUp(self):
-    self.robot = robot_abstract.Robot('Testy')
+    self.robot = robot_abstract.Robot('Testy', '1')
 
   def assertStringsEqual(self, s1, s2):
     self.assertEqual(s1, s2, 'Strings differ:\n%s--\n%s' % (s1, s2))
@@ -68,6 +68,7 @@ class TestGetCapabilitiesXml(unittest.TestCase):
     expected = (
         '<?xml version="1.0"?>\n'
         '<w:robot xmlns:w="http://wave.google.com/extensions/robots/1.0">\n'
+        '<w:version>1</w:version>\n'
         '<w:capabilities>\n</w:capabilities>\n'
         '<w:profile name="Testy"/>\n'
         '</w:robot>\n')
@@ -76,11 +77,14 @@ class TestGetCapabilitiesXml(unittest.TestCase):
 
   def testUrls(self):
     profile_robot = robot_abstract.Robot(
-        'Testy', image_url='http://example.com/image.png',
+        'Testy',
+        '1',
+        image_url='http://example.com/image.png',
         profile_url='http://example.com/profile.xml')
     expected = (
         '<?xml version="1.0"?>\n'
         '<w:robot xmlns:w="http://wave.google.com/extensions/robots/1.0">\n'
+        '<w:version>1</w:version>\n'
         '<w:capabilities>\n</w:capabilities>\n'
         '<w:profile name="Testy"'
         ' imageurl="http://example.com/image.png"'
@@ -95,6 +99,7 @@ class TestGetCapabilitiesXml(unittest.TestCase):
     expected = (
         '<?xml version="1.0"?>\n'
         '<w:robot xmlns:w="http://wave.google.com/extensions/robots/1.0">\n'
+        '<w:version>1</w:version>\n'
         '<w:capabilities>\n'
         '  <w:capability name="myevent"/>\n'
         '</w:capabilities>\n'
