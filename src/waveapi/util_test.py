@@ -1,6 +1,18 @@
 #!/usr/bin/python2.4
 #
-# Copyright 2009 Google Inc. All Rights Reserved.
+# Copyright (C) 2009 Google Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 
 """Unit tests for the util module."""
 
@@ -11,6 +23,7 @@ __author__ = 'davidbyttow@google.com (David Byttow)'
 import unittest
 
 import document
+import ops
 import util
 
 
@@ -74,6 +87,8 @@ class TestUtils(unittest.TestCase):
   def testToLowerCamelCase(self):
     self.assertEquals('foo', util.ToLowerCamelCase('foo'))
     self.assertEquals('fooBar', util.ToLowerCamelCase('foo_bar'))
+    self.assertEquals('fooBar', util.ToLowerCamelCase('fooBar'))
+    self.assertEquals('blipId', util.ToLowerCamelCase('blip_id'))
     self.assertEquals('fooBar', util.ToLowerCamelCase('foo__bar'))
     self.assertEquals('fooBarBaz', util.ToLowerCamelCase('foo_bar_baz'))
     self.assertEquals('f', util.ToLowerCamelCase('f'))
@@ -81,6 +96,17 @@ class TestUtils(unittest.TestCase):
     self.assertEquals('', util.ToLowerCamelCase(''))
     self.assertEquals('', util.ToLowerCamelCase('_'))
     self.assertEquals('aBCDEF', util.ToLowerCamelCase('_a_b_c_d_e_f_'))
+
+  def testToUpperCamelCase(self):
+    self.assertEquals('Foo', util.ToUpperCamelCase('foo'))
+    self.assertEquals('FooBar', util.ToUpperCamelCase('foo_bar'))
+    self.assertEquals('FooBar', util.ToUpperCamelCase('foo__bar'))
+    self.assertEquals('FooBarBaz', util.ToUpperCamelCase('foo_bar_baz'))
+    self.assertEquals('F', util.ToUpperCamelCase('f'))
+    self.assertEquals('F', util.ToUpperCamelCase('f_'))
+    self.assertEquals('', util.ToUpperCamelCase(''))
+    self.assertEquals('', util.ToUpperCamelCase('_'))
+    self.assertEquals('ABCDEF', util.ToUpperCamelCase('_a_b_c_d_e_f_'))
 
   def assertListsEqual(self, a, b):
     self.assertEquals(len(a), len(b))
@@ -151,3 +177,7 @@ class TestUtils(unittest.TestCase):
     Test(R(1, 4), R(2, 3), [R(1, 2), R(3, 4)])
     # split with one
     Test(R(1, 4), R(1, 3), [R(3, 4)])
+
+
+if __name__ == '__main__':
+  unittest.main()

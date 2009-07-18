@@ -1,6 +1,18 @@
 #!/usr/bin/python2.4
 #
-# Copyright 2009 Google Inc. All Rights Reserved.
+# Copyright (C) 2009 Google Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 
 """Unit tests for the ops module."""
 
@@ -12,7 +24,15 @@ import unittest
 
 import document
 import model
+import model_test
 import ops
+
+
+TEST_WAVE_DATA = model_test.TEST_WAVE_DATA
+
+TEST_WAVELET_DATA = model_test.TEST_WAVELET_DATA
+
+TEST_BLIP_DATA = model_test.TEST_BLIP_DATA
 
 
 class TestOperation(unittest.TestCase):
@@ -46,52 +66,26 @@ class TestOpBasedClasses(unittest.TestCase):
   def setUp(self):
     self.test_context = ops._ContextImpl()
 
-    wave_data = model.WaveData()
-    wave_data.id = 'my-wave'
-    wave_data.wavelet_ids = set(['wavelet-1'])
-    self.test_wave_data = wave_data
-    self.test_wave = self.test_context.AddWave(wave_data)
+    self.test_wave_data = TEST_WAVE_DATA
+    self.test_wave = self.test_context.AddWave(self.test_wave_data)
 
-    wavelet_data = model.WaveletData()
-    wavelet_data.creator = 'creator@google.com'
-    wavelet_data.creation_time = 100
-    wavelet_data.last_modified_time = 101
-    wavelet_data.participants = set(['robot@google.com'])
-    wavelet_data.root_blip_id = 'blip-1'
-    wavelet_data.wave_id = wave_data.id
-    wavelet_data.wavelet_id = 'wavelet-1'
-    self.test_wavelet_data = wavelet_data
-    self.test_wavelet = self.test_context.AddWavelet(wavelet_data)
+    self.test_wavelet_data = TEST_WAVELET_DATA
+    self.test_wavelet = self.test_context.AddWavelet(self.test_wavelet_data)
 
-    blip_data = model.BlipData()
-    blip_data.blip_id = wavelet_data.root_blip_id
-    blip_data.content = '<p>testing</p>'
-    blip_data.contributors = set([wavelet_data.creator, 'robot@google.com'])
-    blip_data.creator = wavelet_data.creator
-    blip_data.last_modified_time = wavelet_data.last_modified_time
-    blip_data.parent_blip_id = None
-    blip_data.wave_id = wave_data.id
-    blip_data.wavelet_id = wavelet_data.wavelet_id
-    self.test_blip_data = blip_data
-    self.test_blip = self.test_context.AddBlip(blip_data)
+    self.test_blip_data = TEST_BLIP_DATA
+    self.test_blip = self.test_context.AddBlip(self.test_blip_data)
 
 
 class TestOpBasedContext(TestOpBasedClasses):
   """Test case for testing the operation-based context class, _ContextImpl."""
 
-  def testVerifySetup(self):
-    self.assertEquals(self.test_wave_data,
-                      self.test_context.GetWaveById('my-wave')._data)
-    self.assertEquals(self.test_wavelet_data,
-                      self.test_context.GetWaveletById('wavelet-1')._data)
-    self.assertEquals(self.test_blip_data,
-                      self.test_context.GetBlipById('blip-1')._data)
-
   def testRemove(self):
-    self.test_context.RemoveWave('my-wave')
-    self.assertEquals(None, self.test_context.GetWaveById('my-wave'))
-    self.test_context.RemoveWavelet('wavelet-1')
-    self.assertEquals(None, self.test_context.GetWaveletById('wavelet-1'))
+    self.test_context.RemoveWave(TEST_WAVE_DATA['waveId'])
+    self.assertEquals(None,
+                      self.test_context.GetWaveById(TEST_WAVE_DATA['waveId']))
+    wavelet_id = TEST_WAVELET_DATA['waveletId']
+    self.test_context.RemoveWavelet(wavelet_id)
+    self.assertEquals(None, self.test_context.GetWaveletById(wavelet_id))
     self.test_context.RemoveBlip('blip-1')
     self.assertEquals(None, self.test_context.GetBlipById('blip-1'))
 
@@ -100,8 +94,10 @@ class TestOpBasedWave(TestOpBasedClasses):
   """Test case for OpBasedWave class."""
 
   def testCreateWavelet(self):
-    self.assertRaises(NotImplementedError,
-                      self.test_wave.CreateWavelet)
+    wavelet = self.test_wave.CreateWavelet(participants=['bob'])
+    #uncomment the next line once we do the right thing
+    #self.assertEquals(wavelet.GetWaveId(), TEST_WAVE_DATA['waveId'])
+    self.assertTrue('bob' in wavelet.GetParticipants())
 
 
 class TestOpBasedWavelet(TestOpBasedClasses):
@@ -109,8 +105,8 @@ class TestOpBasedWavelet(TestOpBasedClasses):
 
   def testCreateBlip(self):
     blip = self.test_wavelet.CreateBlip()
-    self.assertEquals('my-wave', blip.GetWaveId())
-    self.assertEquals('wavelet-1', blip.GetWaveletId())
+    self.assertEquals(TEST_WAVE_DATA['waveId'], blip.GetWaveId())
+    self.assertEquals(TEST_WAVELET_DATA['waveletId'], blip.GetWaveletId())
     self.assertTrue(blip.GetId().startswith('TBD'))
     self.assertEquals(blip, self.test_context.GetBlipById(blip.GetId()))
 
@@ -137,8 +133,8 @@ class TestOpBasedBlip(TestOpBasedClasses):
 
   def testCreateChild(self):
     blip = self.test_blip.CreateChild()
-    self.assertEquals('my-wave', blip.GetWaveId())
-    self.assertEquals('wavelet-1', blip.GetWaveletId())
+    self.assertEquals(TEST_WAVE_DATA['waveId'], blip.GetWaveId())
+    self.assertEquals(TEST_WAVELET_DATA['waveletId'], blip.GetWaveletId())
     self.assertTrue(blip.GetId().startswith('TBD'))
     self.assertEquals(blip, self.test_context.GetBlipById(blip.GetId()))
 
@@ -194,18 +190,40 @@ class TestOpBasedDocument(TestOpBasedClasses):
     self.assertTrue(self.test_doc.HasAnnotation('key'))
 
   def testDeleteAnnotationByName(self):
-    self.assertRaises(NotImplementedError,
-                      self.test_doc.DeleteAnnotationsByName, 'key')
+    self.test_doc.SetAnnotation(document.Range(0, 1), 'key', 'value')
+    self.test_doc.SetAnnotation(document.Range(0, 1), 'key2', 'value')
+    self.test_doc.SetAnnotation(document.Range(10, 11), 'key', 'value')
+    self.test_doc.SetAnnotation(document.Range(00, 11), 'key2', 'value')
+    self.test_doc.SetAnnotation(document.Range(20, 21), 'key', 'value')
+    self.test_doc.DeleteAnnotationsByName('key')
+    self.assertFalse(self.test_doc.HasAnnotation('key'))
 
   def testDeleteAnnotationInRange(self):
-    self.assertRaises(NotImplementedError,
-                      self.test_doc.DeleteAnnotationsInRange,
-                      document.Range(0, 1), 'key')
+    self.test_doc.SetAnnotation(document.Range(0, 10), 'key', 'value')
+    self.test_doc.DeleteAnnotationsInRange(document.Range(2, 6), 'key')
+    self.assertTrue(self.test_doc.HasAnnotation('key'))
+    l = [x for x in self.test_doc.RangesForAnnotation('key')]
+    self.assertEqual(len(l), 2)
+    self.test_doc.DeleteAnnotationsInRange(document.Range(0, 2), 'key')
+    l = [x for x in self.test_doc.RangesForAnnotation('key')]
+    print [str(x) for x in l]
+    self.assertEqual(len(l), 1)
+    self.test_doc.DeleteAnnotationsInRange(document.Range(5, 8), 'key')
+    l = [x for x in self.test_doc.RangesForAnnotation('key')]
+    self.assertEqual(len(l), 1)
+    self.test_doc.DeleteAnnotationsInRange(document.Range(7, 12), 'key')
+    self.assertFalse(self.test_doc.HasAnnotation('key'))
+
+  def testRangesForAnnotation(self):
+    self.assertEqual([x for x in self.test_doc.RangesForAnnotation('key')], [])
+    self.test_doc.SetAnnotation(document.Range(1, 10), 'key', 'value')
+    l = [x for x in self.test_doc.RangesForAnnotation('key')]
+    self.assertTrue(l[0].start, 1)
 
   def testAppendInlineBlip(self):
     blip = self.test_doc.AppendInlineBlip()
-    self.assertEquals('my-wave', blip.GetWaveId())
-    self.assertEquals('wavelet-1', blip.GetWaveletId())
+    self.assertEquals(TEST_WAVE_DATA['waveId'], blip.GetWaveId())
+    self.assertEquals(TEST_WAVELET_DATA['waveletId'], blip.GetWaveletId())
     self.assertTrue(blip.GetId().startswith('TBD'))
     self.assertEquals(self.test_blip.GetId(), blip.GetParentBlipId())
     self.assertEquals(blip, self.test_context.GetBlipById(blip.GetId()))
@@ -217,8 +235,8 @@ class TestOpBasedDocument(TestOpBasedClasses):
 
   def testInsertInlineBlip(self):
     blip = self.test_doc.InsertInlineBlip(1)
-    self.assertEquals('my-wave', blip.GetWaveId())
-    self.assertEquals('wavelet-1', blip.GetWaveletId())
+    self.assertEquals(TEST_WAVE_DATA['waveId'], blip.GetWaveId())
+    self.assertEquals(TEST_WAVELET_DATA['waveletId'], blip.GetWaveletId())
     self.assertTrue(blip.GetId().startswith('TBD'))
     self.assertEquals(self.test_blip.GetId(), blip.GetParentBlipId())
     self.assertEquals(blip, self.test_context.GetBlipById(blip.GetId()))
@@ -227,5 +245,37 @@ class TestOpBasedDocument(TestOpBasedClasses):
     self.test_doc.AppendElement("GADGET")
 
 
+class TestOpBuilder(TestOpBasedClasses):
+  """Test case for OpBuilder class."""
+
+  def setUp(self):
+    super(TestOpBuilder, self).setUp()
+    self.builder = self.test_context.builder
+
+  def testWaveletAppendBlip(self):
+    blip_data = self.builder.WaveletAppendBlip('a', 'b')
+    self.assertEquals(blip_data['waveId'], 'a')
+    self.assertEquals(blip_data['waveletId'], 'b')
+    self.assertTrue(blip_data['blipId'].startswith('TBD'))
+
+  def testBlipCreateChild(self):
+    blip_data = self.builder.BlipCreateChild('a', 'b', 'c')
+    self.assertEquals(blip_data['waveId'], 'a')
+    self.assertEquals(blip_data['waveletId'], 'b')
+    self.assertTrue(blip_data['blipId'].startswith('TBD'))
+
+  def testDocumentInlineBlipAppend(self):
+    blip_data = self.builder.DocumentInlineBlipAppend('a', 'b', 'c')
+    self.assertEquals(blip_data['waveId'], 'a')
+    self.assertEquals(blip_data['waveletId'], 'b')
+    self.assertTrue(blip_data['blipId'].startswith('TBD'))
+
+  def testDocumentInlineBlipInsert(self):
+    blip_data = self.builder.DocumentInlineBlipInsert('a', 'b', 'c', 0)
+    self.assertEquals(blip_data['waveId'], 'a')
+    self.assertEquals(blip_data['waveletId'], 'b')
+    self.assertTrue(blip_data['blipId'].startswith('TBD'))
 
 
+if __name__ == '__main__':
+  unittest.main()

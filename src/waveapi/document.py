@@ -1,6 +1,18 @@
 #!/usr/bin/python2.4
 #
-# Copyright 2009 Google Inc. All Rights Reserved.
+# Copyright (C) 2009 Google Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 
 """Defines document-based classes.
 
@@ -9,6 +21,8 @@ their operations.
 """
 
 __author__ = 'davidbyttow@google.com (David Byttow)'
+
+import logging
 
 import util
 
@@ -80,7 +94,8 @@ class StringEnum(object):
 
 
 ELEMENT_TYPE = StringEnum('INLINE_BLIP', 'INPUT', 'CHECK', 'LABEL', 'BUTTON',
-    'RADIO_BUTTON', 'RADIO_BUTTON_GROUP','PASSWORD', 'GADGET', 'IMAGE')
+    'RADIO_BUTTON', 'RADIO_BUTTON_GROUP','PASSWORD', 'TEXTAREA',
+    'GADGET', 'IMAGE')
 
 
 class Element(object):
@@ -98,7 +113,19 @@ class Element(object):
   java_class = 'com.google.wave.api.Element'
 
   def __init__(self, element_type, **properties):
-    """Initializes self with the specified type and any properties."""
+    """Initializes self with the specified type and any properties.
+
+    Args:
+      element_type: string typed member of ELEMENT_TYPE
+      properties: either a dictionary of initial properties, or a dictionary
+          with just one member properties that is itself a dictionary of
+          properties. This allows us to both use
+          e = Element(atype, prop1=val1, prop2=prop2...)
+          and
+          e = Element(atype, properties={prop1:val1, prop2:prop2..})
+    """
+    if len(properties) == 1 and 'properties' in properties:
+      properties = properties['properties']
     self.type = element_type
     for key, val in properties.items():
       setattr(self, key, val)
@@ -139,8 +166,12 @@ class Gadget(Element):
 
   java_class = 'com.google.wave.api.Gadget'
 
-  def __init__(self, url=''):
-    super(Gadget, self).__init__(ELEMENT_TYPE.GADGET, url=url)
+  def __init__(self, url='', props=None):
+    if props is None:
+      props = {}
+    props['url'] = url
+    logging.info('CONSTRUCTING gadget with:' + str(props))
+    super(Gadget, self).__init__(ELEMENT_TYPE.GADGET, properties=props)
 
 
 class Image(Element):
@@ -151,3 +182,26 @@ class Image(Element):
       attachment_id=None, caption=None):
     super(Image, self).__init__(ELEMENT_TYPE.IMAGE, url=url, width=width,
         height=height, attachment_id=attachment_id, caption=caption)
+
+
+def ElementFromJson(json):
+  """Construct one of the type of elements given a json object."""
+  etype = json['type']
+  logging.info('constructing: ' + str(json))
+  if etype == ELEMENT_TYPE.GADGET:
+    props = json['properties'].copy()
+    url = props['url']
+    del props['url']
+    return Gadget(url=url, props=props)
+  elif etype == ELEMENT_TYPE.IMAGE:
+    return Image(url=props.get('url', ''),
+                 width=props.get('width'),
+                 height=props.get('height'),
+                 attachment_id=props.get('attachment_id'),
+                 caption=props.get('caption'))
+  else:
+    return FormElement(element_type=etype,
+                       name=json['name'],
+                       value=json('value', ''),
+                       default_value=json('default_value', ''),
+                       label=json('label', ''))

@@ -1,6 +1,18 @@
 #!/usr/bin/python2.4
 #
-# Copyright 2009 Google Inc. All Rights Reserved.
+# Copyright (C) 2009 Google Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 
 """Defines the generic robot classes.
 
@@ -10,6 +22,7 @@ as well as some helper functions for web requests and responses.
 
 __author__ = 'davidbyttow@google.com (David Byttow)'
 
+import events
 import model
 import ops
 import simplejson
@@ -22,56 +35,22 @@ def ParseJSONBody(json_body):
   # TODO(davidbyttow): Remove this once no longer needed.
   data = util.CollapseJavaCollections(json)
   context = ops.CreateContext(data)
-  events = [model.CreateEvent(event_data) for event_data in data['events']]
-  return context, events
+  event_list = [model.Event(event_data) for event_data in data['events']]
+  return context, event_list
 
 
 def SerializeContext(context, version):
   """Return a JSON string representing the given context."""
   context_dict = util.Serialize(context)
-  context_dict['version'] = version
+  context_dict['version'] = str(version)
   return simplejson.dumps(context_dict)
 
 
-class RobotListener(object):
-  """Listener interface for robot events.
-
-  The RobotListener is a high-level construct that hides away the details
-  of events. Instead, a client will derive from this class and register
-  it with the robot. All event handlers are automatically registered. When
-  a relevant event comes in, logic is applied based on the incoming data and
-  the appropriate function is invoked.
-
-  For example:
-    If the user implements the "OnRobotAdded" method, the OnParticipantChanged
-    method of their subclass, this will automatically register the
-    events.WAVELET_PARTICIPANTS_CHANGED handler and respond to any events
-    that add the robot.
-
-    class MyRobotListener(robot.RobotListener):
-
-      def OnRobotAdded(self):
-        wavelet = self.context.GetRootWavelet()
-        blip = wavelet.CreateBlip()
-        blip.GetDocument.SetText("Thanks for adding me!")
-
-    robot = robots.Robot()
-    robot.RegisterListener(MyRobotListener)
-    robot.Run()
-
-  TODO(davidbyttow): Implement this functionality.
-  """
-
-  def __init__(self):
-    pass
-
-  def OnRobotAdded(self):
-    # TODO(davidbyttow): Implement.
-    pass
-
-  def OnRobotRemoved(self):
-    # TODO(davidbyttow): Implement.
-    pass
+def NewWave(context, participants=None):
+  """Create a new wave with the initial participants on it."""
+  # we shouldn't need a wave/wavelet id here, but we do
+  wavelet = context.GetRootWavelet()
+  return context.builder.WaveletCreate(wavelet.GetWaveId(), wavelet.GetId(), participants)
 
 
 class Robot(object):
@@ -90,6 +69,29 @@ class Robot(object):
     self.image_url = image_url
     self.profile_url = profile_url
     self.cron_jobs = []
+
+  def RegisterListener(self, listener):
+    """Registers all event handlers exported by the given object.
+
+    Args:
+      listener: an object with methods corresponding to wave events.
+        Methods should be named either in camel case, e.g. 'OnBlipSubmitted',
+        or in lowercase, e.g. 'on_blip_submitted', with names corresponding
+        to the event names in the events module.
+    """
+    for event in dir(events):
+      if event.startswith('_'):
+        continue
+      lowercase_method_name = 'on_' + event.lower()
+      camelcase_method_name = 'On' + util.ToUpperCamelCase(event)
+      if hasattr(listener, lowercase_method_name):
+        handler = getattr(listener, lowercase_method_name)
+      elif hasattr(listener, camelcase_method_name):
+        handler = getattr(listener, camelcase_method_name)
+      else:
+        continue
+      if callable(handler):
+        self.RegisterHandler(event, handler)
 
   def RegisterHandler(self, event_type, handler):
     """Registers a handler on a specific event type.
@@ -124,7 +126,7 @@ class Robot(object):
   def GetCapabilitiesXml(self):
     """Return this robot's capabilities as an XML string."""
     lines = ['<w:version>%s</w:version>' % self.version]
-    
+
     lines.append('<w:capabilities>')
     for capability in self._handlers:
       lines.append('  <w:capability name="%s"/>' % capability)
