@@ -188,8 +188,8 @@ def ElementFromJson(json):
   """Construct one of the type of elements given a json object."""
   etype = json['type']
   logging.info('constructing: ' + str(json))
+  props = json['properties'].copy()
   if etype == ELEMENT_TYPE.GADGET:
-    props = json['properties'].copy()
     url = props['url']
     del props['url']
     return Gadget(url=url, props=props)
@@ -197,11 +197,11 @@ def ElementFromJson(json):
     return Image(url=props.get('url', ''),
                  width=props.get('width'),
                  height=props.get('height'),
-                 attachment_id=props.get('attachment_id'),
+                 attachment_id=props.get('attachmentId'),
                  caption=props.get('caption'))
   else:
     return FormElement(element_type=etype,
-                       name=json['name'],
-                       value=json('value', ''),
-                       default_value=json('default_value', ''),
-                       label=json('label', ''))
+                       name=props.get('name', ''),
+                       value=props.get('value', ''),
+                       default_value=props.get('defaultValue', ''),
+                       label=props.get('label', ''))
