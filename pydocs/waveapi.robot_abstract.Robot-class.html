@@ -55,19 +55,13 @@
     </td>
   </tr>
 </table>
-<!-- ==================== TYPE DESCRIPTION ==================== -->
-<h1 class="epydoc">type Robot</h1><p class="nomargin-top"><span class="codelink"><a href="waveapi.robot_abstract-pysrc.html#Robot">source&nbsp;code</a></span></p>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class Robot</h1><p class="nomargin-top"><span class="codelink"><a href="waveapi.robot_abstract-pysrc.html#Robot">source&nbsp;code</a></span></p>
 <pre class="base-tree">
 object --+
          |
         <strong class="uidshort">Robot</strong>
 </pre>
-
-<dl><dt>Known Subclasses:</dt>
-<dd>
-      <ul class="subclass-list">
-<li><a href="waveapi.robot.Robot-class.html">robot.Robot</a></li>  </ul>
-</dd></dl>
 
 <hr />
 <p>Robot metadata class.</p>
@@ -100,11 +94,30 @@ object --+
         <tr>
           <td><span class="summary-sig"><a href="waveapi.robot_abstract.Robot-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">name</span>,
+        <span class="summary-sig-arg">version</span>,
         <span class="summary-sig-arg">image_url</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></span>,
         <span class="summary-sig-arg">profile_url</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></span>)</span><br />
       Initializes self with robot information.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="waveapi.robot_abstract-pysrc.html#Robot.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="waveapi.robot_abstract.Robot-class.html#RegisterListener" class="summary-sig-name">RegisterListener</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">listener</span>)</span><br />
+      Registers all event handlers exported by the given object.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="waveapi.robot_abstract-pysrc.html#Robot.RegisterListener">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -203,6 +216,46 @@ object --+
       
     </td>
   </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__delattr__</code>,
+      <code>__getattribute__</code>,
+      <code>__hash__</code>,
+      <code>__new__</code>,
+      <code>__reduce__</code>,
+      <code>__reduce_ex__</code>,
+      <code>__repr__</code>,
+      <code>__setattr__</code>,
+      <code>__str__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Properties</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Properties"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__class__</code>
+      </p>
+    </td>
+  </tr>
 </table>
 <!-- ==================== METHOD DETAILS ==================== -->
 <a name="section-MethodDetails"></a>
@@ -231,6 +284,7 @@ object --+
   <tr valign="top"><td>
   <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
         <span class="sig-arg">name</span>,
+        <span class="sig-arg">version</span>,
         <span class="sig-arg">image_url</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></span>,
         <span class="sig-arg">profile_url</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></span>)</span>
     <br /><em class="fname">(Constructor)</em>
@@ -245,6 +299,35 @@ object --+
     <dt>Overrides:
         object.__init__
     </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="RegisterListener"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">RegisterListener</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">listener</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="waveapi.robot_abstract-pysrc.html#Robot.RegisterListener">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+Registers all event handlers exported by the given object.
+
+Args:
+  listener: an object with methods corresponding to wave events.
+    Methods should be named either in camel case, e.g. 'OnBlipSubmitted',
+    or in lowercase, e.g. 'on_blip_submitted', with names corresponding
+    to the event names in the events module.
+
+</pre>
+  <dl class="fields">
   </dl>
 </td></tr></table>
 </div>
@@ -338,8 +421,7 @@ Returns:
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1
-    on Wed May 27 22:42:20 2009
+    Generated by Epydoc 3.0.1 on Wed Sep 16 01:20:25 2009
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

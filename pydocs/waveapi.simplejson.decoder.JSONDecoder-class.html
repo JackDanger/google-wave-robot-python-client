@@ -56,8 +56,8 @@
     </td>
   </tr>
 </table>
-<!-- ==================== TYPE DESCRIPTION ==================== -->
-<h1 class="epydoc">type JSONDecoder</h1><p class="nomargin-top"><span class="codelink"><a href="waveapi.simplejson.decoder-pysrc.html#JSONDecoder">source&nbsp;code</a></span></p>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class JSONDecoder</h1><p class="nomargin-top"><span class="codelink"><a href="waveapi.simplejson.decoder-pysrc.html#JSONDecoder">source&nbsp;code</a></span></p>
 <pre class="base-tree">
 object --+
          |
@@ -66,7 +66,7 @@ object --+
 
 <hr />
 <p>Simple JSON &lt;http://json.org&gt; decoder</p>
-  <p>Performs the following translations in decoding:</p>
+  <p>Performs the following translations in decoding by default:</p>
   <p>+---------------+-------------------+ | JSON          | Python
   | +===============+===================+ | object        | dict
   | +---------------+-------------------+ | array         | list
@@ -105,9 +105,14 @@ object --+
         <tr>
           <td><span class="summary-sig"><a href="waveapi.simplejson.decoder.JSONDecoder-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">encoding</span>=<span class="summary-sig-default">None</span>,
-        <span class="summary-sig-arg">object_hook</span>=<span class="summary-sig-default">None</span>)</span><br />
-      ``encoding`` determines the encoding used to interpret any ``str`` 
-      objects decoded by this instance (utf-8 by default).</td>
+        <span class="summary-sig-arg">object_hook</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">parse_float</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">parse_int</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">parse_constant</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">strict</span>=<span class="summary-sig-default">True</span>,
+        <span class="summary-sig-arg">object_pairs_hook</span>=<span class="summary-sig-default">None</span>)</span><br />
+      *encoding* determines the encoding used to interpret any :class:`str`
+      objects decoded by this instance (``'utf-8'`` by default).</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="waveapi.simplejson.decoder-pysrc.html#JSONDecoder.__init__">source&nbsp;code</a></span>
             
@@ -125,7 +130,7 @@ object --+
         <tr>
           <td><span class="summary-sig"><a name="decode"></a><span class="summary-sig-name">decode</span>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">s</span>,
-        <span class="summary-sig-arg">_w</span>=<span class="summary-sig-default">&lt;built-in method match of _sre.SRE_Pattern object at 0xba3580&gt;</span>)</span><br />
+        <span class="summary-sig-arg">_w</span>=<span class="summary-sig-default">&lt;built-in method match of _sre.SRE_Pattern object at 0xcd7d50&gt;</span>)</span><br />
       Return the Python representation of ``s`` (a ``str`` or ``unicode`` 
       instance containing a JSON document)</td>
           <td align="right" valign="top">
@@ -145,7 +150,7 @@ object --+
         <tr>
           <td><span class="summary-sig"><a href="waveapi.simplejson.decoder.JSONDecoder-class.html#raw_decode" class="summary-sig-name">raw_decode</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">s</span>,
-        <span class="summary-sig-arg">**kw</span>)</span><br />
+        <span class="summary-sig-arg">idx</span>=<span class="summary-sig-default">0</span>)</span><br />
       Decode a JSON document from ``s`` (a ``str`` or ``unicode`` beginning
       with a JSON document) and return a 2-tuple of the Python 
       representation and the index in ``s`` where the document ended.</td>
@@ -158,36 +163,44 @@ object --+
       
     </td>
   </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__delattr__</code>,
+      <code>__getattribute__</code>,
+      <code>__hash__</code>,
+      <code>__new__</code>,
+      <code>__reduce__</code>,
+      <code>__reduce_ex__</code>,
+      <code>__repr__</code>,
+      <code>__setattr__</code>,
+      <code>__str__</code>
+      </p>
+    </td>
+  </tr>
 </table>
-<!-- ==================== CLASS VARIABLES ==================== -->
-<a name="section-ClassVariables"></a>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
 <table class="summary" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr bgcolor="#70b0f0" class="table-header">
   <td colspan="2" class="table-header">
     <table border="0" cellpadding="0" cellspacing="0" width="100%">
       <tr valign="top">
-        <td align="left"><span class="table-header">Class Variables</span></td>
+        <td align="left"><span class="table-header">Properties</span></td>
         <td align="right" valign="top"
-         ><span class="options">[<a href="#section-ClassVariables"
+         ><span class="options">[<a href="#section-Properties"
          class="privatelink" onclick="toggle_private();"
          >hide private</a>]</span></td>
       </tr>
     </table>
   </td>
 </tr>
-<tr class="private">
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a name="_scanner"></a><span class="summary-name">_scanner</span> = <code title="Scanner(ANYTHING)">Scanner(ANYTHING)</code>
-    </td>
-  </tr>
-<tr class="private">
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a name="__all__"></a><span class="summary-name">__all__</span> = <code title="['__init__', 'decode', 'raw_decode']"><code class="variable-group">[</code><code class="variable-quote">'</code><code class="variable-string">__init__</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">decode</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">raw_decode</code><code class="variable-quote">'</code><code class="variable-group">]</code></code>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__class__</code>
+      </p>
     </td>
   </tr>
 </table>
@@ -218,7 +231,12 @@ object --+
   <tr valign="top"><td>
   <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
         <span class="sig-arg">encoding</span>=<span class="sig-default">None</span>,
-        <span class="sig-arg">object_hook</span>=<span class="sig-default">None</span>)</span>
+        <span class="sig-arg">object_hook</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">parse_float</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">parse_int</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">parse_constant</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">strict</span>=<span class="sig-default">True</span>,
+        <span class="sig-arg">object_pairs_hook</span>=<span class="sig-default">None</span>)</span>
     <br /><em class="fname">(Constructor)</em>
   </h3>
   </td><td align="right" valign="top"
@@ -226,15 +244,39 @@ object --+
     </td>
   </tr></table>
   
-  <p>``encoding`` determines the encoding used to interpret any ``str`` 
-  objects decoded by this instance (utf-8 by default).  It has no effect 
-  when decoding ``unicode`` objects.</p>
+  <p>*encoding* determines the encoding used to interpret any :class:`str` 
+  objects decoded by this instance (``'utf-8'`` by default).  It has no 
+  effect when decoding :class:`unicode` objects.</p>
   <p>Note that currently only encodings that are a superset of ASCII work, 
-  strings of other encodings should be passed in as ``unicode``.</p>
-  <p>``object_hook``, if specified, will be called with the result of every
+  strings of other encodings should be passed in as :class:`unicode`.</p>
+  <p>*object_hook*, if specified, will be called with the result of every 
   JSON object decoded and its return value will be used in place of the 
-  given ``dict``.  This can be used to provide custom deserializations 
+  given :class:`dict`.  This can be used to provide custom deserializations
   (e.g. to support JSON-RPC class hinting).</p>
+  <p>*object_pairs_hook* is an optional function that will be called with 
+  the result of any object literal decode with an ordered list of pairs. 
+  The return value of *object_pairs_hook* will be used instead of the 
+  :class:`dict`.  This feature can be used to implement custom decoders 
+  that rely on the order that the key and value pairs are decoded (for 
+  example, :func:`collections.OrderedDict` will remember the order of 
+  insertion). If *object_hook* is also defined, the *object_pairs_hook* 
+  takes priority.</p>
+  <p>*parse_float*, if specified, will be called with the string of every 
+  JSON float to be decoded.  By default, this is equivalent to 
+  ``float(num_str)``. This can be used to use another datatype or parser 
+  for JSON floats (e.g. :class:`decimal.Decimal`).</p>
+  <p>*parse_int*, if specified, will be called with the string of every 
+  JSON int to be decoded.  By default, this is equivalent to 
+  ``int(num_str)``.  This can be used to use another datatype or parser for
+  JSON integers (e.g. :class:`float`).</p>
+  <p>*parse_constant*, if specified, will be called with one of the 
+  following strings: ``'-Infinity'``, ``'Infinity'``, ``'NaN'``.  This can 
+  be used to raise an exception if invalid JSON numbers are 
+  encountered.</p>
+  <p>*strict* controls the parser's behavior when it encounters an invalid 
+  control character in a string. The default setting of ``True`` means that
+  unescaped control characters are parse errors, if ``False`` then control 
+  characters will be allowed in strings.</p>
   <dl class="fields">
     <dt>Overrides:
         object.__init__
@@ -251,7 +293,7 @@ object --+
   <tr valign="top"><td>
   <h3 class="epydoc"><span class="sig"><span class="sig-name">raw_decode</span>(<span class="sig-arg">self</span>,
         <span class="sig-arg">s</span>,
-        <span class="sig-arg">**kw</span>)</span>
+        <span class="sig-arg">idx</span>=<span class="sig-default">0</span>)</span>
   </h3>
   </td><td align="right" valign="top"
     ><span class="codelink"><a href="waveapi.simplejson.decoder-pysrc.html#JSONDecoder.raw_decode">source&nbsp;code</a></span>&nbsp;
@@ -294,8 +336,7 @@ object --+
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1
-    on Wed May 27 22:42:20 2009
+    Generated by Epydoc 3.0.1 on Wed Sep 16 01:20:25 2009
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

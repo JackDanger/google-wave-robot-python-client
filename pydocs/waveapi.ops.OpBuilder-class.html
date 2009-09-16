@@ -55,8 +55,8 @@
     </td>
   </tr>
 </table>
-<!-- ==================== TYPE DESCRIPTION ==================== -->
-<h1 class="epydoc">type OpBuilder</h1><p class="nomargin-top"><span class="codelink"><a href="waveapi.ops-pysrc.html#OpBuilder">source&nbsp;code</a></span></p>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class OpBuilder</h1><p class="nomargin-top"><span class="codelink"><a href="waveapi.ops-pysrc.html#OpBuilder">source&nbsp;code</a></span></p>
 <pre class="base-tree">
 object --+
          |
@@ -119,9 +119,50 @@ object --+
           <td><span class="summary-sig"><a name="__CreateNewBlipData"></a><span class="summary-sig-name">__CreateNewBlipData</span>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">wave_id</span>,
         <span class="summary-sig-arg">wavelet_id</span>)</span><br />
-      Creates an ephemeral BlipData instance used for this session.</td>
+      Creates JSON of the blip used for this session.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="waveapi.ops-pysrc.html#OpBuilder.__CreateNewBlipData">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__CreateNewWaveletData"></a><span class="summary-sig-name">__CreateNewWaveletData</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">participants</span>)</span><br />
+      Creates an ephemeral BlipData instance used for this session.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="waveapi.ops-pysrc.html#OpBuilder.__CreateNewWaveletData">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="AddNewOperation"></a><span class="summary-sig-name">AddNewOperation</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">op_type</span>,
+        <span class="summary-sig-arg">wave_id</span>,
+        <span class="summary-sig-arg">wavelet_id</span>,
+        <span class="summary-sig-arg">blip_id</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></span>,
+        <span class="summary-sig-arg">index</span>=<span class="summary-sig-default">-1</span>,
+        <span class="summary-sig-arg">prop</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Creates and adds a new operation to the operation list.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="waveapi.ops-pysrc.html#OpBuilder.AddNewOperation">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -175,7 +216,9 @@ object --+
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a href="waveapi.ops.OpBuilder-class.html#WaveletCreate" class="summary-sig-name">WaveletCreate</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">wave_id</span>)</span><br />
+        <span class="summary-sig-arg">wave_id</span>,
+        <span class="summary-sig-arg">wavelet_id</span>,
+        <span class="summary-sig-arg">participants</span>=<span class="summary-sig-default">None</span>)</span><br />
       Requests to create a wavelet in a wave.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="waveapi.ops-pysrc.html#OpBuilder.WaveletCreate">source&nbsp;code</a></span>
@@ -382,6 +425,27 @@ object --+
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
+          <td><span class="summary-sig"><a href="waveapi.ops.OpBuilder-class.html#DocumentAppendMarkup" class="summary-sig-name">DocumentAppendMarkup</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">wave_id</span>,
+        <span class="summary-sig-arg">wavelet_id</span>,
+        <span class="summary-sig-arg">blip_id</span>,
+        <span class="summary-sig-arg">content</span>)</span><br />
+      Requests to append content with markup to a document.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="waveapi.ops-pysrc.html#OpBuilder.DocumentAppendMarkup">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
           <td><span class="summary-sig"><a href="waveapi.ops.OpBuilder-class.html#DocumentAppendStyledText" class="summary-sig-name">DocumentAppendStyledText</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">wave_id</span>,
         <span class="summary-sig-arg">wavelet_id</span>,
@@ -408,8 +472,8 @@ object --+
         <span class="summary-sig-arg">wave_id</span>,
         <span class="summary-sig-arg">wavelet_id</span>,
         <span class="summary-sig-arg">blip_id</span>,
-        <span class="summary-sig-arg">start</span>,
-        <span class="summary-sig-arg">end</span>)</span><br />
+        <span class="summary-sig-arg">start</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">end</span>=<span class="summary-sig-default">None</span>)</span><br />
       Requests to delete content in a given range.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="waveapi.ops-pysrc.html#OpBuilder.DocumentDelete">source&nbsp;code</a></span>
@@ -589,6 +653,27 @@ object --+
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
+          <td><span class="summary-sig"><a href="waveapi.ops.OpBuilder-class.html#DocumentModifyAttributes" class="summary-sig-name">DocumentModifyAttributes</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">wave_id</span>,
+        <span class="summary-sig-arg">wavelet_id</span>,
+        <span class="summary-sig-arg">blip_id</span>,
+        <span class="summary-sig-arg">element</span>)</span><br />
+      Modifies the attributes of an element.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="waveapi.ops-pysrc.html#OpBuilder.DocumentModifyAttributes">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
           <td><span class="summary-sig"><a href="waveapi.ops.OpBuilder-class.html#DocumentInlineBlipAppend" class="summary-sig-name">DocumentInlineBlipAppend</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">wave_id</span>,
         <span class="summary-sig-arg">wavelet_id</span>,
@@ -660,6 +745,46 @@ object --+
         </tr>
       </table>
       
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__delattr__</code>,
+      <code>__getattribute__</code>,
+      <code>__hash__</code>,
+      <code>__new__</code>,
+      <code>__reduce__</code>,
+      <code>__reduce_ex__</code>,
+      <code>__repr__</code>,
+      <code>__setattr__</code>,
+      <code>__str__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Properties</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Properties"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__class__</code>
+      </p>
     </td>
   </tr>
 </table>
@@ -735,7 +860,7 @@ Args:
   wavelet_id: The wavelet id that this blip should be appended to.
 
 Returns:
-  A BlipData instance representing the id information of the new blip.
+  JSON representing the id information of the new blip.
 
 </pre>
   <dl class="fields">
@@ -780,7 +905,9 @@ Args:
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
   <h3 class="epydoc"><span class="sig"><span class="sig-name">WaveletCreate</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">wave_id</span>)</span>
+        <span class="sig-arg">wave_id</span>,
+        <span class="sig-arg">wavelet_id</span>,
+        <span class="sig-arg">participants</span>=<span class="sig-default">None</span>)</span>
   </h3>
   </td><td align="right" valign="top"
     ><span class="codelink"><a href="waveapi.ops-pysrc.html#OpBuilder.WaveletCreate">source&nbsp;code</a></span>&nbsp;
@@ -793,10 +920,7 @@ Requests to create a wavelet in a wave.
 Not yet implemented.
 
 Args:
-  wave_id: The wave id owning that this operation is applied to.
-
-Raises:
-  NotImplementedError: Function not yet implemented.
+  participants: initial participants on this wavelet or None if none
 
 </pre>
   <dl class="fields">
@@ -888,15 +1012,10 @@ Args:
   <pre class="literalblock">
 Requests to set the title of a wavelet.
 
-Not yet implemented.
-
 Args:
   wave_id: The wave id owning that this operation is applied to.
   wavelet_id: The wavelet id that this operation is applied to.
   title: The title to set.
-
-Raises:
-  NotImplementedError: Function not yet implemented.
 
 </pre>
   <dl class="fields">
@@ -929,7 +1048,7 @@ Args:
   blip_id: The blip id that this operation is applied to.
 
 Returns:
-  BlipData instance for which further operations can be applied.
+  JSON of blip for which further operations can be applied.
 
 </pre>
   <dl class="fields">
@@ -998,9 +1117,6 @@ Args:
   start: Start position of the range.
   end: End position of the range.
   name: Annotation key name to clear.
-
-Raises:
-  NotImplementedError: Function not yet implemented.
 
 </pre>
   <dl class="fields">
@@ -1111,6 +1227,38 @@ Args:
   </dl>
 </td></tr></table>
 </div>
+<a name="DocumentAppendMarkup"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">DocumentAppendMarkup</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">wave_id</span>,
+        <span class="sig-arg">wavelet_id</span>,
+        <span class="sig-arg">blip_id</span>,
+        <span class="sig-arg">content</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="waveapi.ops-pysrc.html#OpBuilder.DocumentAppendMarkup">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+Requests to append content with markup to a document.
+
+Args:
+  wave_id: The wave id owning that this operation is applied to.
+  wavelet_id: The wavelet id that this operation is applied to.
+  blip_id: The blip id that this operation is applied to.
+  content: The markup content to append.
+
+</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
 <a name="DocumentAppendStyledText"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
@@ -1161,8 +1309,8 @@ Raises:
         <span class="sig-arg">wave_id</span>,
         <span class="sig-arg">wavelet_id</span>,
         <span class="sig-arg">blip_id</span>,
-        <span class="sig-arg">start</span>,
-        <span class="sig-arg">end</span>)</span>
+        <span class="sig-arg">start</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">end</span>=<span class="sig-default">None</span>)</span>
   </h3>
   </td><td align="right" valign="top"
     ><span class="codelink"><a href="waveapi.ops-pysrc.html#OpBuilder.DocumentDelete">source&nbsp;code</a></span>&nbsp;
@@ -1436,6 +1584,44 @@ Args:
   </dl>
 </td></tr></table>
 </div>
+<a name="DocumentModifyAttributes"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">DocumentModifyAttributes</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">wave_id</span>,
+        <span class="sig-arg">wavelet_id</span>,
+        <span class="sig-arg">blip_id</span>,
+        <span class="sig-arg">element</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="waveapi.ops-pysrc.html#OpBuilder.DocumentModifyAttributes">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+Modifies the attributes of an element.
+
+This is done by passing the a new element that is matched against
+existing elements and the attributes are copied without the element
+actually being deleted and reinserted. This is especially useful for
+gadgets.
+
+Args:
+  wave_id: The wave id owning that this operation is applied to.
+  wavelet_id: The wavelet id that this operation is applied to.
+  blip_id: The blip id that this operation is applied to.
+  element: Element instance to take the attributes from an to
+           match.
+
+</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
 <a name="DocumentInlineBlipAppend"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
@@ -1462,7 +1648,7 @@ Args:
   blip_id: The blip id that this operation is applied to.
 
 Returns:
-  A BlipData instance containing the id information.
+  JSON of blip containing the id information.
 
 </pre>
   <dl class="fields">
@@ -1529,7 +1715,7 @@ Args:
   position: The position in the document to insert the blip.
 
 Returns:
-  BlipData for the blip that was created for further operations.
+  JSON data for the blip that was created for further operations.
 
 </pre>
   <dl class="fields">
@@ -1588,8 +1774,7 @@ Raises:
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1
-    on Wed May 27 22:42:20 2009
+    Generated by Epydoc 3.0.1 on Wed Sep 16 01:20:25 2009
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

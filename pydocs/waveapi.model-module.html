@@ -59,6 +59,8 @@
 <p>Defines classes that represent parts of the common wave model.</p>
   <p>Defines the core data structures for the common wave model. At this 
   level, models are read-only but can be modified through operations.</p>
+  <p>Note that model attributes break the typical style by providing lower 
+  camel-cased characters to match the wire protocol format.</p>
 
 <hr />
 <div class="fields">      <p><strong>Author:</strong>
@@ -82,127 +84,51 @@
   </td>
 </tr>
 <tr>
-    <td class="summary" colspan="2">
-        <a href="waveapi.model.WaveData-class.html" class="summary-name">WaveData</a><br />
-      Defines the data for a single wave.
-    </td>
-  </tr>
-<tr>
-    <td class="summary" colspan="2">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
         <a href="waveapi.model.Wave-class.html" class="summary-name">Wave</a><br />
       Models a single wave instance.
     </td>
   </tr>
 <tr>
-    <td class="summary" colspan="2">
-        <a href="waveapi.model.WaveletData-class.html" class="summary-name">WaveletData</a><br />
-      Defines the data for a single wavelet.
-    </td>
-  </tr>
-<tr>
-    <td class="summary" colspan="2">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
         <a href="waveapi.model.Wavelet-class.html" class="summary-name">Wavelet</a><br />
       Models a single wavelet instance.
     </td>
   </tr>
 <tr>
-    <td class="summary" colspan="2">
-        <a href="waveapi.model.BlipData-class.html" class="summary-name">BlipData</a><br />
-      Data that describes a single blip.
-    </td>
-  </tr>
-<tr>
-    <td class="summary" colspan="2">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
         <a href="waveapi.model.Blip-class.html" class="summary-name">Blip</a><br />
       Models a single blip instance.
     </td>
   </tr>
 <tr>
-    <td class="summary" colspan="2">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
         <a href="waveapi.model.Document-class.html" class="summary-name">Document</a><br />
       Base representation of a document of a blip.
     </td>
   </tr>
 <tr>
-    <td class="summary" colspan="2">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
         <a href="waveapi.model.Event-class.html" class="summary-name">Event</a><br />
       Data describing a single event.
     </td>
   </tr>
 <tr>
-    <td class="summary" colspan="2">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
         <a href="waveapi.model.Context-class.html" class="summary-name">Context</a><br />
-      Contains information associated with a single request from the 
-        server.
-    </td>
-  </tr>
-</table>
-<!-- ==================== FUNCTIONS ==================== -->
-<a name="section-Functions"></a>
-<table class="summary" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr bgcolor="#70b0f0" class="table-header">
-  <td colspan="2" class="table-header">
-    <table border="0" cellpadding="0" cellspacing="0" width="100%">
-      <tr valign="top">
-        <td align="left"><span class="table-header">Functions</span></td>
-        <td align="right" valign="top"
-         ><span class="options">[<a href="#section-Functions"
-         class="privatelink" onclick="toggle_private();"
-         >hide private</a>]</span></td>
-      </tr>
-    </table>
-  </td>
-</tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a name="CreateEvent"></a><span class="summary-sig-name">CreateEvent</span>(<span class="summary-sig-arg">data</span>)</span><br />
-      Construct event data from the raw incoming wire protocol.</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="waveapi.model-pysrc.html#CreateEvent">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a href="waveapi.model-module.html#CreateWaveletData" class="summary-sig-name">CreateWaveletData</a>(<span class="summary-sig-arg">data</span>)</span><br />
-      Construct wavelet data from the raw incoming wire protocol.</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="waveapi.model-pysrc.html#CreateWaveletData">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a href="waveapi.model-module.html#CreateBlipData" class="summary-sig-name">CreateBlipData</a>(<span class="summary-sig-arg">data</span>)</span><br />
-      Construct blip data from the raw incoming wire protocol.</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="waveapi.model-pysrc.html#CreateBlipData">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
+      Contains information associated with a single request from the server.
     </td>
   </tr>
 </table>
@@ -231,85 +157,6 @@
     </td>
   </tr>
 </table>
-<!-- ==================== FUNCTION DETAILS ==================== -->
-<a name="section-FunctionDetails"></a>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr bgcolor="#70b0f0" class="table-header">
-  <td colspan="2" class="table-header">
-    <table border="0" cellpadding="0" cellspacing="0" width="100%">
-      <tr valign="top">
-        <td align="left"><span class="table-header">Function Details</span></td>
-        <td align="right" valign="top"
-         ><span class="options">[<a href="#section-FunctionDetails"
-         class="privatelink" onclick="toggle_private();"
-         >hide private</a>]</span></td>
-      </tr>
-    </table>
-  </td>
-</tr>
-</table>
-<a name="CreateWaveletData"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">CreateWaveletData</span>(<span class="sig-arg">data</span>)</span>
-  </h3>
-  </td><td align="right" valign="top"
-    ><span class="codelink"><a href="waveapi.model-pysrc.html#CreateWaveletData">source&nbsp;code</a></span>&nbsp;
-    </td>
-  </tr></table>
-  
-  <pre class="literalblock">
-Construct wavelet data from the raw incoming wire protocol.
-
-TODO(davidbyttow): Automate this based on naming like the Serialize methods.
-
-Args:
-  data: Serialized data from server.
-
-Returns:
-  Instance of WaveletData based on the fields.
-
-</pre>
-  <dl class="fields">
-  </dl>
-</td></tr></table>
-</div>
-<a name="CreateBlipData"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">CreateBlipData</span>(<span class="sig-arg">data</span>)</span>
-  </h3>
-  </td><td align="right" valign="top"
-    ><span class="codelink"><a href="waveapi.model-pysrc.html#CreateBlipData">source&nbsp;code</a></span>&nbsp;
-    </td>
-  </tr></table>
-  
-  <pre class="literalblock">
-Construct blip data from the raw incoming wire protocol.
-
-TODO(davidbyttow): Automate this based on naming like the Serialize methods.
-
-Args:
-  data: Serialized data from server.
-
-Returns:
-  Instance of BlipData based on the fields.
-
-</pre>
-  <dl class="fields">
-  </dl>
-</td></tr></table>
-</div>
-<br />
 <!-- ==================== NAVIGATION BAR ==================== -->
 <table class="navbar" border="0" width="100%" cellpadding="0"
        bgcolor="#a0c0ff" cellspacing="0">
@@ -336,8 +183,7 @@ Returns:
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1
-    on Wed May 27 22:42:20 2009
+    Generated by Epydoc 3.0.1 on Wed Sep 16 01:20:25 2009
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

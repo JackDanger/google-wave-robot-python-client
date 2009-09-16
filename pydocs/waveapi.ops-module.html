@@ -82,43 +82,73 @@
   </td>
 </tr>
 <tr>
-    <td class="summary" colspan="2">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
         <a href="waveapi.ops.Operation-class.html" class="summary-name">Operation</a><br />
       Represents a generic operation applied on the server.
     </td>
   </tr>
 <tr>
-    <td class="summary" colspan="2">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
         <a href="waveapi.ops.OpBasedWave-class.html" class="summary-name">OpBasedWave</a><br />
       Subclass of the wave model capable of generating operations.
     </td>
   </tr>
 <tr>
-    <td class="summary" colspan="2">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
         <a href="waveapi.ops.OpBasedWavelet-class.html" class="summary-name">OpBasedWavelet</a><br />
       Subclass of the wavelet model capable of generating operations.
     </td>
   </tr>
 <tr>
-    <td class="summary" colspan="2">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
         <a href="waveapi.ops.OpBasedBlip-class.html" class="summary-name">OpBasedBlip</a><br />
       Subclass of the blip model capable of generating operations.
     </td>
   </tr>
 <tr>
-    <td class="summary" colspan="2">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
         <a href="waveapi.ops.OpBasedDocument-class.html" class="summary-name">OpBasedDocument</a><br />
       Subclass of the document model capable of generating operations.
     </td>
   </tr>
 <tr class="private">
-    <td class="summary" colspan="2">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
         <a href="waveapi.ops._ContextImpl-class.html" class="summary-name" onclick="show_private();">_ContextImpl</a><br />
       An internal implementation of the Context class.
     </td>
   </tr>
 <tr>
-    <td class="summary" colspan="2">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="waveapi.ops.BlipData-class.html" class="summary-name">BlipData</a><br />
+      Temporary class for storing ephemeral blip data.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="waveapi.ops.WaveletData-class.html" class="summary-name">WaveletData</a><br />
+      Temporary class for storing ephemeral blip data.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
         <a href="waveapi.ops.OpBuilder-class.html" class="summary-name">OpBuilder</a><br />
       Wraps all currently supportable operations as functions.
     </td>
@@ -264,6 +294,13 @@
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
+        <a name="DOCUMENT_APPEND_MARKUP"></a><span class="summary-name">DOCUMENT_APPEND_MARKUP</span> = <code title="'DOCUMENT_APPEND_MARKUP'"><code class="variable-quote">'</code><code class="variable-string">DOCUMENT_APPEND_MARKUP</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
         <a name="DOCUMENT_APPEND_STYLED_TEXT"></a><span class="summary-name">DOCUMENT_APPEND_STYLED_TEXT</span> = <code title="'DOCUMENT_APPEND_STYLED_TEXT'"><code class="variable-quote">'</code><code class="variable-string">DOCUMENT_APPEND_STYLED_TEXT</code><code class="variable-quote">'</code></code>
     </td>
   </tr>
@@ -300,6 +337,13 @@
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
         <a name="DOCUMENT_ELEMENT_DELETE"></a><span class="summary-name">DOCUMENT_ELEMENT_DELETE</span> = <code title="'DOCUMENT_ELEMENT_DELETE'"><code class="variable-quote">'</code><code class="variable-string">DOCUMENT_ELEMENT_DELETE</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="DOCUMENT_ELEMENT_MODIFY_ATTRS"></a><span class="summary-name">DOCUMENT_ELEMENT_MODIFY_ATTRS</span> = <code title="'DOCUMENT_ELEMENT_MODIFY_ATTRS'"><code class="variable-quote">'</code><code class="variable-string">DOCUMENT_ELEMENT_MODIFY_ATTRS</code><code class="variable-quote">'</code></code>
     </td>
   </tr>
 <tr>
@@ -487,8 +531,7 @@ Returns:
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1
-    on Wed May 27 22:42:20 2009
+    Generated by Epydoc 3.0.1 on Wed Sep 16 01:20:25 2009
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

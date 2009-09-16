@@ -55,8 +55,8 @@
     </td>
   </tr>
 </table>
-<!-- ==================== TYPE DESCRIPTION ==================== -->
-<h1 class="epydoc">type Gadget</h1><p class="nomargin-top"><span class="codelink"><a href="waveapi.document-pysrc.html#Gadget">source&nbsp;code</a></span></p>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class Gadget</h1><p class="nomargin-top"><span class="codelink"><a href="waveapi.document-pysrc.html#Gadget">source&nbsp;code</a></span></p>
 <pre class="base-tree">
 object --+    
          |    
@@ -66,6 +66,8 @@ object --+
 </pre>
 
 <hr />
+<p>Represents a Gadget element within the content of a document.</p>
+
 <!-- ==================== INSTANCE METHODS ==================== -->
 <a name="section-InstanceMethods"></a>
 <table class="summary" border="1" cellpadding="3"
@@ -90,10 +92,48 @@ object --+
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a href="waveapi.document.Gadget-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">url</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></span>)</span><br />
+        <span class="summary-sig-arg">url</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></span>,
+        <span class="summary-sig-arg">props</span>=<span class="summary-sig-default">None</span>)</span><br />
       Initializes self with the specified type and any properties.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="waveapi.document-pysrc.html#Gadget.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get"></a><span class="summary-sig-name">get</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">key</span>,
+        <span class="summary-sig-arg">default</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Standard get interface for gadgets</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="waveapi.document-pysrc.html#Gadget.get">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="waveapi.document.Gadget-class.html#SubmitDelta" class="summary-sig-name">SubmitDelta</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">delta</span>)</span><br />
+      Submits the passed delta to the gadget.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="waveapi.document-pysrc.html#Gadget.SubmitDelta">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -105,6 +145,17 @@ object --+
     <td colspan="2" class="summary">
     <p class="indent-wrapped-lines"><b>Inherited from <code><a href="waveapi.document.Element-class.html">Element</a></code></b>:
       <code><a href="waveapi.document.Element-class.html#Serialize">Serialize</a></code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__delattr__</code>,
+      <code>__getattribute__</code>,
+      <code>__hash__</code>,
+      <code>__new__</code>,
+      <code>__reduce__</code>,
+      <code>__reduce_ex__</code>,
+      <code>__repr__</code>,
+      <code>__setattr__</code>,
+      <code>__str__</code>
       </p>
     </td>
   </tr>
@@ -134,6 +185,31 @@ object --+
     </td>
   </tr>
 </table>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Properties</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Properties"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__class__</code>
+      </p>
+    </td>
+  </tr>
+</table>
 <!-- ==================== METHOD DETAILS ==================== -->
 <a name="section-MethodDetails"></a>
 <table class="details" border="1" cellpadding="3"
@@ -160,7 +236,8 @@ object --+
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
   <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">url</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></span>)</span>
+        <span class="sig-arg">url</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></span>,
+        <span class="sig-arg">props</span>=<span class="sig-default">None</span>)</span>
     <br /><em class="fname">(Constructor)</em>
   </h3>
   </td><td align="right" valign="top"
@@ -168,12 +245,47 @@ object --+
     </td>
   </tr></table>
   
-  <p>Initializes self with the specified type and any properties.</p>
+  <pre class="literalblock">
+Initializes self with the specified type and any properties.
+
+Args:
+  element_type: string typed member of ELEMENT_TYPE
+  properties: either a dictionary of initial properties, or a dictionary
+      with just one member properties that is itself a dictionary of
+      properties. This allows us to both use
+      e = Element(atype, prop1=val1, prop2=prop2...)
+      and
+      e = Element(atype, properties={prop1:val1, prop2:prop2..})
+
+</pre>
   <dl class="fields">
     <dt>Overrides:
-        <a href="waveapi.document.Element-class.html#__init__">Element.__init__</a>
+        object.__init__
         <dd><em class="note">(inherited documentation)</em></dd>
     </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="SubmitDelta"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">SubmitDelta</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">delta</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="waveapi.document-pysrc.html#Gadget.SubmitDelta">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Submits the passed delta to the gadget.</p>
+  <p>This does not send the delta to the server, but only modifies the 
+  local state. The send the delto the server, go through the 
+  document.GadgetSubmitDelta interface.</p>
+  <dl class="fields">
   </dl>
 </td></tr></table>
 </div>
@@ -204,8 +316,7 @@ object --+
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1
-    on Wed May 27 22:42:20 2009
+    Generated by Epydoc 3.0.1 on Wed Sep 16 01:20:25 2009
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

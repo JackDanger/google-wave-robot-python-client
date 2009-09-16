@@ -77,7 +77,9 @@
   </td>
 </tr>
 <tr>
-    <td class="summary" colspan="2">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
         <a href="waveapi.simplejson.encoder.JSONEncoder-class.html" class="summary-name">JSONEncoder</a><br />
       Extensible JSON &lt;http://json.org&gt; encoder for Python data 
         structures.
@@ -101,24 +103,7 @@
     </table>
   </td>
 </tr>
-<tr class="private">
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a name="floatstr"></a><span class="summary-sig-name">floatstr</span>(<span class="summary-sig-arg">o</span>,
-        <span class="summary-sig-arg">allow_nan</span>=<span class="summary-sig-default">True</span>)</span></td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="waveapi.simplejson.encoder-pysrc.html#floatstr">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr class="private">
+<tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
@@ -135,15 +120,71 @@
       
     </td>
   </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="py_encode_basestring_ascii"></a><span class="summary-sig-name">py_encode_basestring_ascii</span>(<span class="summary-sig-arg">s</span>)</span><br />
+      Return an ASCII-only JSON representation of a Python string</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="waveapi.simplejson.encoder-pysrc.html#py_encode_basestring_ascii">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="encode_basestring_ascii"></a><span class="summary-sig-name">encode_basestring_ascii</span>(<span class="summary-sig-arg">s</span>)</span><br />
+      Return an ASCII-only JSON representation of a Python string</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="waveapi.simplejson.encoder-pysrc.html#py_encode_basestring_ascii">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
 <tr class="private">
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="encode_basestring_ascii"></a><span class="summary-sig-name">encode_basestring_ascii</span>(<span class="summary-sig-arg">s</span>)</span></td>
+          <td><span class="summary-sig"><a name="_make_iterencode"></a><span class="summary-sig-name">_make_iterencode</span>(<span class="summary-sig-arg">markers</span>,
+        <span class="summary-sig-arg">_default</span>,
+        <span class="summary-sig-arg">_encoder</span>,
+        <span class="summary-sig-arg">_indent</span>,
+        <span class="summary-sig-arg">_floatstr</span>,
+        <span class="summary-sig-arg">_key_separator</span>,
+        <span class="summary-sig-arg">_item_separator</span>,
+        <span class="summary-sig-arg">_sort_keys</span>,
+        <span class="summary-sig-arg">_skipkeys</span>,
+        <span class="summary-sig-arg">_one_shot</span>,
+        <span class="summary-sig-arg">False</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">True</span>=<span class="summary-sig-default">True</span>,
+        <span class="summary-sig-arg">ValueError</span>=<span class="summary-sig-default">&lt;type 'exceptions.ValueError'&gt;</span>,
+        <span class="summary-sig-arg">basestring</span>=<span class="summary-sig-default">&lt;type 'basestring'&gt;</span>,
+        <span class="summary-sig-arg">dict</span>=<span class="summary-sig-default">&lt;type 'dict'&gt;</span>,
+        <span class="summary-sig-arg">float</span>=<span class="summary-sig-default">&lt;type 'float'&gt;</span>,
+        <span class="summary-sig-arg">id</span>=<span class="summary-sig-default">&lt;built-in function id&gt;</span>,
+        <span class="summary-sig-arg">int</span>=<span class="summary-sig-default">&lt;type 'int'&gt;</span>,
+        <span class="summary-sig-arg">isinstance</span>=<span class="summary-sig-default">&lt;built-in function isinstance&gt;</span>,
+        <span class="summary-sig-arg">list</span>=<span class="summary-sig-default">&lt;type 'list'&gt;</span>,
+        <span class="summary-sig-arg">long</span>=<span class="summary-sig-default">&lt;type 'long'&gt;</span>,
+        <span class="summary-sig-arg">str</span>=<span class="summary-sig-default">&lt;type 'str'&gt;</span>,
+        <span class="summary-sig-arg">tuple</span>=<span class="summary-sig-default">&lt;type 'tuple'&gt;</span>)</span></td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="waveapi.simplejson.encoder-pysrc.html#encode_basestring_ascii">source&nbsp;code</a></span>
+            <span class="codelink"><a href="waveapi.simplejson.encoder-pysrc.html#_make_iterencode">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -169,32 +210,46 @@
     </table>
   </td>
 </tr>
-<tr class="private">
+<tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="INFCHARS"></a><span class="summary-name">INFCHARS</span> = <code title="re.compile(r'[infINF]')">re.compile(r'<code class="re-group">[</code>infINF<code class="re-group">]</code>')</code>
+        <a name="c_encode_basestring_ascii"></a><span class="summary-name">c_encode_basestring_ascii</span> = <code title="None">None</code>
     </td>
   </tr>
-<tr class="private">
+<tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="ESCAPE"></a><span class="summary-name">ESCAPE</span> = <code title="re.compile(r'[\x00-\x19\\&quot;\x08\f\n\r\t]')">re.compile(r'<code class="re-group">[</code>\x00<code class="re-op">-</code>\x19\\&quot;\x08\f\n\r\t<code class="re-group">]</code>')</code>
+        <a name="c_make_encoder"></a><span class="summary-name">c_make_encoder</span> = <code title="None">None</code>
     </td>
   </tr>
-<tr class="private">
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="ESCAPE"></a><span class="summary-name">ESCAPE</span> = <code title="re.compile(r'[\x00-\x1f\\&quot;\x08\f\n\r\t]')">re.compile(r'<code class="re-group">[</code>\x00<code class="re-op">-</code>\x1f\\&quot;\x08\f\n\r\t<code class="re-group">]</code>')</code>
+    </td>
+  </tr>
+<tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
         <a name="ESCAPE_ASCII"></a><span class="summary-name">ESCAPE_ASCII</span> = <code title="re.compile(r'([\\&quot;]|[^ -~])')">re.compile(r'<code class="re-group">(</code><code class="re-group">[</code>\\&quot;<code class="re-group">]</code><code class="re-op">|</code><code class="re-group">[</code><code class="re-op">^</code> <code class="re-op">-</code>~<code class="re-group">]</code><code class="re-group">)</code>')</code>
     </td>
   </tr>
-<tr class="private">
+<tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="waveapi.simplejson.encoder-module.html#ESCAPE_DCT" class="summary-name" onclick="show_private();">ESCAPE_DCT</a> = <code title="{'\x00': '\\u0000',
+        <a name="HAS_UTF8"></a><span class="summary-name">HAS_UTF8</span> = <code title="re.compile(r'[\x80-\xff]')">re.compile(r'<code class="re-group">[</code>\x80<code class="re-op">-</code>\xff<code class="re-group">]</code>')</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="waveapi.simplejson.encoder-module.html#ESCAPE_DCT" class="summary-name">ESCAPE_DCT</a> = <code title="{'\x00': '\\u0000',
  '\x01': '\\u0001',
  '\x02': '\\u0002',
  '\x03': '\\u0003',
@@ -205,7 +260,7 @@
 ..."><code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">\x00</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">\\u0000</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">\x01</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">\\u0001</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">\x02</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">\</code><code class="variable-ellipsis">...</code></code>
     </td>
   </tr>
-<tr class="private">
+<tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
@@ -232,7 +287,7 @@
 </tr>
 </table>
 <a name="ESCAPE_DCT"></a>
-<div class="private">
+<div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
@@ -284,8 +339,7 @@
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1
-    on Wed May 27 22:42:20 2009
+    Generated by Epydoc 3.0.1 on Wed Sep 16 01:20:25 2009
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

@@ -56,77 +56,109 @@
 </table>
 <!-- ==================== PACKAGE DESCRIPTION ==================== -->
 <h1 class="epydoc">Package simplejson</h1><p class="nomargin-top"><span class="codelink"><a href="waveapi.simplejson-pysrc.html">source&nbsp;code</a></span></p>
-<p>A simple, fast, extensible JSON encoder and decoder</p>
-  <p>JSON (JavaScript Object Notation) &lt;http://json.org&gt; is a subset 
+<p>JSON (JavaScript Object Notation) &lt;http://json.org&gt; is a subset 
   of JavaScript syntax (ECMA-262 3rd edition) used as a lightweight data 
   interchange format.</p>
-  <p>simplejson exposes an API familiar to uses of the standard library 
-  marshal and pickle modules.</p>
+  <p>:mod:`simplejson` exposes an API familiar to users of the standard 
+  library :mod:`marshal` and :mod:`pickle` modules. It is the externally 
+  maintained version of the :mod:`json` library contained in Python 2.6, 
+  but maintains compatibility with Python 2.4 and Python 2.5 and 
+  (currently) has significant performance advantages, even without using 
+  the optional C extension for speedups.</p>
   <p>Encoding basic Python object hierarchies:</p>
 <pre class="literalblock">
-   &gt;&gt;&gt; import simplejson
-   &gt;&gt;&gt; simplejson.dumps(['foo', {'bar': ('baz', None, 1.0, 2)}])
+   &gt;&gt;&gt; import simplejson as json
+   &gt;&gt;&gt; json.dumps(['foo', {'bar': ('baz', None, 1.0, 2)}])
    '[&quot;foo&quot;, {&quot;bar&quot;: [&quot;baz&quot;, null, 1.0, 2]}]'
-   &gt;&gt;&gt; print simplejson.dumps(&quot;\&quot;foo\bar&quot;)
+   &gt;&gt;&gt; print json.dumps(&quot;\&quot;foo\bar&quot;)
    &quot;\&quot;foo\bar&quot;
-   &gt;&gt;&gt; print simplejson.dumps(u'\u1234')
+   &gt;&gt;&gt; print json.dumps(u'\u1234')
    &quot;\u1234&quot;
-   &gt;&gt;&gt; print simplejson.dumps('\\')
+   &gt;&gt;&gt; print json.dumps('\\')
    &quot;\\&quot;
-   &gt;&gt;&gt; print simplejson.dumps({&quot;c&quot;: 0, &quot;b&quot;: 0, &quot;a&quot;: 0}, sort_keys=True)
+   &gt;&gt;&gt; print json.dumps({&quot;c&quot;: 0, &quot;b&quot;: 0, &quot;a&quot;: 0}, sort_keys=True)
    {&quot;a&quot;: 0, &quot;b&quot;: 0, &quot;c&quot;: 0}
    &gt;&gt;&gt; from StringIO import StringIO
    &gt;&gt;&gt; io = StringIO()
-   &gt;&gt;&gt; simplejson.dump(['streaming API'], io)
+   &gt;&gt;&gt; json.dump(['streaming API'], io)
    &gt;&gt;&gt; io.getvalue()
    '[&quot;streaming API&quot;]'
 </pre>
+  <p>Compact encoding:</p>
+<pre class="literalblock">
+   &gt;&gt;&gt; import simplejson as json
+   &gt;&gt;&gt; json.dumps([1,2,3,{'4': 5, '6': 7}], separators=(',',':'))
+   '[1,2,3,{&quot;4&quot;:5,&quot;6&quot;:7}]'
+</pre>
+  <p>Pretty printing:</p>
+<pre class="literalblock">
+   &gt;&gt;&gt; import simplejson as json
+   &gt;&gt;&gt; s = json.dumps({'4': 5, '6': 7}, sort_keys=True, indent='    ')
+   &gt;&gt;&gt; print '\n'.join([l.rstrip() for l in  s.splitlines()])
+   {
+       &quot;4&quot;: 5,
+       &quot;6&quot;: 7
+   }
+</pre>
   <p>Decoding JSON:</p>
 <pre class="literalblock">
-   &gt;&gt;&gt; import simplejson
-   &gt;&gt;&gt; simplejson.loads('[&quot;foo&quot;, {&quot;bar&quot;:[&quot;baz&quot;, null, 1.0, 2]}]')
-   [u'foo', {u'bar': [u'baz', None, 1.0, 2]}]
-   &gt;&gt;&gt; simplejson.loads('&quot;\\&quot;foo\\bar&quot;')
-   u'&quot;foo\x08ar'
+   &gt;&gt;&gt; import simplejson as json
+   &gt;&gt;&gt; obj = [u'foo', {u'bar': [u'baz', None, 1.0, 2]}]
+   &gt;&gt;&gt; json.loads('[&quot;foo&quot;, {&quot;bar&quot;:[&quot;baz&quot;, null, 1.0, 2]}]') == obj
+   True
+   &gt;&gt;&gt; json.loads('&quot;\\&quot;foo\\bar&quot;') == u'&quot;foo\x08ar'
+   True
    &gt;&gt;&gt; from StringIO import StringIO
    &gt;&gt;&gt; io = StringIO('[&quot;streaming API&quot;]')
-   &gt;&gt;&gt; simplejson.load(io)
-   [u'streaming API']
+   &gt;&gt;&gt; json.load(io)[0] == 'streaming API'
+   True
 </pre>
   <p>Specializing JSON object decoding:</p>
 <pre class="literalblock">
-   &gt;&gt;&gt; import simplejson
+   &gt;&gt;&gt; import simplejson as json
    &gt;&gt;&gt; def as_complex(dct):
    ...     if '__complex__' in dct:
    ...         return complex(dct['real'], dct['imag'])
    ...     return dct
-   ... 
-   &gt;&gt;&gt; simplejson.loads('{&quot;__complex__&quot;: true, &quot;real&quot;: 1, &quot;imag&quot;: 2}',
+   ...
+   &gt;&gt;&gt; json.loads('{&quot;__complex__&quot;: true, &quot;real&quot;: 1, &quot;imag&quot;: 2}',
    ...     object_hook=as_complex)
    (1+2j)
+   &gt;&gt;&gt; from decimal import Decimal
+   &gt;&gt;&gt; json.loads('1.1', parse_float=Decimal) == Decimal('1.1')
+   True
 </pre>
-  <p>Extending JSONEncoder:</p>
+  <p>Specializing JSON object encoding:</p>
 <pre class="literalblock">
-   &gt;&gt;&gt; import simplejson
-   &gt;&gt;&gt; class ComplexEncoder(simplejson.JSONEncoder):
-   ...     def default(self, obj):
-   ...         if isinstance(obj, complex):
-   ...             return [obj.real, obj.imag]
-   ...         return simplejson.JSONEncoder.default(self, obj)
-   ... 
-   &gt;&gt;&gt; dumps(2 + 1j, cls=ComplexEncoder)
+   &gt;&gt;&gt; import simplejson as json
+   &gt;&gt;&gt; def encode_complex(obj):
+   ...     if isinstance(obj, complex):
+   ...         return [obj.real, obj.imag]
+   ...     raise TypeError(repr(o) + &quot; is not JSON serializable&quot;)
+   ...
+   &gt;&gt;&gt; json.dumps(2 + 1j, default=encode_complex)
    '[2.0, 1.0]'
-   &gt;&gt;&gt; ComplexEncoder().encode(2 + 1j)
+   &gt;&gt;&gt; json.JSONEncoder(default=encode_complex).encode(2 + 1j)
    '[2.0, 1.0]'
-   &gt;&gt;&gt; list(ComplexEncoder().iterencode(2 + 1j))
-   ['[', '2.0', ', ', '1.0', ']']
+   &gt;&gt;&gt; ''.join(json.JSONEncoder(default=encode_complex).iterencode(2 + 1j))
+   '[2.0, 1.0]'
 </pre>
-  <p>Note that the JSON produced by this module is a subset of YAML, so it 
-  may be used as a serializer for that as well.</p>
+  <p>Using simplejson.tool from the shell to validate and pretty-print:</p>
+<pre class="literalblock">
+   $ echo '{&quot;json&quot;:&quot;obj&quot;}' | python -m simplejson.tool
+   {
+       &quot;json&quot;: &quot;obj&quot;
+   }
+   $ echo '{ 1.2:3.4}' | python -m simplejson.tool
+   Expecting property name: line 1 column 2 (char 2)
+</pre>
 
 <hr />
 <div class="fields">      <p><strong>Version:</strong>
-        1.3
+        2.1.0
+      </p>
+      <p><strong>Author:</strong>
+        Bob Ippolito &lt;bob@redivi.com&gt;
       </p>
 </div><!-- ==================== SUBMODULES ==================== -->
 <a name="section-Submodules"></a>
@@ -150,7 +182,10 @@
     <li class="private"> <strong class="uidlink"><a href="waveapi.simplejson.decoder-module.html" onclick="show_private();">waveapi.simplejson.decoder</a></strong>: <em class="summary">Implementation of JSONDecoder</em>    </li>
     <li class="private"> <strong class="uidlink"><a href="waveapi.simplejson.encoder-module.html" onclick="show_private();">waveapi.simplejson.encoder</a></strong>: <em class="summary">Implementation of JSONEncoder</em>    </li>
     <li> <strong class="uidlink"><a href="waveapi.simplejson.jsonfilter-module.html">waveapi.simplejson.jsonfilter</a></strong>    </li>
-    <li class="private"> <strong class="uidlink"><a href="waveapi.simplejson.scanner-module.html" onclick="show_private();">waveapi.simplejson.scanner</a></strong>: <em class="summary">Iterator based sre token scanner</em>    </li>
+    <li class="private"> <strong class="uidlink"><a href="waveapi.simplejson.ordered_dict-module.html" onclick="show_private();">waveapi.simplejson.ordered_dict</a></strong>: <em class="summary">Drop-in replacement for collections.OrderedDict by Raymond 
+        Hettinger</em>    </li>
+    <li class="private"> <strong class="uidlink"><a href="waveapi.simplejson.scanner-module.html" onclick="show_private();">waveapi.simplejson.scanner</a></strong>: <em class="summary">JSON token scanner</em>    </li>
+    <li> <strong class="uidlink"><a href="waveapi.simplejson.tool-module.html">waveapi.simplejson.tool</a></strong>: <em class="summary">Command-line tool to validate and pretty-print JSON</em>    </li>
   </ul></td></tr>
 </table>
 
@@ -173,16 +208,35 @@
   </td>
 </tr>
 <tr>
-    <td class="summary" colspan="2">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
         <a href="waveapi.simplejson.decoder.JSONDecoder-class.html" class="summary-name">JSONDecoder</a><br />
       Simple JSON &lt;http://json.org&gt; decoder
     </td>
   </tr>
 <tr>
-    <td class="summary" colspan="2">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="waveapi.simplejson.decoder.JSONDecodeError-class.html" class="summary-name">JSONDecodeError</a><br />
+      Subclass of ValueError with the following additional properties:
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
         <a href="waveapi.simplejson.encoder.JSONEncoder-class.html" class="summary-name">JSONEncoder</a><br />
       Extensible JSON &lt;http://json.org&gt; encoder for Python data 
         structures.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="waveapi.simplejson.ordered_dict.OrderedDict-class.html" class="summary-name">OrderedDict</a>
     </td>
   </tr>
 </table>
@@ -216,6 +270,10 @@
         <span class="summary-sig-arg">check_circular</span>=<span class="summary-sig-default">True</span>,
         <span class="summary-sig-arg">allow_nan</span>=<span class="summary-sig-default">True</span>,
         <span class="summary-sig-arg">cls</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">indent</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">separators</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">encoding</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string">utf-8</code><code class="variable-quote">'</code></span>,
+        <span class="summary-sig-arg">default</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">**kw</span>)</span><br />
       Serialize ``obj`` as a JSON formatted stream to ``fp`` (a 
       ``.write()``-supporting file-like object).</td>
@@ -240,6 +298,10 @@
         <span class="summary-sig-arg">check_circular</span>=<span class="summary-sig-default">True</span>,
         <span class="summary-sig-arg">allow_nan</span>=<span class="summary-sig-default">True</span>,
         <span class="summary-sig-arg">cls</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">indent</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">separators</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">encoding</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string">utf-8</code><code class="variable-quote">'</code></span>,
+        <span class="summary-sig-arg">default</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">**kw</span>)</span><br />
       Serialize ``obj`` to a JSON formatted ``str``.</td>
           <td align="right" valign="top">
@@ -261,6 +323,10 @@
         <span class="summary-sig-arg">encoding</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">cls</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">object_hook</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">parse_float</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">parse_int</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">parse_constant</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">object_pairs_hook</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">**kw</span>)</span><br />
       Deserialize ``fp`` (a ``.read()``-supporting file-like object 
       containing a JSON document) to a Python object.</td>
@@ -283,6 +349,10 @@
         <span class="summary-sig-arg">encoding</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">cls</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">object_hook</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">parse_float</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">parse_int</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">parse_constant</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">object_pairs_hook</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">**kw</span>)</span><br />
       Deserialize ``s`` (a ``str`` or ``unicode`` instance containing a 
       JSON document) to a Python object.</td>
@@ -301,10 +371,9 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="waveapi.simplejson-module.html#read" class="summary-sig-name" onclick="show_private();">read</a>(<span class="summary-sig-arg">s</span>)</span><br />
-      json-py API compatibility hook.</td>
+          <td><span class="summary-sig"><a name="_toggle_speedups"></a><span class="summary-sig-name">_toggle_speedups</span>(<span class="summary-sig-arg">enabled</span>)</span></td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="waveapi.simplejson-pysrc.html#read">source&nbsp;code</a></span>
+            <span class="codelink"><a href="waveapi.simplejson-pysrc.html#_toggle_speedups">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -312,21 +381,39 @@
       
     </td>
   </tr>
+</table>
+<!-- ==================== VARIABLES ==================== -->
+<a name="section-Variables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Variables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
 <tr class="private">
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a href="waveapi.simplejson-module.html#write" class="summary-sig-name" onclick="show_private();">write</a>(<span class="summary-sig-arg">obj</span>)</span><br />
-      json-py API compatibility hook.</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="waveapi.simplejson-pysrc.html#write">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
+        <a href="waveapi.simplejson-module.html#_default_encoder" class="summary-name" onclick="show_private();">_default_encoder</a> = <code title="JSONEncoder(skipkeys= False, ensure_ascii= True, check_circular= True,\
+ allow_nan= True, indent= None, separators= None, encoding= 'utf-8', d\
+efault= None,)">JSONEncoder(skipkeys= False, ensure_ascii= <code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="waveapi.simplejson-module.html#_default_decoder" class="summary-name" onclick="show_private();">_default_decoder</a> = <code title="JSONDecoder(encoding= None, object_hook= None, object_pairs_hook= None\
+)">JSONDecoder(encoding= None, object_hook= No<code class="variable-ellipsis">...</code></code>
     </td>
   </tr>
 </table>
@@ -362,6 +449,10 @@
         <span class="sig-arg">check_circular</span>=<span class="sig-default">True</span>,
         <span class="sig-arg">allow_nan</span>=<span class="sig-default">True</span>,
         <span class="sig-arg">cls</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">indent</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">separators</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">encoding</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string">utf-8</code><code class="variable-quote">'</code></span>,
+        <span class="sig-arg">default</span>=<span class="sig-default">None</span>,
         <span class="sig-arg">**kw</span>)</span>
   </h3>
   </td><td align="right" valign="top"
@@ -371,21 +462,35 @@
   
   <p>Serialize ``obj`` as a JSON formatted stream to ``fp`` (a 
   ``.write()``-supporting file-like object).</p>
-  <p>If ``skipkeys`` is ``True`` then ``dict`` keys that are not basic 
-  types (``str``, ``unicode``, ``int``, ``long``, ``float``, ``bool``, 
-  ``None``) will be skipped instead of raising a ``TypeError``.</p>
-  <p>If ``ensure_ascii`` is ``False``, then the some chunks written to 
-  ``fp`` may be ``unicode`` instances, subject to normal Python ``str`` to 
-  ``unicode`` coercion rules.  Unless ``fp.write()`` explicitly understands
+  <p>If ``skipkeys`` is true then ``dict`` keys that are not basic types 
+  (``str``, ``unicode``, ``int``, ``long``, ``float``, ``bool``, ``None``) 
+  will be skipped instead of raising a ``TypeError``.</p>
+  <p>If ``ensure_ascii`` is false, then the some chunks written to ``fp`` 
+  may be ``unicode`` instances, subject to normal Python ``str`` to 
+  ``unicode`` coercion rules. Unless ``fp.write()`` explicitly understands 
   ``unicode`` (as in ``codecs.getwriter()``) this is likely to cause an 
   error.</p>
-  <p>If ``check_circular`` is ``False``, then the circular reference check 
-  for container types will be skipped and a circular reference will result 
-  in an ``OverflowError`` (or worse).</p>
-  <p>If ``allow_nan`` is ``False``, then it will be a ``ValueError`` to 
+  <p>If ``check_circular`` is false, then the circular reference check for 
+  container types will be skipped and a circular reference will result in 
+  an ``OverflowError`` (or worse).</p>
+  <p>If ``allow_nan`` is false, then it will be a ``ValueError`` to 
   serialize out of range ``float`` values (``nan``, ``inf``, ``-inf``) in 
   strict compliance of the JSON specification, instead of using the 
   JavaScript equivalents (``NaN``, ``Infinity``, ``-Infinity``).</p>
+  <p>If *indent* is a string, then JSON array elements and object members 
+  will be pretty-printed with a newline followed by that string repeated 
+  for each level of nesting. ``None`` (the default) selects the most 
+  compact representation without any newlines. For backwards compatibility 
+  with versions of simplejson earlier than 2.1.0, an integer is also 
+  accepted and is converted to a string with that many spaces.</p>
+  <p>If ``separators`` is an ``(item_separator, dict_separator)`` tuple 
+  then it will be used instead of the default ``(', ', ': ')`` separators. 
+  ``(',', ':')`` is the most compact JSON representation.</p>
+  <p>``encoding`` is the character encoding for str instances, default is 
+  UTF-8.</p>
+  <p>``default(obj)`` is a function that should return a serializable 
+  version of obj or raise TypeError. The default simply raises 
+  TypeError.</p>
   <p>To use a custom ``JSONEncoder`` subclass (e.g. one that overrides the 
   ``.default()`` method to serialize additional types), specify it with the
   ``cls`` kwarg.</p>
@@ -406,6 +511,10 @@
         <span class="sig-arg">check_circular</span>=<span class="sig-default">True</span>,
         <span class="sig-arg">allow_nan</span>=<span class="sig-default">True</span>,
         <span class="sig-arg">cls</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">indent</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">separators</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">encoding</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string">utf-8</code><code class="variable-quote">'</code></span>,
+        <span class="sig-arg">default</span>=<span class="sig-default">None</span>,
         <span class="sig-arg">**kw</span>)</span>
   </h3>
   </td><td align="right" valign="top"
@@ -414,19 +523,33 @@
   </tr></table>
   
   <p>Serialize ``obj`` to a JSON formatted ``str``.</p>
-  <p>If ``skipkeys`` is ``True`` then ``dict`` keys that are not basic 
-  types (``str``, ``unicode``, ``int``, ``long``, ``float``, ``bool``, 
-  ``None``) will be skipped instead of raising a ``TypeError``.</p>
-  <p>If ``ensure_ascii`` is ``False``, then the return value will be a 
+  <p>If ``skipkeys`` is false then ``dict`` keys that are not basic types 
+  (``str``, ``unicode``, ``int``, ``long``, ``float``, ``bool``, ``None``) 
+  will be skipped instead of raising a ``TypeError``.</p>
+  <p>If ``ensure_ascii`` is false, then the return value will be a 
   ``unicode`` instance subject to normal Python ``str`` to ``unicode`` 
   coercion rules instead of being escaped to an ASCII ``str``.</p>
-  <p>If ``check_circular`` is ``False``, then the circular reference check 
-  for container types will be skipped and a circular reference will result 
-  in an ``OverflowError`` (or worse).</p>
-  <p>If ``allow_nan`` is ``False``, then it will be a ``ValueError`` to 
+  <p>If ``check_circular`` is false, then the circular reference check for 
+  container types will be skipped and a circular reference will result in 
+  an ``OverflowError`` (or worse).</p>
+  <p>If ``allow_nan`` is false, then it will be a ``ValueError`` to 
   serialize out of range ``float`` values (``nan``, ``inf``, ``-inf``) in 
   strict compliance of the JSON specification, instead of using the 
   JavaScript equivalents (``NaN``, ``Infinity``, ``-Infinity``).</p>
+  <p>If ``indent`` is a string, then JSON array elements and object members
+  will be pretty-printed with a newline followed by that string repeated 
+  for each level of nesting. ``None`` (the default) selects the most 
+  compact representation without any newlines. For backwards compatibility 
+  with versions of simplejson earlier than 2.1.0, an integer is also 
+  accepted and is converted to a string with that many spaces.</p>
+  <p>If ``separators`` is an ``(item_separator, dict_separator)`` tuple 
+  then it will be used instead of the default ``(', ', ': ')`` separators. 
+  ``(',', ':')`` is the most compact JSON representation.</p>
+  <p>``encoding`` is the character encoding for str instances, default is 
+  UTF-8.</p>
+  <p>``default(obj)`` is a function that should return a serializable 
+  version of obj or raise TypeError. The default simply raises 
+  TypeError.</p>
   <p>To use a custom ``JSONEncoder`` subclass (e.g. one that overrides the 
   ``.default()`` method to serialize additional types), specify it with the
   ``cls`` kwarg.</p>
@@ -445,6 +568,10 @@
         <span class="sig-arg">encoding</span>=<span class="sig-default">None</span>,
         <span class="sig-arg">cls</span>=<span class="sig-default">None</span>,
         <span class="sig-arg">object_hook</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">parse_float</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">parse_int</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">parse_constant</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">object_pairs_hook</span>=<span class="sig-default">None</span>,
         <span class="sig-arg">**kw</span>)</span>
   </h3>
   </td><td align="right" valign="top"
@@ -454,16 +581,35 @@
   
   <p>Deserialize ``fp`` (a ``.read()``-supporting file-like object 
   containing a JSON document) to a Python object.</p>
-  <p>If the contents of ``fp`` is encoded with an ASCII based encoding 
-  other than utf-8 (e.g. latin-1), then an appropriate ``encoding`` name 
-  must be specified.  Encodings that are not ASCII based (such as UCS-2) 
-  are not allowed, and should be wrapped with 
-  ``codecs.getreader(fp)(encoding)``, or simply decoded to a ``unicode`` 
-  object and passed to ``loads()``</p>
-  <p>``object_hook`` is an optional function that will be called with the 
-  result of any object literal decode (a ``dict``).  The return value of 
-  ``object_hook`` will be used instead of the ``dict``.  This feature can 
-  be used to implement custom decoders (e.g. JSON-RPC class hinting).</p>
+  <p>*encoding* determines the encoding used to interpret any :class:`str` 
+  objects decoded by this instance (``'utf-8'`` by default).  It has no 
+  effect when decoding :class:`unicode` objects.</p>
+  <p>Note that currently only encodings that are a superset of ASCII work, 
+  strings of other encodings should be passed in as :class:`unicode`.</p>
+  <p>*object_hook*, if specified, will be called with the result of every 
+  JSON object decoded and its return value will be used in place of the 
+  given :class:`dict`.  This can be used to provide custom deserializations
+  (e.g. to support JSON-RPC class hinting).</p>
+  <p>*object_pairs_hook* is an optional function that will be called with 
+  the result of any object literal decode with an ordered list of pairs. 
+  The return value of *object_pairs_hook* will be used instead of the 
+  :class:`dict`.  This feature can be used to implement custom decoders 
+  that rely on the order that the key and value pairs are decoded (for 
+  example, :func:`collections.OrderedDict` will remember the order of 
+  insertion). If *object_hook* is also defined, the *object_pairs_hook* 
+  takes priority.</p>
+  <p>*parse_float*, if specified, will be called with the string of every 
+  JSON float to be decoded.  By default, this is equivalent to 
+  ``float(num_str)``. This can be used to use another datatype or parser 
+  for JSON floats (e.g. :class:`decimal.Decimal`).</p>
+  <p>*parse_int*, if specified, will be called with the string of every 
+  JSON int to be decoded.  By default, this is equivalent to 
+  ``int(num_str)``.  This can be used to use another datatype or parser for
+  JSON integers (e.g. :class:`float`).</p>
+  <p>*parse_constant*, if specified, will be called with one of the 
+  following strings: ``'-Infinity'``, ``'Infinity'``, ``'NaN'``.  This can 
+  be used to raise an exception if invalid JSON numbers are 
+  encountered.</p>
   <p>To use a custom ``JSONDecoder`` subclass, specify it with the ``cls`` 
   kwarg.</p>
   <dl class="fields">
@@ -481,6 +627,10 @@
         <span class="sig-arg">encoding</span>=<span class="sig-default">None</span>,
         <span class="sig-arg">cls</span>=<span class="sig-default">None</span>,
         <span class="sig-arg">object_hook</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">parse_float</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">parse_int</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">parse_constant</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">object_pairs_hook</span>=<span class="sig-default">None</span>,
         <span class="sig-arg">**kw</span>)</span>
   </h3>
   </td><td align="right" valign="top"
@@ -490,55 +640,96 @@
   
   <p>Deserialize ``s`` (a ``str`` or ``unicode`` instance containing a JSON
   document) to a Python object.</p>
-  <p>If ``s`` is a ``str`` instance and is encoded with an ASCII based 
-  encoding other than utf-8 (e.g. latin-1) then an appropriate ``encoding``
-  name must be specified.  Encodings that are not ASCII based (such as 
-  UCS-2) are not allowed and should be decoded to ``unicode`` first.</p>
-  <p>``object_hook`` is an optional function that will be called with the 
-  result of any object literal decode (a ``dict``).  The return value of 
-  ``object_hook`` will be used instead of the ``dict``.  This feature can 
-  be used to implement custom decoders (e.g. JSON-RPC class hinting).</p>
+  <p>*encoding* determines the encoding used to interpret any :class:`str` 
+  objects decoded by this instance (``'utf-8'`` by default).  It has no 
+  effect when decoding :class:`unicode` objects.</p>
+  <p>Note that currently only encodings that are a superset of ASCII work, 
+  strings of other encodings should be passed in as :class:`unicode`.</p>
+  <p>*object_hook*, if specified, will be called with the result of every 
+  JSON object decoded and its return value will be used in place of the 
+  given :class:`dict`.  This can be used to provide custom deserializations
+  (e.g. to support JSON-RPC class hinting).</p>
+  <p>*object_pairs_hook* is an optional function that will be called with 
+  the result of any object literal decode with an ordered list of pairs. 
+  The return value of *object_pairs_hook* will be used instead of the 
+  :class:`dict`.  This feature can be used to implement custom decoders 
+  that rely on the order that the key and value pairs are decoded (for 
+  example, :func:`collections.OrderedDict` will remember the order of 
+  insertion). If *object_hook* is also defined, the *object_pairs_hook* 
+  takes priority.</p>
+  <p>*parse_float*, if specified, will be called with the string of every 
+  JSON float to be decoded.  By default, this is equivalent to 
+  ``float(num_str)``. This can be used to use another datatype or parser 
+  for JSON floats (e.g. :class:`decimal.Decimal`).</p>
+  <p>*parse_int*, if specified, will be called with the string of every 
+  JSON int to be decoded.  By default, this is equivalent to 
+  ``int(num_str)``.  This can be used to use another datatype or parser for
+  JSON integers (e.g. :class:`float`).</p>
+  <p>*parse_constant*, if specified, will be called with one of the 
+  following strings: ``'-Infinity'``, ``'Infinity'``, ``'NaN'``.  This can 
+  be used to raise an exception if invalid JSON numbers are 
+  encountered.</p>
   <p>To use a custom ``JSONDecoder`` subclass, specify it with the ``cls`` 
   kwarg.</p>
   <dl class="fields">
   </dl>
 </td></tr></table>
 </div>
-<a name="read"></a>
+<br />
+<!-- ==================== VARIABLES DETAILS ==================== -->
+<a name="section-VariablesDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Variables Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-VariablesDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="_default_encoder"></a>
 <div class="private">
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">read</span>(<span class="sig-arg">s</span>)</span>
-  </h3>
-  </td><td align="right" valign="top"
-    ><span class="codelink"><a href="waveapi.simplejson-pysrc.html#read">source&nbsp;code</a></span>&nbsp;
-    </td>
-  </tr></table>
+  <h3 class="epydoc">_default_encoder</h3>
   
-  <p>json-py API compatibility hook.  Use loads(s) instead.</p>
   <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+JSONEncoder(skipkeys= False, ensure_ascii= True, check_circular= True,<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+ allow_nan= True, indent= None, separators= None, encoding= 'utf-8', d<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+efault= None,)
+</pre></td></tr></table>
+</dd>
   </dl>
 </td></tr></table>
 </div>
-<a name="write"></a>
+<a name="_default_decoder"></a>
 <div class="private">
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">write</span>(<span class="sig-arg">obj</span>)</span>
-  </h3>
-  </td><td align="right" valign="top"
-    ><span class="codelink"><a href="waveapi.simplejson-pysrc.html#write">source&nbsp;code</a></span>&nbsp;
-    </td>
-  </tr></table>
+  <h3 class="epydoc">_default_decoder</h3>
   
-  <p>json-py API compatibility hook.  Use dumps(s) instead.</p>
   <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+JSONDecoder(encoding= None, object_hook= None, object_pairs_hook= None<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+)
+</pre></td></tr></table>
+</dd>
   </dl>
 </td></tr></table>
 </div>
@@ -569,8 +760,7 @@
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1
-    on Wed May 27 22:42:20 2009
+    Generated by Epydoc 3.0.1 on Wed Sep 16 01:20:25 2009
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

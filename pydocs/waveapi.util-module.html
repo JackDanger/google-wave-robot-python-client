@@ -63,7 +63,33 @@
 <div class="fields">      <p><strong>Author:</strong>
         davidbyttow@google.com (David Byttow)
       </p>
-</div><!-- ==================== FUNCTIONS ==================== -->
+</div><!-- ==================== CLASSES ==================== -->
+<a name="section-Classes"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Classes</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Classes"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="waveapi.util.StringEnum-class.html" class="summary-name">StringEnum</a><br />
+      Enum like class that is configured with a list of values.
+    </td>
+  </tr>
+</table>
+<!-- ==================== FUNCTIONS ==================== -->
 <a name="section-Functions"></a>
 <table class="summary" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
@@ -86,10 +112,10 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="IsListOrDict"></a><span class="summary-sig-name">IsListOrDict</span>(<span class="summary-sig-arg">inst</span>)</span><br />
+          <td><span class="summary-sig"><a href="waveapi.util-module.html#IsIterable" class="summary-sig-name">IsIterable</a>(<span class="summary-sig-arg">inst</span>)</span><br />
       Returns whether or not this is a list, tuple, set or dict .</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="waveapi.util-pysrc.html#IsListOrDict">source&nbsp;code</a></span>
+            <span class="codelink"><a href="waveapi.util-pysrc.html#IsIterable">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -120,10 +146,10 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="IsInstance"></a><span class="summary-sig-name">IsInstance</span>(<span class="summary-sig-arg">obj</span>)</span><br />
+          <td><span class="summary-sig"><a name="IsUserDefinedNewStyleClass"></a><span class="summary-sig-name">IsUserDefinedNewStyleClass</span>(<span class="summary-sig-arg">obj</span>)</span><br />
       Returns whether or not the specified instance is a user-defined type.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="waveapi.util-pysrc.html#IsInstance">source&nbsp;code</a></span>
+            <span class="codelink"><a href="waveapi.util-pysrc.html#IsUserDefinedNewStyleClass">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -171,6 +197,23 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
+          <td><span class="summary-sig"><a href="waveapi.util-module.html#ToUpperCamelCase" class="summary-sig-name">ToUpperCamelCase</a>(<span class="summary-sig-arg">s</span>)</span><br />
+      Converts a string to upper camel case.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="waveapi.util-pysrc.html#ToUpperCamelCase">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
           <td><span class="summary-sig"><a href="waveapi.util-module.html#DefaultKeyWriter" class="summary-sig-name">DefaultKeyWriter</a>(<span class="summary-sig-arg">key_name</span>)</span><br />
       This key writer rewrites keys as lower camel case.</td>
           <td align="right" valign="top">
@@ -189,7 +232,7 @@
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a href="waveapi.util-module.html#_SerializeAttributes" class="summary-sig-name" onclick="show_private();">_SerializeAttributes</a>(<span class="summary-sig-arg">obj</span>,
-        <span class="summary-sig-arg">key_writer</span>=<span class="summary-sig-default">&lt;function DefaultKeyWriter at 0xbed5f0&gt;</span>)</span><br />
+        <span class="summary-sig-arg">key_writer</span>=<span class="summary-sig-default">&lt;function DefaultKeyWriter at 0xd86ed8&gt;</span>)</span><br />
       Serializes attributes of an instance.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="waveapi.util-pysrc.html#_SerializeAttributes">source&nbsp;code</a></span>
@@ -224,7 +267,7 @@
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a href="waveapi.util-module.html#_SerializeDict" class="summary-sig-name" onclick="show_private();">_SerializeDict</a>(<span class="summary-sig-arg">d</span>,
-        <span class="summary-sig-arg">key_writer</span>=<span class="summary-sig-default">&lt;function DefaultKeyWriter at 0xbed5f0&gt;</span>)</span><br />
+        <span class="summary-sig-arg">key_writer</span>=<span class="summary-sig-default">&lt;function DefaultKeyWriter at 0xd86ed8&gt;</span>)</span><br />
       Invokes serialize on all of its key/value pairs.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="waveapi.util-pysrc.html#_SerializeDict">source&nbsp;code</a></span>
@@ -242,7 +285,7 @@
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a href="waveapi.util-module.html#Serialize" class="summary-sig-name">Serialize</a>(<span class="summary-sig-arg">obj</span>,
-        <span class="summary-sig-arg">key_writer</span>=<span class="summary-sig-default">&lt;function DefaultKeyWriter at 0xbed5f0&gt;</span>)</span><br />
+        <span class="summary-sig-arg">key_writer</span>=<span class="summary-sig-default">&lt;function DefaultKeyWriter at 0xd86ed8&gt;</span>)</span><br />
       Serializes any instance.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="waveapi.util-pysrc.html#Serialize">source&nbsp;code</a></span>
@@ -315,6 +358,26 @@
   </td>
 </tr>
 </table>
+<a name="IsIterable"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">IsIterable</span>(<span class="sig-arg">inst</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="waveapi.util-pysrc.html#IsIterable">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Returns whether or not this is a list, tuple, set or dict .</p>
+  <p>Note that this does not return true for strings.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
 <a name="CollapseJavaCollections"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
@@ -387,6 +450,40 @@ Returns:
   </dl>
 </td></tr></table>
 </div>
+<a name="ToUpperCamelCase"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">ToUpperCamelCase</span>(<span class="sig-arg">s</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="waveapi.util-pysrc.html#ToUpperCamelCase">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+Converts a string to upper camel case.
+
+Examples:
+  foo =&gt; Foo
+  foo_bar =&gt; FooBar
+  foo__bar =&gt; FooBar
+  foo_bar_baz =&gt; FooBarBaz
+
+Args:
+  s: The string to convert to upper camel case.
+
+Returns:
+  The upper camel cased string.
+
+</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
 <a name="DefaultKeyWriter"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
@@ -425,7 +522,7 @@ Returns:
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
   <h3 class="epydoc"><span class="sig"><span class="sig-name">_SerializeAttributes</span>(<span class="sig-arg">obj</span>,
-        <span class="sig-arg">key_writer</span>=<span class="sig-default">&lt;function DefaultKeyWriter at 0xbed5f0&gt;</span>)</span>
+        <span class="sig-arg">key_writer</span>=<span class="sig-default">&lt;function DefaultKeyWriter at 0xd86ed8&gt;</span>)</span>
   </h3>
   </td><td align="right" valign="top"
     ><span class="codelink"><a href="waveapi.util-pysrc.html#_SerializeAttributes">source&nbsp;code</a></span>&nbsp;
@@ -490,7 +587,7 @@ Returns:
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
   <h3 class="epydoc"><span class="sig"><span class="sig-name">_SerializeDict</span>(<span class="sig-arg">d</span>,
-        <span class="sig-arg">key_writer</span>=<span class="sig-default">&lt;function DefaultKeyWriter at 0xbed5f0&gt;</span>)</span>
+        <span class="sig-arg">key_writer</span>=<span class="sig-default">&lt;function DefaultKeyWriter at 0xd86ed8&gt;</span>)</span>
   </h3>
   </td><td align="right" valign="top"
     ><span class="codelink"><a href="waveapi.util-pysrc.html#_SerializeDict">source&nbsp;code</a></span>&nbsp;
@@ -520,7 +617,7 @@ Returns:
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
   <h3 class="epydoc"><span class="sig"><span class="sig-name">Serialize</span>(<span class="sig-arg">obj</span>,
-        <span class="sig-arg">key_writer</span>=<span class="sig-default">&lt;function DefaultKeyWriter at 0xbed5f0&gt;</span>)</span>
+        <span class="sig-arg">key_writer</span>=<span class="sig-default">&lt;function DefaultKeyWriter at 0xd86ed8&gt;</span>)</span>
   </h3>
   </td><td align="right" valign="top"
     ><span class="codelink"><a href="waveapi.util-pysrc.html#Serialize">source&nbsp;code</a></span>&nbsp;
@@ -612,8 +709,7 @@ Returns:
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1
-    on Wed May 27 22:42:20 2009
+    Generated by Epydoc 3.0.1 on Wed Sep 16 01:20:25 2009
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

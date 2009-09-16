@@ -55,8 +55,8 @@
     </td>
   </tr>
 </table>
-<!-- ==================== TYPE DESCRIPTION ==================== -->
-<h1 class="epydoc">type Wavelet</h1><p class="nomargin-top"><span class="codelink"><a href="waveapi.model-pysrc.html#Wavelet">source&nbsp;code</a></span></p>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class Wavelet</h1><p class="nomargin-top"><span class="codelink"><a href="waveapi.model-pysrc.html#Wavelet">source&nbsp;code</a></span></p>
 <pre class="base-tree">
 object --+
          |
@@ -70,9 +70,24 @@ object --+
 </dd></dl>
 
 <hr />
-<p>Models a single wavelet instance.</p>
-  <p>A single wavelet is composed of metadata, participants and the blips 
-  it contains.</p>
+<pre class="literalblock">
+Models a single wavelet instance.
+
+A single wavelet is composed of metadata, participants and the blips it
+contains.
+
+Attributes:
+  creator: Participant id string of the creator of this wavelet.
+  creationTime: Time this wavelet was created on the server.
+  dataDocuments: Dictionary of data documents.
+  lastModifiedTime: Time this wavelet was last modified.
+  participants: Set of participant ids on this wavelet.
+  raw_data: Dictionary of incoming raw JSON data.
+  rootBlipId: String id of the root blip.
+  waveId: String id of the parent wave.
+  waveletId: This wavelet's string id.
+
+</pre>
 
 <!-- ==================== INSTANCE METHODS ==================== -->
 <a name="section-InstanceMethods"></a>
@@ -168,7 +183,7 @@ object --+
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a name="GetLastModifiedTime"></a><span class="summary-sig-name">GetLastModifiedTime</span>(<span class="summary-sig-arg">self</span>)</span><br />
-      Returns the time that this wavelet was last modified in milliseconds.</td>
+      Returns the time that this wavelet was last modified in ms.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="waveapi.model-pysrc.html#Wavelet.GetLastModifiedTime">source&nbsp;code</a></span>
             
@@ -253,8 +268,8 @@ object --+
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a href="waveapi.model.Wavelet-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">data</span>)</span><br />
-      Inits this wavelet with its data.</td>
+        <span class="summary-sig-arg">json</span>)</span><br />
+      Inits this wavelet with JSON data.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="waveapi.model-pysrc.html#Wavelet.__init__">source&nbsp;code</a></span>
             
@@ -262,6 +277,46 @@ object --+
         </tr>
       </table>
       
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__delattr__</code>,
+      <code>__getattribute__</code>,
+      <code>__hash__</code>,
+      <code>__new__</code>,
+      <code>__reduce__</code>,
+      <code>__reduce_ex__</code>,
+      <code>__repr__</code>,
+      <code>__setattr__</code>,
+      <code>__str__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Properties</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Properties"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__class__</code>
+      </p>
     </td>
   </tr>
 </table>
@@ -291,7 +346,7 @@ object --+
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
   <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">data</span>)</span>
+        <span class="sig-arg">json</span>)</span>
     <br /><em class="fname">(Constructor)</em>
   </h3>
   </td><td align="right" valign="top"
@@ -300,10 +355,10 @@ object --+
   </tr></table>
   
   <pre class="literalblock">
-Inits this wavelet with its data.
+Inits this wavelet with JSON data.
 
 Args:
-  data: A WaveletData instance.
+  json: JSON data dictionary from Wave server.
 
 </pre>
   <dl class="fields">
@@ -340,8 +395,7 @@ Args:
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1
-    on Wed May 27 22:42:20 2009
+    Generated by Epydoc 3.0.1 on Wed Sep 16 01:20:25 2009
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"
