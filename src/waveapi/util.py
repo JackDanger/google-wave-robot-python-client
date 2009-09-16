@@ -28,8 +28,11 @@ import document
 CUSTOM_SERIALIZE_METHOD_NAME = 'Serialize'
 
 
-def IsListOrDict(inst):
-  """Returns whether or not this is a list, tuple, set or dict ."""
+def IsIterable(inst):
+  """Returns whether or not this is a list, tuple, set or dict .
+
+  Note that this does not return true for strings.
+  """
   return hasattr(inst, '__iter__')
 
 
@@ -38,12 +41,12 @@ def IsDict(inst):
   return hasattr(inst, 'iteritems')
 
 
-def IsInstance(obj):
+def IsUserDefinedNewStyleClass(obj):
   """Returns whether or not the specified instance is a user-defined type."""
   # NOTE(davidbyttow): This seems like a reasonably safe hack for now...
   # I'm not exactly sure how to test if something is a subclass of object.
   # And no, "is InstanceType" does not work here. :(
-  return str(type(obj)).startswith('<class ')
+  return type(obj).__module__ != '__builtin__'
 
 
 def CollapseJavaCollections(data):
@@ -75,10 +78,9 @@ def CollapseJavaCollections(data):
       return CollapseJavaCollections(data['list'])
     for key, val in data.iteritems():
       data[key] = CollapseJavaCollections(val)
-  elif IsListOrDict(data):
+  elif IsIterable(data):
     for index in range(len(data)):
       data[index] = CollapseJavaCollections(data[index])
-    return data
   return data
 
 
@@ -154,9 +156,7 @@ def _SerializeAttributes(obj, key_writer=DefaultKeyWriter):
     if attr_name.startswith('_'):
       continue
     attr = getattr(obj, attr_name)
-    if callable(attr):
-      continue
-    if attr is None:
+    if attr is None or callable(attr):
       continue
     # Looks okay, serialize it.
     data[key_writer(attr_name)] = Serialize(attr)
@@ -213,7 +213,7 @@ def Serialize(obj, key_writer=DefaultKeyWriter):
   Returns:
     The serialized object.
   """
-  if IsInstance(obj):
+  if IsUserDefinedNewStyleClass(obj):
     if obj and hasattr(obj, CUSTOM_SERIALIZE_METHOD_NAME):
       method = getattr(obj, CUSTOM_SERIALIZE_METHOD_NAME)
       if callable(method):
@@ -221,9 +221,20 @@ def Serialize(obj, key_writer=DefaultKeyWriter):
     return _SerializeAttributes(obj, key_writer)
   elif IsDict(obj):
     return _SerializeDict(obj, key_writer)
-  elif IsListOrDict(obj):
+  elif IsIterable(obj):
     return _SerializeList(obj)
   return obj
+
+
+class StringEnum(object):
+  """Enum like class that is configured with a list of values.
+
+  This class effectively implements an enum for Elements, except for that
+  the actual values of the enums will be the string values."""
+
+  def __init__(self, *values):
+    for name in values:
+      setattr(self, name, name)
 
 
 def ClipRange(r, clip_range):
@@ -251,14 +262,11 @@ def ClipRange(r, clip_range):
   if r.start >= clip_range.start and r.end <= clip_range.end:
     return []
   # Check if split.
-  if clip_range.start >= r.start and clip_range.end <= r.end:
-    splits = []
-    if r.start < clip_range.start:
-      splits.append(document.Range(r.start, clip_range.start))
-    if clip_range.end < r.end:
-      splits.append(document.Range(clip_range.end, r.end))
-    return splits
-  # Just a trim.
-  if clip_range.start < r.start:
+  if clip_range.start > r.start and clip_range.end < r.end:
+    return [document.Range(r.start, clip_range.start),
+            document.Range(clip_range.end, r.end)]
+  # Check if start trimmed.
+  if clip_range.start <= r.start:
     return [document.Range(clip_range.end, r.end)]
+  # End is trimmed.
   return [document.Range(r.start, clip_range.start)]

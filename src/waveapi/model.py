@@ -18,13 +18,15 @@
 
 Defines the core data structures for the common wave model. At this level,
 models are read-only but can be modified through operations.
+
+Note that model attributes break the typical style by providing lower
+camel-cased characters to match the wire protocol format.
 """
 
 __author__ = 'davidbyttow@google.com (David Byttow)'
 
 import logging
 import document
-import util
 
 
 ROOT_WAVELET_ID_SUFFIX = '!conv+root'
@@ -43,12 +45,12 @@ class Wave(object):
     """Inits this wave with JSON data.
 
     Args:
-      json: JSON data from Wave server.
+      json: JSON data dictionary from Wave server.
 
     Attributes:
       raw_data: Dictionary of incoming raw JSON data.
-      waveId: Wave id of this wave.
-      waveletId: Wavelet id of this wavelet.
+      waveId: String id of this wave.
+      waveletId: String id of this wavelet.
     """
     self.waveId = json.get('waveId')
     self.waveletIds = set(json.get('waveletIds', []))
@@ -70,22 +72,22 @@ class Wavelet(object):
   contains.
 
   Attributes:
-    creator: Participant id of the creator of this wavelet.
+    creator: Participant id string of the creator of this wavelet.
     creationTime: Time this wavelet was created on the server.
     dataDocuments: Dictionary of data documents.
     lastModifiedTime: Time this wavelet was last modified.
-    participants: Set of participants on this wavelet.
+    participants: Set of participant ids on this wavelet.
     raw_data: Dictionary of incoming raw JSON data.
-    rootBlipId: Id of the root blip.
-    waveId: Id of the parent wave.
-    waveletId: This wavelet's id.
+    rootBlipId: String id of the root blip.
+    waveId: String id of the parent wave.
+    waveletId: This wavelet's string id.
   """
 
   def __init__(self, json):
     """Inits this wavelet with JSON data.
 
     Args:
-      json: JSON data from Wave server.
+      json: JSON data dictionary from Wave server.
     """
     self.creator = json.get('creator')
     self.creationTime = json.get('creationTime', 0)
@@ -149,24 +151,24 @@ class Blip(object):
 
   Attributes:
     annotations: List of Annotation objects on this blip.
-    blipId: Id of this blip.
+    blipId: String id of this blip.
     childBlipIds: Set of child blip ids.
-    content: Raw content contained by this blip.
-    contributors: Set of contributors that have contributed to this blip.
-    creator: Participant id of the creator.
+    content: Raw text content contained by this blip.
+    contributors: Set of contributor ids that have contributed to this blip.
+    creator: Participant string id of the creator.
     raw_data: Dictionary of incoming raw JSON data.
     document: Document object for this blip.
     lastModifiedTime: Time that this blip was last modified on the server.
-    parentBlipId: Id of the parent blip or None if this is the root.
-    waveId: Id of the wave that this blip belongs to.
-    waveletId: Id of the wavelet that this belongs to.
+    parentBlipId: String id of the parent blip or None if this is the root.
+    waveId: String id of the wave that this blip belongs to.
+    waveletId: String id of the wavelet that this belongs to.
   """
 
   def __init__(self, json):
     """Inits this blip with JSON data.
 
     Args:
-      json: JSON data from Wave server.
+      json: JSON data dictionary from Wave server.
     """
     self.blipId = json.get('blipId')
     self.childBlipIds = set(json.get('childBlipIds', []))
@@ -251,10 +253,7 @@ class Blip(object):
     return None
 
 class Document(object):
-  """Base representation of a document of a blip.
-
-  TODO(davidbyttow): Add support for annotations and elements.
-  """
+  """Base representation of a document of a blip."""
 
   def __init__(self, blip):
     """Inits this document with the data of the blip it is representing.
@@ -270,26 +269,28 @@ class Document(object):
 
 
 class Event(object):
-  """Data describing a single event."""
+  """Data describing a single event.
+
+  Attributes:
+    modifiedBy: Participant id that caused this event.
+    properties: Dictionary of properties specific to this event type.
+    raw_data: Dictionary of incoming raw JSON data.
+    timestamp: Timestamp that this event occurred on the server.
+    type: Type string of this event.
+  """
 
   def __init__(self, json):
     """Inits this event with JSON data.
 
     Args:
-      data: JSON data from Wave server.
-
-    Attributes:
-      modifiedBy: Participant id that caused this event.
-      properties: Dictionary of properties specific to this event type.
-      raw_data: Dictionary of incoming raw JSON data.
-      timestamp: Timestamp that this event occurred on the server.
-      type: Type of this event.
+      json: JSON data from Wave server.
     """
     self.modifiedBy = json.get('modifiedBy')
     self.properties = json.get('properties', {})
     self.timestamp = json.get('timestamp', 0)
     self.type = json.get('type')
     self.raw_data = json
+
 
 class Context(object):
   """Contains information associated with a single request from the server.
@@ -326,7 +327,7 @@ class Context(object):
     for wavelet_id, wavelet in self.wavelets.items():
       if wavelet_id.endswith(ROOT_WAVELET_ID_SUFFIX):
         return wavelet
-    logging.warning("Could not retrieve root wavelet.")
+    logging.warning('Could not retrieve root wavelet.')
     return None
 
   def GetWaves(self):

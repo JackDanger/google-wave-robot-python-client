@@ -30,14 +30,14 @@ import util
 class TestUtils(unittest.TestCase):
   """Tests utility functions."""
 
-  def testIsListOrDict(self):
-    self.assertTrue(util.IsListOrDict([]))
-    self.assertTrue(util.IsListOrDict({}))
-    self.assertTrue(util.IsListOrDict(set()))
-    self.assertTrue(util.IsListOrDict(()))
-    self.assertFalse(util.IsListOrDict(42))
-    self.assertFalse(util.IsListOrDict('list?'))
-    self.assertFalse(util.IsListOrDict(object))
+  def testIsIterable(self):
+    self.assertTrue(util.IsIterable([]))
+    self.assertTrue(util.IsIterable({}))
+    self.assertTrue(util.IsIterable(set()))
+    self.assertTrue(util.IsIterable(()))
+    self.assertFalse(util.IsIterable(42))
+    self.assertFalse(util.IsIterable('list?'))
+    self.assertFalse(util.IsIterable(object))
 
   def testIsDict(self):
     self.assertFalse(util.IsDict([]))
@@ -48,19 +48,19 @@ class TestUtils(unittest.TestCase):
     self.assertFalse(util.IsDict('dict?'))
     self.assertFalse(util.IsDict(object))
 
-  def testIsInstance(self):
+  def testIsUserDefinedNewStyleClass(self):
     class OldClass:
       pass
 
     class NewClass(object):
       pass
 
-    self.assertFalse(util.IsInstance(OldClass()))
-    self.assertTrue(util.IsInstance(NewClass()))
-    self.assertFalse(util.IsInstance({}))
-    self.assertFalse(util.IsInstance(()))
-    self.assertFalse(util.IsInstance(42))
-    self.assertFalse(util.IsInstance('instance?'))
+    self.assertFalse(util.IsUserDefinedNewStyleClass(OldClass()))
+    self.assertTrue(util.IsUserDefinedNewStyleClass(NewClass()))
+    self.assertFalse(util.IsUserDefinedNewStyleClass({}))
+    self.assertFalse(util.IsUserDefinedNewStyleClass(()))
+    self.assertFalse(util.IsUserDefinedNewStyleClass(42))
+    self.assertFalse(util.IsUserDefinedNewStyleClass('instance?'))
 
   def testCollapseJavaCollections(self):
     def MakeList(e0=1):
@@ -149,6 +149,14 @@ class TestUtils(unittest.TestCase):
     self.assertEquals(2, len(output.keys()))
     self.assertEquals(Data.java_class, output['javaClass'])
     self.assertEquals(data.public, output['public'])
+  
+  def testStringEnum(self):
+    empty = util.StringEnum()
+    single = util.StringEnum('foo')
+    self.assertEquals('foo', single.foo)
+    multi = util.StringEnum('foo', 'bar')
+    self.assertEquals('foo', multi.foo)
+    self.assertEquals('bar', multi.bar)
 
   def testClipRange(self):
     def R(x, y):

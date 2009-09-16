@@ -91,6 +91,9 @@ class TestElement(unittest.TestCase):
     gadget = document.Gadget('http://test.com/gadget.xml')
     self.assertEquals(document.ELEMENT_TYPE.GADGET, gadget.type)
     self.assertEquals(gadget.url, 'http://test.com/gadget.xml')
+    gadget.SubmitDelta({'foo': 'bar'})
+    self.assertEquals('joop', gadget.get('bar', 'joop'))
+    self.assertEquals('bar', gadget.get('foo', 'joop'))
 
   def testSerialize(self):
     image = document.Image('http://test.com/image.png', width=100, height=100)
@@ -105,6 +108,63 @@ class TestElement(unittest.TestCase):
     self.assertEquals(props['url'], 'http://test.com/image.png')
     self.assertEquals(props['width'], 100)
     self.assertEquals(props['height'], 100)
+
+  def testGadgetElementFromJson(self):
+    url = 'http://www.foo.com/gadget.xml'
+    json = {
+      'type': document.ELEMENT_TYPE.GADGET,
+      'properties': {
+        'url': url,
+      }
+    }
+    gadget = document.ElementFromJson(json)
+    self.assertEquals(document.ELEMENT_TYPE.GADGET, gadget.type)
+    self.assertEquals(url, gadget.url)
+
+  def testImageElementFromJson(self):
+    url = 'http://www.foo.com/image.png'
+    width = '32'
+    height = '32'
+    attachment_id = '2'
+    caption = 'Test Image'
+    json = {
+      'type': document.ELEMENT_TYPE.IMAGE,
+      'properties': {
+        'url': url,
+        'width': width,
+        'height': height,
+        'attachmentId': attachment_id,
+        'caption': caption,
+      }
+    }
+    image = document.ElementFromJson(json)
+    self.assertEquals(document.ELEMENT_TYPE.IMAGE, image.type)
+    self.assertEquals(url, image.url)
+    self.assertEquals(width, image.width)
+    self.assertEquals(height, image.height)
+    self.assertEquals(attachment_id, image.attachment_id)
+    self.assertEquals(caption, image.caption)
+
+  def testFormElementFromJson(self):
+    name = 'button'
+    value = 'value'
+    default_value = 'foo'
+    label = 'test'
+    json = {
+      'type': document.ELEMENT_TYPE.LABEL,
+      'properties': {
+        'name': name,
+        'value': value,
+        'defaultValue': default_value,
+        'label': label,
+      }
+    }
+    element = document.ElementFromJson(json)
+    self.assertEquals(document.ELEMENT_TYPE.LABEL, element.type)
+    self.assertEquals(name, element.name)
+    self.assertEquals(value, element.value)
+    self.assertEquals(default_value, element.default_value)
+    self.assertEquals(label, element.label)
 
 
 if __name__ == '__main__':

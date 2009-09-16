@@ -61,9 +61,9 @@ class TestHelpers(unittest.TestCase):
     blip = context.GetBlipById(wavelet.GetRootBlipId())
     blip.GetDocument().SetText('Hello, wave!')
     serialized = robot_abstract.SerializeContext(context, '1')
-    self.assertEqual(
+    self.assertEquals(
         '{"operations": {"javaClass": "java.util.ArrayList", "list": ['
-        '{"blipId": "wdykLROk*13", "index": -1, "waveletId": "test.com!conv+root", "javaClass": "com.google.wave.api.impl.OperationImpl", "waveId": "test.com!wdykLROk*11", "property": {"javaClass": "com.google.wave.api.Range", "end": 1, "start": 0}, "type": "DOCUMENT_DELETE"}, '
+        '{"blipId": "wdykLROk*13", "index": -1, "waveletId": "test.com!conv+root", "javaClass": "com.google.wave.api.impl.OperationImpl", "waveId": "test.com!wdykLROk*11", "type": "DOCUMENT_DELETE"}, '
         '{"blipId": "wdykLROk*13", "index": 0, "waveletId": "test.com!conv+root", "javaClass": "com.google.wave.api.impl.OperationImpl", "waveId": "test.com!wdykLROk*11", "property": "Hello, wave!", "type": "DOCUMENT_INSERT"}'
         ']}, "javaClass": "com.google.wave.api.impl.OperationMessageBundle", '
         '"version": "1"}',

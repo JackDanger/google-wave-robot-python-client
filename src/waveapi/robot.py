@@ -83,6 +83,8 @@ class RobotEventHandler(webapp.RequestHandler):
     if not json_body:
       # TODO(davidbyttow): Log error?
       return
+
+    json_body = unicode(json_body, 'utf8')
     logging.info('Incoming: ' + json_body)
 
     context, events = robot_abstract.ParseJSONBody(json_body)
@@ -94,10 +96,11 @@ class RobotEventHandler(webapp.RequestHandler):
 
     json_response = robot_abstract.SerializeContext(context,
                                                     self._robot.version)
-    # Build the response.
     logging.info('Outgoing: ' + json_response)
-    self.response.headers['Content-Type'] = 'application/json'
-    self.response.out.write(json_response)
+
+    # Build the response.
+    self.response.headers['Content-Type'] = 'application/json; charset=utf-8'
+    self.response.out.write(json_response.encode('utf-8'))
 
 
 class Robot(robot_abstract.Robot):

@@ -49,6 +49,7 @@ DOCUMENT_DELETE = 'DOCUMENT_DELETE'
 DOCUMENT_REPLACE = 'DOCUMENT_REPLACE'
 DOCUMENT_ELEMENT_APPEND = 'DOCUMENT_ELEMENT_APPEND'
 DOCUMENT_ELEMENT_DELETE = 'DOCUMENT_ELEMENT_DELETE'
+DOCUMENT_ELEMENT_MODIFY_ATTRS = 'DOCUMENT_ELEMENT_MODIFY_ATTRS'
 DOCUMENT_ELEMENT_INSERT = 'DOCUMENT_ELEMENT_INSERT'
 DOCUMENT_ELEMENT_INSERT_AFTER = 'DOCUMENT_ELEMENT_INSERT_AFTER'
 DOCUMENT_ELEMENT_INSERT_BEFORE = 'DOCUMENT_ELEMENT_INSERT_BEFORE'
@@ -296,8 +297,7 @@ class OpBasedDocument(model.Document):
     """Clears the content of this document."""
     self.__context.builder.DocumentDelete(self._blip.waveId,
                                           self._blip.waveletId,
-                                          self._blip.blipId,
-                                          0, len(self._blip.content))
+                                          self._blip.blipId)
     self._blip.content = ''
 
   def DeleteRange(self, r):
@@ -466,6 +466,24 @@ class OpBasedDocument(model.Document):
                                                  self._blip.waveletId,
                                                  self._blip.blipId,
                                                  element)
+
+  def GadgetSubmitDelta(self, gadget, delta):
+    """Submit a delta for the specified gadget.
+
+    Currently submit delta is keyed on the url of the gadget and
+    won't work if two gadgets with the same url are present in the
+    document.
+
+    Args:
+      gadget: the gadget to submit the delta too
+      delta: a dictionary with the key/values that need to be updated.
+    """
+    dummy = document.Gadget(url=gadget.url, props=delta)
+    self.__context.builder.DocumentModifyAttributes(self._blip.waveId,
+                                                    self._blip.waveletId,
+                                                    self._blip.blipId,
+                                                    dummy)
+    gadget.SubmitDelta(delta)
 
 
 class _ContextImpl(model.Context):
@@ -765,17 +783,13 @@ class OpBuilder(object):
   def WaveletSetTitle(self, wave_id, wavelet_id, title):
     """Requests to set the title of a wavelet.
 
-    Not yet implemented.
-
     Args:
       wave_id: The wave id owning that this operation is applied to.
       wavelet_id: The wavelet id that this operation is applied to.
       title: The title to set.
-
-    Raises:
-      NotImplementedError: Function not yet implemented.
     """
-    raise NotImplementedError()
+    self.AddNewOperation(WAVELET_SET_TITLE, wave_id, wavelet_id,
+                         prop=title)
 
   def BlipCreateChild(self, wave_id, wavelet_id, blip_id):
     """Requests to create a child blip of another blip.
@@ -899,7 +913,7 @@ class OpBuilder(object):
     """
     raise NotImplementedError()
 
-  def DocumentDelete(self, wave_id, wavelet_id, blip_id, start, end):
+  def DocumentDelete(self, wave_id, wavelet_id, blip_id, start=None, end=None):
     """Requests to delete content in a given range.
 
     Args:
@@ -909,8 +923,9 @@ class OpBuilder(object):
       start: Start of the range.
       end: End of the range.
     """
-    range = None
-    if start != end:
+    if start is None or end is None:
+      range = None
+    else:
       range = document.Range(start, end)
     self.AddNewOperation(DOCUMENT_DELETE, wave_id, wavelet_id, blip_id,
                          prop=range)
@@ -1012,6 +1027,26 @@ class OpBuilder(object):
     """
     self.AddNewOperation(DOCUMENT_ELEMENT_REPLACE, wave_id, wavelet_id, blip_id,
                          index=position,
+                         prop=element)
+
+  def DocumentModifyAttributes(self, wave_id, wavelet_id, blip_id,
+                               element):
+    """Modifies the attributes of an element.
+
+    This is done by passing the a new element that is matched against
+    existing elements and the attributes are copied without the element
+    actually being deleted and reinserted. This is especially useful for
+    gadgets.
+
+    Args:
+      wave_id: The wave id owning that this operation is applied to.
+      wavelet_id: The wavelet id that this operation is applied to.
+      blip_id: The blip id that this operation is applied to.
+      element: Element instance to take the attributes from an to
+               match.
+    """
+    self.AddNewOperation(DOCUMENT_ELEMENT_MODIFY_ATTRS, wave_id, wavelet_id, blip_id,
+                         index=-1,
                          prop=element)
 
   def DocumentInlineBlipAppend(self, wave_id, wavelet_id, blip_id):

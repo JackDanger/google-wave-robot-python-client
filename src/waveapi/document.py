@@ -82,18 +82,7 @@ class Annotation(object):
     self.range = r or Range()
 
 
-class StringEnum(object):
-  """Enum like class that is configured with a list of values.
-
-  This class effectively implements an enum for Elements, except for that
-  the actual values of the enums will be the string values."""
-
-  def __init__(self, *values):
-    for name in values:
-      setattr(self, name, name)
-
-
-ELEMENT_TYPE = StringEnum('INLINE_BLIP', 'INPUT', 'CHECK', 'LABEL', 'BUTTON',
+ELEMENT_TYPE = util.StringEnum('INLINE_BLIP', 'INPUT', 'CHECK', 'LABEL', 'BUTTON',
     'RADIO_BUTTON', 'RADIO_BUTTON_GROUP','PASSWORD', 'TEXTAREA',
     'GADGET', 'IMAGE')
 
@@ -163,6 +152,7 @@ class FormElement(Element):
 
 
 class Gadget(Element):
+  """Represents a Gadget element within the content of a document."""
 
   java_class = 'com.google.wave.api.Gadget'
 
@@ -173,8 +163,26 @@ class Gadget(Element):
     logging.info('CONSTRUCTING gadget with:' + str(props))
     super(Gadget, self).__init__(ELEMENT_TYPE.GADGET, properties=props)
 
+  def get(self, key, default=None):
+    """Standard get interface for gadgets"""
+    if hasattr(self, key):
+      return getattr(self, key)
+    else:
+      return default
+
+  def SubmitDelta(self, delta):
+    """Submits the passed delta to the gadget.
+
+    This does not send the delta to the server, but only modifies the
+    local state. The send the delto the server, go through the
+    document.GadgetSubmitDelta interface.
+    """
+    for k, v in delta.items():
+      setattr(self, k, v)
+
 
 class Image(Element):
+  """Represents an Image element within the context of a document."""
 
   java_class = 'com.google.wave.api.Image'
 
@@ -189,6 +197,7 @@ def ElementFromJson(json):
   etype = json['type']
   logging.info('constructing: ' + str(json))
   props = json['properties'].copy()
+
   if etype == ELEMENT_TYPE.GADGET:
     url = props['url']
     del props['url']
@@ -199,9 +208,9 @@ def ElementFromJson(json):
                  height=props.get('height'),
                  attachment_id=props.get('attachmentId'),
                  caption=props.get('caption'))
-  else:
-    return FormElement(element_type=etype,
-                       name=props.get('name', ''),
-                       value=props.get('value', ''),
-                       default_value=props.get('defaultValue', ''),
-                       label=props.get('label', ''))
+
+  return FormElement(element_type=etype,
+                     name=props.get('name', ''),
+                     value=props.get('value', ''),
+                     default_value=props.get('defaultValue', ''),
+                     label=props.get('label', ''))

@@ -40,7 +40,7 @@ TEST_WAVELET_DATA = {
     'waveletId': 'test.com' + model.ROOT_WAVELET_ID_SUFFIX,
 }
 
-TEST_GADGET_URL = 'http://test,com/gadget.xml'
+TEST_GADGET_URL = 'http://test.com/gadget.xml'
 
 TEST_GADGET = {
     'type': 'GADGET',
@@ -141,7 +141,7 @@ class TestWaveModel(unittest.TestCase):
     self.assertEquals(self.test_blip_data['waveId'], b.waveId)
     self.assertEquals(self.test_blip_data['waveletId'], b.waveletId)
     self.assertEquals(self.test_blip_data['waveletId'], b.waveletId)
-    self.assertEquals(True, b.IsRoot())
+    self.assertTrue(b.IsRoot())
 
   def testBlipMethods(self):
     b = self.blip
@@ -157,13 +157,13 @@ class TestWaveModel(unittest.TestCase):
     self.assertEquals(self.test_blip_data['parentBlipId'], b.GetParentBlipId())
     self.assertEquals(self.test_blip_data['waveId'], b.GetWaveId())
     self.assertEquals(len(self.test_blip_data['elements']), len(b.GetElements()))
-    self.assertEquals(True, b.IsRoot())
+    self.assertTrue(b.IsRoot())
     self.assertEquals(b.GetGadgetByUrl(TEST_GADGET_URL).url, TEST_GADGET_URL)
 
   def testBlipIsNotRoot(self):
     self.test_blip_data['parentBlipId'] = 'blip-parent'
     b = model.Blip(self.test_blip_data)
-    self.assertEquals(False, b.IsRoot())
+    self.assertFalse(b.IsRoot())
 
   def testDocument(self):
     b = model.Blip(self.test_blip_data)

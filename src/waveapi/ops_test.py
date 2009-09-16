@@ -124,8 +124,8 @@ class TestOpBasedWavelet(TestOpBasedClasses):
     self.assertEquals('value', self.test_wavelet.GetDataDocument('key'))
 
   def testSetTitle(self):
-    self.assertRaises(NotImplementedError,
-                      self.test_wavelet.SetTitle, 'foo')
+    self.test_wavelet.SetTitle('foobar')
+    self.assertEquals('foobar', self.test_wavelet.GetTitle())
 
 
 class TestOpBasedBlip(TestOpBasedClasses):
@@ -241,8 +241,11 @@ class TestOpBasedDocument(TestOpBasedClasses):
     self.assertEquals(self.test_blip.GetId(), blip.GetParentBlipId())
     self.assertEquals(blip, self.test_context.GetBlipById(blip.GetId()))
 
-  def testAppendElement(self):
-    self.test_doc.AppendElement("GADGET")
+  def testGadget(self):
+    gadget = document.Gadget('http://kitchensinky.appspot.com/public/embed.xml')
+    self.test_doc.AppendElement(gadget)
+    self.test_doc.GadgetSubmitDelta(gadget, {'foo': 'bar'})
+    self.assertEquals('bar', gadget.get('foo'))
 
 
 class TestOpBuilder(TestOpBasedClasses):
