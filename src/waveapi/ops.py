@@ -311,7 +311,7 @@ class OpBasedDocument(model.Document):
                                           self._blip.blipId,
                                           r.start, r.end)
     left = self._blip.content[:r.start]
-    right = self._blip.content[r.end + 1:]
+    right = self._blip.content[r.end:]
     self._blip.content = left + right
 
   def AnnotateDocument(self, name, value):
