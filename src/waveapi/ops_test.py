@@ -160,9 +160,9 @@ class TestOpBasedDocument(TestOpBasedClasses):
 
   def testSetTextInRange(self):
     text = 'abc'
-    self.test_doc.SetTextInRange(document.Range(0, 2), text)
+    self.test_doc.SetTextInRange(document.Range(0, 3), text)
     self.assertEquals('abc456', self.test_doc.GetText())
-    self.test_doc.SetTextInRange(document.Range(2, 2), text)
+    self.test_doc.SetTextInRange(document.Range(2, 3), text)
     self.assertEquals('ababc456', self.test_doc.GetText())
 
   def testAppendText(self):
@@ -175,9 +175,9 @@ class TestOpBasedDocument(TestOpBasedClasses):
     self.assertEquals('', self.test_doc.GetText())
 
   def testDeleteRange(self):
-    self.test_doc.DeleteRange(document.Range(0, 1))
+    self.test_doc.DeleteRange(document.Range(0, 2))
     self.assertEquals('3456', self.test_doc.GetText())
-    self.test_doc.DeleteRange(document.Range(0, 0))
+    self.test_doc.DeleteRange(document.Range(0, 1))
     self.assertEquals('456', self.test_doc.GetText())
 
   def testAnnotateDocument(self):
