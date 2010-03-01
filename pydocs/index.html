@@ -1,0 +1,1791 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Google Wave Robot Python API v2 &mdash; Python SDK v.2 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '.2',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Python SDK v.2 documentation" href="" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li><a href="">Python SDK v.2 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="google-wave-robot-python-api-v2">
+<h1>Google Wave Robot Python API v2<a class="headerlink" href="#google-wave-robot-python-api-v2" title="Permalink to this headline">¶</a></h1>
+<p>For more information on developing, read the developer&#8217;s guide:
+<a class="reference external" href="http://code.google.com/apis/wave/extensions/robots/python-tutorial.html">http://code.google.com/apis/wave/extensions/robots/python-tutorial.html</a></p>
+<div class="section" id="module-blip">
+<h2>The <tt class="xref docutils literal"><span class="pre">blip</span></tt> Module<a class="headerlink" href="#module-blip" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="blip.Annotation">
+<em class="property">class </em><tt class="descclassname">blip.</tt><tt class="descname">Annotation</tt><big>(</big><em>name</em>, <em>value</em>, <em>start</em>, <em>end</em><big>)</big><a class="headerlink" href="#blip.Annotation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Models an annotation on a document.</p>
+<p>Annotations are key/value pairs over a range of content. Annotations
+can be used to store data or to be interpreted by a client when displaying
+the data.</p>
+<dl class="attribute">
+<dt id="blip.Annotation.BACKGROUND_COLOR">
+<tt class="descname">BACKGROUND_COLOR</tt><a class="headerlink" href="#blip.Annotation.BACKGROUND_COLOR" title="Permalink to this definition">¶</a></dt>
+<dd>Reserved annotation for setting background color of text.</dd></dl>
+
+<dl class="attribute">
+<dt id="blip.Annotation.COLOR">
+<tt class="descname">COLOR</tt><a class="headerlink" href="#blip.Annotation.COLOR" title="Permalink to this definition">¶</a></dt>
+<dd>Reserved annotation for setting color of text.</dd></dl>
+
+<dl class="attribute">
+<dt id="blip.Annotation.FONT_FAMILY">
+<tt class="descname">FONT_FAMILY</tt><a class="headerlink" href="#blip.Annotation.FONT_FAMILY" title="Permalink to this definition">¶</a></dt>
+<dd>Reserved annotation for setting font family of text.</dd></dl>
+
+<dl class="attribute">
+<dt id="blip.Annotation.FONT_SIZE">
+<tt class="descname">FONT_SIZE</tt><a class="headerlink" href="#blip.Annotation.FONT_SIZE" title="Permalink to this definition">¶</a></dt>
+<dd>Reserved annotation for setting font family of text.</dd></dl>
+
+<dl class="attribute">
+<dt id="blip.Annotation.FONT_STYLE">
+<tt class="descname">FONT_STYLE</tt><a class="headerlink" href="#blip.Annotation.FONT_STYLE" title="Permalink to this definition">¶</a></dt>
+<dd>Reserved annotation for setting font style of text.</dd></dl>
+
+<dl class="attribute">
+<dt id="blip.Annotation.FONT_WEIGHT">
+<tt class="descname">FONT_WEIGHT</tt><a class="headerlink" href="#blip.Annotation.FONT_WEIGHT" title="Permalink to this definition">¶</a></dt>
+<dd>Reserved annotation for setting font weight of text.</dd></dl>
+
+<dl class="attribute">
+<dt id="blip.Annotation.TEXT_DECORATION">
+<tt class="descname">TEXT_DECORATION</tt><a class="headerlink" href="#blip.Annotation.TEXT_DECORATION" title="Permalink to this definition">¶</a></dt>
+<dd>Reserved annotation for setting text decoration.</dd></dl>
+
+<dl class="attribute">
+<dt id="blip.Annotation.VERTICAL_ALIGN">
+<tt class="descname">VERTICAL_ALIGN</tt><a class="headerlink" href="#blip.Annotation.VERTICAL_ALIGN" title="Permalink to this definition">¶</a></dt>
+<dd>Reserved annotation for setting vertical alignment.</dd></dl>
+
+<dl class="attribute">
+<dt id="blip.Annotation.end">
+<tt class="descname">end</tt><a class="headerlink" href="#blip.Annotation.end" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="blip.Annotation.name">
+<tt class="descname">name</tt><a class="headerlink" href="#blip.Annotation.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="blip.Annotation.start">
+<tt class="descname">start</tt><a class="headerlink" href="#blip.Annotation.start" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="blip.Annotation.value">
+<tt class="descname">value</tt><a class="headerlink" href="#blip.Annotation.value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="blip.Annotation.serialize">
+<tt class="descname">serialize</tt><big>(</big><big>)</big><a class="headerlink" href="#blip.Annotation.serialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serializes the annotation.</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>A dict containing the name, value, and range values.</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="blip.Annotations">
+<em class="property">class </em><tt class="descclassname">blip.</tt><tt class="descname">Annotations</tt><big>(</big><em>operation_queue</em>, <em>blip</em><big>)</big><a class="headerlink" href="#blip.Annotations" title="Permalink to this definition">¶</a></dt>
+<dd><p>A dictionary-like object containing the annotations, keyed by name.</p>
+<dl class="method">
+<dt id="blip.Annotations.names">
+<tt class="descname">names</tt><big>(</big><big>)</big><a class="headerlink" href="#blip.Annotations.names" title="Permalink to this definition">¶</a></dt>
+<dd>Return the names of the annotations in the store.</dd></dl>
+
+<dl class="method">
+<dt id="blip.Annotations.serialize">
+<tt class="descname">serialize</tt><big>(</big><big>)</big><a class="headerlink" href="#blip.Annotations.serialize" title="Permalink to this definition">¶</a></dt>
+<dd>Return a list of the serialized annotations.</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="blip.Blip">
+<em class="property">class </em><tt class="descclassname">blip.</tt><tt class="descname">Blip</tt><big>(</big><em>json</em>, <em>other_blips</em>, <em>operation_queue</em><big>)</big><a class="headerlink" href="#blip.Blip" title="Permalink to this definition">¶</a></dt>
+<dd><p>Models a single blip instance.</p>
+<p>Blips are essentially the documents that make up a conversation. Blips can
+live in a hierarchy of blips. A root blip has no parent blip id, but all
+blips have the ids of the wave and wavelet that they are associated with.</p>
+<p>Blips also contain annotations, content and elements, which are accessed via
+the Document object.</p>
+<dl class="attribute">
+<dt id="blip.Blip.annotations">
+<tt class="descname">annotations</tt><a class="headerlink" href="#blip.Blip.annotations" title="Permalink to this definition">¶</a></dt>
+<dd>The annotations for this document.</dd></dl>
+
+<dl class="attribute">
+<dt id="blip.Blip.blip_id">
+<tt class="descname">blip_id</tt><a class="headerlink" href="#blip.Blip.blip_id" title="Permalink to this definition">¶</a></dt>
+<dd>The id of this blip.</dd></dl>
+
+<dl class="attribute">
+<dt id="blip.Blip.child_blip_ids">
+<tt class="descname">child_blip_ids</tt><a class="headerlink" href="#blip.Blip.child_blip_ids" title="Permalink to this definition">¶</a></dt>
+<dd>The set of the ids of this blip&#8217;s children.</dd></dl>
+
+<dl class="attribute">
+<dt id="blip.Blip.child_blips">
+<tt class="descname">child_blips</tt><a class="headerlink" href="#blip.Blip.child_blips" title="Permalink to this definition">¶</a></dt>
+<dd>The set of blips that are children of this blip.</dd></dl>
+
+<dl class="attribute">
+<dt id="blip.Blip.contributors">
+<tt class="descname">contributors</tt><a class="headerlink" href="#blip.Blip.contributors" title="Permalink to this definition">¶</a></dt>
+<dd>The set of participant ids that contributed to this blip.</dd></dl>
+
+<dl class="attribute">
+<dt id="blip.Blip.creator">
+<tt class="descname">creator</tt><a class="headerlink" href="#blip.Blip.creator" title="Permalink to this definition">¶</a></dt>
+<dd>The id of the participant that created this blip.</dd></dl>
+
+<dl class="attribute">
+<dt id="blip.Blip.elements">
+<tt class="descname">elements</tt><a class="headerlink" href="#blip.Blip.elements" title="Permalink to this definition">¶</a></dt>
+<dd><p>The elements for this document.</p>
+<p>The elements of a document are things like forms elements, gadgets
+that cannot be expressed as plain text. The elements property of
+a document is a dictionary like object from index in the document
+to element instance. In the text of the document you&#8217;ll typically
+find a space as a place holder for the element.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="blip.Blip.last_modified_time">
+<tt class="descname">last_modified_time</tt><a class="headerlink" href="#blip.Blip.last_modified_time" title="Permalink to this definition">¶</a></dt>
+<dd>The time in seconds since epoch when this blip was last modified.</dd></dl>
+
+<dl class="attribute">
+<dt id="blip.Blip.parent_blip">
+<tt class="descname">parent_blip</tt><a class="headerlink" href="#blip.Blip.parent_blip" title="Permalink to this definition">¶</a></dt>
+<dd>The parent blip or None if it is the root.</dd></dl>
+
+<dl class="attribute">
+<dt id="blip.Blip.parent_blip_id">
+<tt class="descname">parent_blip_id</tt><a class="headerlink" href="#blip.Blip.parent_blip_id" title="Permalink to this definition">¶</a></dt>
+<dd>The parent blip_id or None if this is the root blip.</dd></dl>
+
+<dl class="attribute">
+<dt id="blip.Blip.text">
+<tt class="descname">text</tt><a class="headerlink" href="#blip.Blip.text" title="Permalink to this definition">¶</a></dt>
+<dd>Returns the raw text content of this document.</dd></dl>
+
+<dl class="attribute">
+<dt id="blip.Blip.version">
+<tt class="descname">version</tt><a class="headerlink" href="#blip.Blip.version" title="Permalink to this definition">¶</a></dt>
+<dd>The version of this blip.</dd></dl>
+
+<dl class="attribute">
+<dt id="blip.Blip.wave_id">
+<tt class="descname">wave_id</tt><a class="headerlink" href="#blip.Blip.wave_id" title="Permalink to this definition">¶</a></dt>
+<dd>The id of the wave that this blip belongs to.</dd></dl>
+
+<dl class="attribute">
+<dt id="blip.Blip.wavelet_id">
+<tt class="descname">wavelet_id</tt><a class="headerlink" href="#blip.Blip.wavelet_id" title="Permalink to this definition">¶</a></dt>
+<dd>The id of the wavelet that this blip belongs to.</dd></dl>
+
+<dl class="method">
+<dt id="blip.Blip.is_root">
+<tt class="descname">is_root</tt><big>(</big><big>)</big><a class="headerlink" href="#blip.Blip.is_root" title="Permalink to this definition">¶</a></dt>
+<dd>Returns whether this is the root blip of a wavelet.</dd></dl>
+
+<dl class="method">
+<dt id="blip.Blip.all">
+<tt class="descname">all</tt><big>(</big><em>findwhat=None</em>, <em>maxres=-1</em>, <em>**restrictions</em><big>)</big><a class="headerlink" href="#blip.Blip.all" title="Permalink to this definition">¶</a></dt>
+<dd>Returns a BlipRefs object representing all results for the search.
+If searching for an element, the restrictions can be used to specify
+additional element properties to filter on, like the url of a Gadget.</dd></dl>
+
+<dl class="method">
+<dt id="blip.Blip.first">
+<tt class="descname">first</tt><big>(</big><em>findwhat=None</em>, <em>**restrictions</em><big>)</big><a class="headerlink" href="#blip.Blip.first" title="Permalink to this definition">¶</a></dt>
+<dd>Returns a BlipRefs object representing the first result for the search.
+If searching for an element, the restrictions can be used to specify
+additional element properties to filter on, like the url of a Gadget.</dd></dl>
+
+<dl class="method">
+<dt id="blip.Blip.at">
+<tt class="descname">at</tt><big>(</big><em>index</em><big>)</big><a class="headerlink" href="#blip.Blip.at" title="Permalink to this definition">¶</a></dt>
+<dd>Returns a BlipRefs object representing a 1-character range.</dd></dl>
+
+<dl class="method">
+<dt id="blip.Blip.range">
+<tt class="descname">range</tt><big>(</big><em>start</em>, <em>end</em><big>)</big><a class="headerlink" href="#blip.Blip.range" title="Permalink to this definition">¶</a></dt>
+<dd>Returns a BlipRefs object representing the range.</dd></dl>
+
+<dl class="method">
+<dt id="blip.Blip.serialize">
+<tt class="descname">serialize</tt><big>(</big><big>)</big><a class="headerlink" href="#blip.Blip.serialize" title="Permalink to this definition">¶</a></dt>
+<dd>Return a dictionary representation of this blip ready for json.</dd></dl>
+
+<dl class="method">
+<dt id="blip.Blip.proxy_for">
+<tt class="descname">proxy_for</tt><big>(</big><em>proxy_for_id</em><big>)</big><a class="headerlink" href="#blip.Blip.proxy_for" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a view on this blip that will proxy for the specified id.</p>
+<p>A shallow copy of the current blip is returned with the proxy_for_id
+set. Any modifications made to this copy will be done using the
+proxy_for_id, i.e. the robot+&lt;proxy_for_id&gt;&#64;appspot.com address will
+be used.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="blip.Blip.find">
+<tt class="descname">find</tt><big>(</big><em>what</em>, <em>**restrictions</em><big>)</big><a class="headerlink" href="#blip.Blip.find" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterate to matching bits of contents.</p>
+<p>Yield either elements or pieces of text.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="blip.Blip.append">
+<tt class="descname">append</tt><big>(</big><em>what</em><big>)</big><a class="headerlink" href="#blip.Blip.append" title="Permalink to this definition">¶</a></dt>
+<dd>Convenience method covering a common pattern.</dd></dl>
+
+<dl class="method">
+<dt id="blip.Blip.reply">
+<tt class="descname">reply</tt><big>(</big><big>)</big><a class="headerlink" href="#blip.Blip.reply" title="Permalink to this definition">¶</a></dt>
+<dd>Create and return a reply to this blip.</dd></dl>
+
+<dl class="method">
+<dt id="blip.Blip.append_markup">
+<tt class="descname">append_markup</tt><big>(</big><em>markup</em><big>)</big><a class="headerlink" href="#blip.Blip.append_markup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Interpret the markup text as xhtml and append the result to the doc.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>markup: The markup&#8217;ed text to append.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="blip.Blip.insert_inline_blip">
+<tt class="descname">insert_inline_blip</tt><big>(</big><em>position</em><big>)</big><a class="headerlink" href="#blip.Blip.insert_inline_blip" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inserts an inline blip into this blip at a specific position.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>position: Position to insert the blip at.</dd>
+<dt>Returns:</dt>
+<dd>The JSON data of the blip that was created.</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="blip.BlipRefs">
+<em class="property">class </em><tt class="descclassname">blip.</tt><tt class="descname">BlipRefs</tt><big>(</big><em>blip</em>, <em>maxres=1</em><big>)</big><a class="headerlink" href="#blip.BlipRefs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Represents a set of references to contents in a blip.</p>
+<p>For example, a BlipRefs instance can represent the results
+of a search, an explicitly set range, a regular expression,
+or refer to the entire blip. BlipRefs are used to express
+operations on a blip in a consistent way that can easily
+be transfered to the server.</p>
+<p>The typical way of creating a BlipRefs object is to use
+selector methods on the Blip object. Developers will not
+usually instantiate a BlipRefs object directly.</p>
+<dl class="classmethod">
+<dt id="blip.BlipRefs.all">
+<em class="property">classmethod </em><tt class="descname">all</tt><big>(</big><em>blip</em>, <em>findwhat</em>, <em>maxres=-1</em>, <em>**restrictions</em><big>)</big><a class="headerlink" href="#blip.BlipRefs.all" title="Permalink to this definition">¶</a></dt>
+<dd>Construct an instance representing the search for text or elements.</dd></dl>
+
+<dl class="classmethod">
+<dt id="blip.BlipRefs.range">
+<em class="property">classmethod </em><tt class="descname">range</tt><big>(</big><em>blip</em>, <em>begin</em>, <em>end</em><big>)</big><a class="headerlink" href="#blip.BlipRefs.range" title="Permalink to this definition">¶</a></dt>
+<dd>Constructs an instance representing an explicitly set range.</dd></dl>
+
+<dl class="method">
+<dt id="blip.BlipRefs.insert">
+<tt class="descname">insert</tt><big>(</big><em>what</em><big>)</big><a class="headerlink" href="#blip.BlipRefs.insert" title="Permalink to this definition">¶</a></dt>
+<dd>Inserts what at the matched positions.</dd></dl>
+
+<dl class="method">
+<dt id="blip.BlipRefs.insert_after">
+<tt class="descname">insert_after</tt><big>(</big><em>what</em><big>)</big><a class="headerlink" href="#blip.BlipRefs.insert_after" title="Permalink to this definition">¶</a></dt>
+<dd>Inserts what just after the matched positions.</dd></dl>
+
+<dl class="method">
+<dt id="blip.BlipRefs.replace">
+<tt class="descname">replace</tt><big>(</big><em>what</em><big>)</big><a class="headerlink" href="#blip.BlipRefs.replace" title="Permalink to this definition">¶</a></dt>
+<dd>Replaces the matched positions with what.</dd></dl>
+
+<dl class="method">
+<dt id="blip.BlipRefs.delete">
+<tt class="descname">delete</tt><big>(</big><big>)</big><a class="headerlink" href="#blip.BlipRefs.delete" title="Permalink to this definition">¶</a></dt>
+<dd>Deletes the content at the matched positions.</dd></dl>
+
+<dl class="method">
+<dt id="blip.BlipRefs.annotate">
+<tt class="descname">annotate</tt><big>(</big><em>name</em>, <em>value=None</em><big>)</big><a class="headerlink" href="#blip.BlipRefs.annotate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Annotates the content at the matched positions.</p>
+<p>You can either specify both name and value to set the
+same annotation, or supply as the first parameter something
+that yields name/value pairs.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="blip.BlipRefs.clear_annotation">
+<tt class="descname">clear_annotation</tt><big>(</big><em>name</em><big>)</big><a class="headerlink" href="#blip.BlipRefs.clear_annotation" title="Permalink to this definition">¶</a></dt>
+<dd>Clears the annotation at the matched positions.</dd></dl>
+
+<dl class="method">
+<dt id="blip.BlipRefs.update_element">
+<tt class="descname">update_element</tt><big>(</big><em>new_values</em><big>)</big><a class="headerlink" href="#blip.BlipRefs.update_element" title="Permalink to this definition">¶</a></dt>
+<dd>Update an existing element with a set of new values.</dd></dl>
+
+<dl class="method">
+<dt id="blip.BlipRefs.value">
+<tt class="descname">value</tt><big>(</big><big>)</big><a class="headerlink" href="#blip.BlipRefs.value" title="Permalink to this definition">¶</a></dt>
+<dd>Convenience method to convert a BlipRefs to value of its first match.</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="blip.Blips">
+<em class="property">class </em><tt class="descclassname">blip.</tt><tt class="descname">Blips</tt><big>(</big><em>blips</em><big>)</big><a class="headerlink" href="#blip.Blips" title="Permalink to this definition">¶</a></dt>
+<dd><p>A dictionary-like object containing the blips, keyed on blip ID.</p>
+<dl class="method">
+<dt id="blip.Blips.get">
+<tt class="descname">get</tt><big>(</big><em>blip_id</em>, <em>default_value=None</em><big>)</big><a class="headerlink" href="#blip.Blips.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves a blip.</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>A Blip object. If none found for the ID, it returns None,
+or if default_value is specified, it returns that.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="blip.Blips.serialize">
+<tt class="descname">serialize</tt><big>(</big><big>)</big><a class="headerlink" href="#blip.Blips.serialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serializes the blips.
+Returns:</p>
+<blockquote>
+A dict of serialized blips.</blockquote>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-wavelet">
+<h2>The <tt class="xref docutils literal"><span class="pre">wavelet</span></tt> Module<a class="headerlink" href="#module-wavelet" title="Permalink to this headline">¶</a></h2>
+<p>Defines classes that are needed to model a wavelet.</p>
+<dl class="class">
+<dt id="wavelet.DataDocs">
+<em class="property">class </em><tt class="descclassname">wavelet.</tt><tt class="descname">DataDocs</tt><big>(</big><em>init_docs</em>, <em>wave_id</em>, <em>wavelet_id</em>, <em>operation_queue</em><big>)</big><a class="headerlink" href="#wavelet.DataDocs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class modeling a bunch of data documents in pythonic way.</p>
+<dl class="method">
+<dt id="wavelet.DataDocs.serialize">
+<tt class="descname">serialize</tt><big>(</big><big>)</big><a class="headerlink" href="#wavelet.DataDocs.serialize" title="Permalink to this definition">¶</a></dt>
+<dd>Returns a dictionary of the data documents.</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="wavelet.Participants">
+<em class="property">class </em><tt class="descclassname">wavelet.</tt><tt class="descname">Participants</tt><big>(</big><em>participants</em>, <em>wave_id</em>, <em>wavelet_id</em>, <em>operation_queue</em><big>)</big><a class="headerlink" href="#wavelet.Participants" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class modelling a set of participants in pythonic way.</p>
+<dl class="method">
+<dt id="wavelet.Participants.add">
+<tt class="descname">add</tt><big>(</big><em>participant_id</em><big>)</big><a class="headerlink" href="#wavelet.Participants.add" title="Permalink to this definition">¶</a></dt>
+<dd>Adds a participant by their ID (address).</dd></dl>
+
+<dl class="method">
+<dt id="wavelet.Participants.serialize">
+<tt class="descname">serialize</tt><big>(</big><big>)</big><a class="headerlink" href="#wavelet.Participants.serialize" title="Permalink to this definition">¶</a></dt>
+<dd>Returns a list of the participants.</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="wavelet.Tags">
+<em class="property">class </em><tt class="descclassname">wavelet.</tt><tt class="descname">Tags</tt><big>(</big><em>tags</em>, <em>wave_id</em>, <em>wavelet_id</em>, <em>operation_queue</em><big>)</big><a class="headerlink" href="#wavelet.Tags" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class modelling a list of tags.</p>
+<dl class="method">
+<dt id="wavelet.Tags.append">
+<tt class="descname">append</tt><big>(</big><em>tag</em><big>)</big><a class="headerlink" href="#wavelet.Tags.append" title="Permalink to this definition">¶</a></dt>
+<dd>Appends a tag if it doesn&#8217;t already exist.</dd></dl>
+
+<dl class="method">
+<dt id="wavelet.Tags.remove">
+<tt class="descname">remove</tt><big>(</big><em>tag</em><big>)</big><a class="headerlink" href="#wavelet.Tags.remove" title="Permalink to this definition">¶</a></dt>
+<dd>Removes a tag if it exists.</dd></dl>
+
+<dl class="method">
+<dt id="wavelet.Tags.serialize">
+<tt class="descname">serialize</tt><big>(</big><big>)</big><a class="headerlink" href="#wavelet.Tags.serialize" title="Permalink to this definition">¶</a></dt>
+<dd>Returns a list of tags.</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="wavelet.Wavelet">
+<em class="property">class </em><tt class="descclassname">wavelet.</tt><tt class="descname">Wavelet</tt><big>(</big><em>json</em>, <em>blips</em>, <em>robot</em>, <em>operation_queue</em><big>)</big><a class="headerlink" href="#wavelet.Wavelet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Models a single wavelet.</p>
+<p>A single wavelet is composed of metadata, participants, and its blips.
+To guarantee that all blips are available, specify Context.ALL for events.</p>
+<dl class="attribute">
+<dt id="wavelet.Wavelet.blips">
+<tt class="descname">blips</tt><a class="headerlink" href="#wavelet.Wavelet.blips" title="Permalink to this definition">¶</a></dt>
+<dd>Returns the blips for this wavelet.</dd></dl>
+
+<dl class="attribute">
+<dt id="wavelet.Wavelet.creation_time">
+<tt class="descname">creation_time</tt><a class="headerlink" href="#wavelet.Wavelet.creation_time" title="Permalink to this definition">¶</a></dt>
+<dd>Returns the time that this wavelet was first created in milliseconds.</dd></dl>
+
+<dl class="attribute">
+<dt id="wavelet.Wavelet.creator">
+<tt class="descname">creator</tt><a class="headerlink" href="#wavelet.Wavelet.creator" title="Permalink to this definition">¶</a></dt>
+<dd>Returns the participant id of the creator of this wavelet.</dd></dl>
+
+<dl class="attribute">
+<dt id="wavelet.Wavelet.data_documents">
+<tt class="descname">data_documents</tt><a class="headerlink" href="#wavelet.Wavelet.data_documents" title="Permalink to this definition">¶</a></dt>
+<dd>Returns the data documents for this wavelet based on key name.</dd></dl>
+
+<dl class="attribute">
+<dt id="wavelet.Wavelet.domain">
+<tt class="descname">domain</tt><a class="headerlink" href="#wavelet.Wavelet.domain" title="Permalink to this definition">¶</a></dt>
+<dd>Return the domain that wavelet belongs to.</dd></dl>
+
+<dl class="attribute">
+<dt id="wavelet.Wavelet.last_modified_time">
+<tt class="descname">last_modified_time</tt><a class="headerlink" href="#wavelet.Wavelet.last_modified_time" title="Permalink to this definition">¶</a></dt>
+<dd>Returns the time that this wavelet was last modified in ms.</dd></dl>
+
+<dl class="attribute">
+<dt id="wavelet.Wavelet.participants">
+<tt class="descname">participants</tt><a class="headerlink" href="#wavelet.Wavelet.participants" title="Permalink to this definition">¶</a></dt>
+<dd>Returns a set of participants on this wavelet.</dd></dl>
+
+<dl class="attribute">
+<dt id="wavelet.Wavelet.robot">
+<tt class="descname">robot</tt><a class="headerlink" href="#wavelet.Wavelet.robot" title="Permalink to this definition">¶</a></dt>
+<dd>The robot that owns this wavelet.</dd></dl>
+
+<dl class="attribute">
+<dt id="wavelet.Wavelet.robot_address">
+<tt class="descname">robot_address</tt><a class="headerlink" href="#wavelet.Wavelet.robot_address" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="wavelet.Wavelet.root_blip">
+<tt class="descname">root_blip</tt><a class="headerlink" href="#wavelet.Wavelet.root_blip" title="Permalink to this definition">¶</a></dt>
+<dd>Returns this wavelet&#8217;s root blip.</dd></dl>
+
+<dl class="attribute">
+<dt id="wavelet.Wavelet.tags">
+<tt class="descname">tags</tt><a class="headerlink" href="#wavelet.Wavelet.tags" title="Permalink to this definition">¶</a></dt>
+<dd>Returns a list of tags for this wavelet.</dd></dl>
+
+<dl class="attribute">
+<dt id="wavelet.Wavelet.title">
+<tt class="descname">title</tt><a class="headerlink" href="#wavelet.Wavelet.title" title="Permalink to this definition">¶</a></dt>
+<dd>Returns or sets the wavelet&#8217;s title.</dd></dl>
+
+<dl class="attribute">
+<dt id="wavelet.Wavelet.wave_id">
+<tt class="descname">wave_id</tt><a class="headerlink" href="#wavelet.Wavelet.wave_id" title="Permalink to this definition">¶</a></dt>
+<dd>Returns this wavelet&#8217;s parent wave id.</dd></dl>
+
+<dl class="attribute">
+<dt id="wavelet.Wavelet.wavelet_id">
+<tt class="descname">wavelet_id</tt><a class="headerlink" href="#wavelet.Wavelet.wavelet_id" title="Permalink to this definition">¶</a></dt>
+<dd>Returns this wavelet&#8217;s id.</dd></dl>
+
+<dl class="method">
+<dt id="wavelet.Wavelet.get_operation_queue">
+<tt class="descname">get_operation_queue</tt><big>(</big><big>)</big><a class="headerlink" href="#wavelet.Wavelet.get_operation_queue" title="Permalink to this definition">¶</a></dt>
+<dd>Returns the OperationQueue for this wavelet.</dd></dl>
+
+<dl class="method">
+<dt id="wavelet.Wavelet.serialize">
+<tt class="descname">serialize</tt><big>(</big><big>)</big><a class="headerlink" href="#wavelet.Wavelet.serialize" title="Permalink to this definition">¶</a></dt>
+<dd>Return a dict of the wavelet properties.</dd></dl>
+
+<dl class="method">
+<dt id="wavelet.Wavelet.proxy_for">
+<tt class="descname">proxy_for</tt><big>(</big><em>proxy_for_id</em><big>)</big><a class="headerlink" href="#wavelet.Wavelet.proxy_for" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a view on this wavelet that will proxy for the specified id.</p>
+<p>A shallow copy of the current wavelet is returned with the proxy_for_id
+set. Any modifications made to this copy will be done using the
+proxy_for_id, i.e. the robot+&lt;proxy_for_id&gt;&#64;appspot.com address will
+be used.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="wavelet.Wavelet.add_proxying_participant">
+<tt class="descname">add_proxying_participant</tt><big>(</big><em>id</em><big>)</big><a class="headerlink" href="#wavelet.Wavelet.add_proxying_participant" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ads a proxying participant to the wave.</p>
+<p>Proxying participants are of the form <a class="reference external" href="mailto:robot+proxy&#37;&#52;&#48;domain&#46;com">robot+proxy<span>&#64;</span>domain<span>&#46;</span>com</a>. This
+convenience method constructs this id and then calls participants.add.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="wavelet.Wavelet.submit_with">
+<tt class="descname">submit_with</tt><big>(</big><em>other_wavelet</em><big>)</big><a class="headerlink" href="#wavelet.Wavelet.submit_with" title="Permalink to this definition">¶</a></dt>
+<dd><p>Submit this wavelet when the passed other wavelet is submited.</p>
+<p>wavelets constructed outside of the event callback need to
+be either explicitly submited using robot.submit(wavelet) or be
+associated with a different wavelet that will be submited or
+is part of the event callback.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="wavelet.Wavelet.reply">
+<tt class="descname">reply</tt><big>(</big><em>initial_content=None</em><big>)</big><a class="headerlink" href="#wavelet.Wavelet.reply" title="Permalink to this definition">¶</a></dt>
+<dd><p>Replies to the conversation in this wavelet.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>initial_content: if set, start with this content.</dd>
+<dt>Returns:</dt>
+<dd>A transient version of the blip that contains the reply.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="wavelet.Wavelet.delete">
+<tt class="descname">delete</tt><big>(</big><em>todelete</em><big>)</big><a class="headerlink" href="#wavelet.Wavelet.delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove a blip from this wavelet.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>todelete: either a blip or a blip id to be removed.</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-robot">
+<h2>The <tt class="xref docutils literal"><span class="pre">robot</span></tt> Module<a class="headerlink" href="#module-robot" title="Permalink to this headline">¶</a></h2>
+<p>Defines the generic robot classes.</p>
+<p>This module provides the Robot class and RobotListener interface,
+as well as some helper functions for web requests and responses.</p>
+<dl class="class">
+<dt id="robot.Robot">
+<em class="property">class </em><tt class="descclassname">robot.</tt><tt class="descname">Robot</tt><big>(</big><em>name</em>, <em>image_url=''</em>, <em>profile_url='http://code.google.com/apis/wave/extensions/robots/python-tutorial.html'</em><big>)</big><a class="headerlink" href="#robot.Robot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Robot metadata class.</p>
+<p>This class holds on to basic robot information like the name and profile.
+It also maintains the list of event handlers and cron jobs and
+dispatches events to the appropriate handlers.</p>
+<dl class="attribute">
+<dt id="robot.Robot.image_url">
+<tt class="descname">image_url</tt><a class="headerlink" href="#robot.Robot.image_url" title="Permalink to this definition">¶</a></dt>
+<dd>Returns the URL of the avatar image.</dd></dl>
+
+<dl class="attribute">
+<dt id="robot.Robot.name">
+<tt class="descname">name</tt><a class="headerlink" href="#robot.Robot.name" title="Permalink to this definition">¶</a></dt>
+<dd>Returns the name of the robot.</dd></dl>
+
+<dl class="attribute">
+<dt id="robot.Robot.profile_url">
+<tt class="descname">profile_url</tt><a class="headerlink" href="#robot.Robot.profile_url" title="Permalink to this definition">¶</a></dt>
+<dd>Returns the URL of an info page for the robot.</dd></dl>
+
+<dl class="method">
+<dt id="robot.Robot.http_post">
+<tt class="descname">http_post</tt><big>(</big><em>url</em>, <em>data</em>, <em>headers</em><big>)</big><a class="headerlink" href="#robot.Robot.http_post" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute an http post.</p>
+<p>Monkey patch this method to use something other than
+the default urllib.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>url: to post to
+body: post body
+headers: extra headers to pass along</dd>
+<dt>Returns:</dt>
+<dd>response_code, returned_page</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="robot.Robot.get_verification_token_info">
+<tt class="descname">get_verification_token_info</tt><big>(</big><big>)</big><a class="headerlink" href="#robot.Robot.get_verification_token_info" title="Permalink to this definition">¶</a></dt>
+<dd>Returns the verification token and ST parameter.</dd></dl>
+
+<dl class="method">
+<dt id="robot.Robot.capabilities_hash">
+<tt class="descname">capabilities_hash</tt><big>(</big><big>)</big><a class="headerlink" href="#robot.Robot.capabilities_hash" title="Permalink to this definition">¶</a></dt>
+<dd>Return the capabilities hash as a hex string.</dd></dl>
+
+<dl class="method">
+<dt id="robot.Robot.register_handler">
+<tt class="descname">register_handler</tt><big>(</big><em>event_class</em>, <em>handler</em>, <em>context=None</em>, <em>filter=None</em><big>)</big><a class="headerlink" href="#robot.Robot.register_handler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Registers a handler on a specific event type.</p>
+<p>Multiple handlers may be registered on a single event type and are
+guaranteed to be called in order of registration.</p>
+<p>The handler takes two arguments, the event object and the corresponding
+wavelet.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><dl class="first docutils">
+<dt>event_class: An event to listen for from the classes defined in the</dt>
+<dd>events module.</dd>
+<dt>handler: A function handler which takes two arguments, the wavelet for</dt>
+<dd>the event and the event object.</dd>
+</dl>
+<p>context: The context to provide for this handler.</p>
+<dl class="last docutils">
+<dt>filter: Depending on the event, a filter can be specified that restricts</dt>
+<dd>for which values the event handler will be called from the server.
+Valuable to restrict the amount of traffic send to the robot.</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="robot.Robot.set_verification_token_info">
+<tt class="descname">set_verification_token_info</tt><big>(</big><em>token</em>, <em>st=None</em><big>)</big><a class="headerlink" href="#robot.Robot.set_verification_token_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the verification token used in the ownership verification.</p>
+<p>/wave/robot/register starts this process up and will produce this token.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">token: the token provided by /wave/robot/register.</p>
+<dl class="last docutils">
+<dt>st: optional parameter to verify the request for the token came from</dt>
+<dd>the wave server.</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="robot.Robot.setup_oauth">
+<tt class="descname">setup_oauth</tt><big>(</big><em>consumer_key</em>, <em>consumer_secret</em>, <em>server_rpc_base='http://gmodules.com/api/rpc'</em><big>)</big><a class="headerlink" href="#robot.Robot.setup_oauth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configure this robot to use the oauth&#8217;d json rpc.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">consumer_key: consumer key received from the verification process.</p>
+<p>consumer_secret: secret received from the verification process.</p>
+<dl class="last docutils">
+<dt>server_rpc_base: url of the rpc gateway to use. Specify None for default.</dt>
+<dd>For wave preview, <a class="reference external" href="http://gmodules.com/api/rpc">http://gmodules.com/api/rpc</a> should be used.
+For wave sandbox, <a class="reference external" href="http://sandbox.gmodules.com/api/rpc">http://sandbox.gmodules.com/api/rpc</a> should be used.</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="robot.Robot.register_profile_handler">
+<tt class="descname">register_profile_handler</tt><big>(</big><em>handler</em><big>)</big><a class="headerlink" href="#robot.Robot.register_profile_handler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the profile handler for this robot.</p>
+<p>The profile handler will be called when a profile is needed. The handler
+gets passed the name for which a profile is needed or None for the
+robot itself. A dictionary with keys for name, imageUrl and
+profileUrl should be returned.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robot.Robot.make_rpc">
+<tt class="descname">make_rpc</tt><big>(</big><em>operations</em><big>)</big><a class="headerlink" href="#robot.Robot.make_rpc" title="Permalink to this definition">¶</a></dt>
+<dd>Make an rpc call, submitting the specified operations.</dd></dl>
+
+<dl class="method">
+<dt id="robot.Robot.capabilities_xml">
+<tt class="descname">capabilities_xml</tt><big>(</big><big>)</big><a class="headerlink" href="#robot.Robot.capabilities_xml" title="Permalink to this definition">¶</a></dt>
+<dd>Return this robot&#8217;s capabilities as an XML string.</dd></dl>
+
+<dl class="method">
+<dt id="robot.Robot.profile_json">
+<tt class="descname">profile_json</tt><big>(</big><em>name=None</em><big>)</big><a class="headerlink" href="#robot.Robot.profile_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a JSON representation of the profile.</p>
+<p>This method is called both for the basic profile of the robot and to
+get a proxying for profile, in which case name is set. By default
+the information supplied at registration is returned.</p>
+<p>Use register_profile_handler to override this default behavior.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robot.Robot.process_events">
+<tt class="descname">process_events</tt><big>(</big><em>json</em><big>)</big><a class="headerlink" href="#robot.Robot.process_events" title="Permalink to this definition">¶</a></dt>
+<dd>Process an incoming set of events encoded as json.</dd></dl>
+
+<dl class="method">
+<dt id="robot.Robot.new_wave">
+<tt class="descname">new_wave</tt><big>(</big><em>domain</em>, <em>participants=None</em>, <em>message=''</em>, <em>proxy_for_id=None</em>, <em>submit=False</em><big>)</big><a class="headerlink" href="#robot.Robot.new_wave" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new wave with the initial participants on it.</p>
+<p>A new wave is returned with its own operation queue. It the
+responsibility of the caller to make sure this wave gets
+submitted to the server, either by calling robot.submit() or
+by calling .submit_with() on the returned wave.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><dl class="first last docutils">
+<dt>domain: the domain to create the wavelet on. This should</dt>
+<dd>in general correspond to the domain of the incoming
+wavelet. (wavelet.domain). Exceptions are situations
+where the robot is calling new_wave outside of an
+event or when the server is handling multiple domains.</dd>
+<dt>participants: initial participants on the wave. The robot</dt>
+<dd>as the creator of the wave is always added.</dd>
+<dt>message: a string that will be passed back to the robot</dt>
+<dd>when the WAVELET_CREATOR event is fired. This is a
+lightweight way to pass around state.</dd>
+<dt>submit: if true, use the active gateway to make a round</dt>
+<dd>trip to the server. This will return immediately an
+actual waveid/waveletid and blipId for the root blip.</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="robot.Robot.fetch_wavelet">
+<tt class="descname">fetch_wavelet</tt><big>(</big><em>wave_id</em>, <em>wavelet_id</em>, <em>proxy_for_id=None</em><big>)</big><a class="headerlink" href="#robot.Robot.fetch_wavelet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use the REST interface to fetch a wave and return it.</p>
+<p>The returned wavelet contains a snapshot of the state of the
+wavelet at that point. It can be used to modify the wavelet,
+but the wavelet might change in between, so treat carefully.</p>
+<p>Also note that the wavelet returned has its own operation
+queue. It the responsibility of the caller to make sure this
+wavelet gets submited to the server, either by calling
+robot.submit() or by calling .submit_with() on the returned
+wavelet.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robot.Robot.blind_wavelet">
+<tt class="descname">blind_wavelet</tt><big>(</big><em>json</em>, <em>proxy_for_id=None</em><big>)</big><a class="headerlink" href="#robot.Robot.blind_wavelet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Construct a blind wave from a json string.</p>
+<p>Call this method if you have a snapshot of a wave that you
+want to operate on outside of an event. Since the wave might
+have changed since you last saw it, you should take care to
+submit operations that are as safe as possible.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><dl class="first last docutils">
+<dt>json: a json object or string containing at least a key</dt>
+<dd>wavelet defining the wavelet and a key blips defining the
+blips in the view.</dd>
+<dt>proxy_for_id: the proxying information that will be set on the wavelet&#8217;s</dt>
+<dd>operation queue.</dd>
+</dl>
+</dd>
+<dt>Returns:</dt>
+<dd>A new wavelet with its own operation queue. It the
+responsibility of the caller to make sure this wavelet gets
+submited to the server, either by calling robot.submit() or
+by calling .submit_with() on the returned wavelet.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="robot.Robot.submit">
+<tt class="descname">submit</tt><big>(</big><em>wavelet_to_submit</em><big>)</big><a class="headerlink" href="#robot.Robot.submit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Submit the pending operations associated with wavelet_to_submit.</p>
+<p>Typically the wavelet will be the result of open_wavelet, blind_wavelet
+or new_wavelet.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-element">
+<h2>The <tt class="xref docutils literal"><span class="pre">element</span></tt> Module<a class="headerlink" href="#module-element" title="Permalink to this headline">¶</a></h2>
+<p>Elements are non-text bits living in blips like images, gadgets etc.</p>
+<p>This module defines the Element class and the derived classes.</p>
+<dl class="class">
+<dt id="element.Button">
+<em class="property">class </em><tt class="descclassname">element.</tt><tt class="descname">Button</tt><big>(</big><em>name</em>, <em>caption</em><big>)</big><a class="headerlink" href="#element.Button" title="Permalink to this definition">¶</a></dt>
+<dd><p>A button element.</p>
+<dl class="classmethod">
+<dt id="element.Button.from_props">
+<em class="property">classmethod </em><tt class="descname">from_props</tt><big>(</big><em>props</em><big>)</big><a class="headerlink" href="#element.Button.from_props" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="element.Check">
+<em class="property">class </em><tt class="descclassname">element.</tt><tt class="descname">Check</tt><big>(</big><em>name</em>, <em>value=''</em><big>)</big><a class="headerlink" href="#element.Check" title="Permalink to this definition">¶</a></dt>
+<dd><p>A checkbox element.</p>
+<dl class="classmethod">
+<dt id="element.Check.from_props">
+<em class="property">classmethod </em><tt class="descname">from_props</tt><big>(</big><em>props</em><big>)</big><a class="headerlink" href="#element.Check.from_props" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="element.Element">
+<em class="property">class </em><tt class="descclassname">element.</tt><tt class="descname">Element</tt><big>(</big><em>element_type</em>, <em>**properties</em><big>)</big><a class="headerlink" href="#element.Element" title="Permalink to this definition">¶</a></dt>
+<dd><p>Elements are non-text content within a document.</p>
+<p>These are generally abstracted from the Robot. Although a Robot can query the
+properties of an element it can only interact with the specific types that
+the element represents.</p>
+<p>Properties of elements are both accessible directly (image.url) and through
+the properties dictionary (image.properties[&#8216;url&#8217;]). In general Element
+should not be instantiated by robots, but rather rely on the derived classes.</p>
+<dl class="classmethod">
+<dt id="element.Element.from_json">
+<em class="property">classmethod </em><tt class="descname">from_json</tt><big>(</big><em>json</em><big>)</big><a class="headerlink" href="#element.Element.from_json" title="Permalink to this definition">¶</a></dt>
+<dd>Class method to instantiate an Element based on a json string.</dd></dl>
+
+<dl class="method">
+<dt id="element.Element.get">
+<tt class="descname">get</tt><big>(</big><em>key</em>, <em>default=None</em><big>)</big><a class="headerlink" href="#element.Element.get" title="Permalink to this definition">¶</a></dt>
+<dd>Standard get interface.</dd></dl>
+
+<dl class="method">
+<dt id="element.Element.serialize">
+<tt class="descname">serialize</tt><big>(</big><big>)</big><a class="headerlink" href="#element.Element.serialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Custom serializer for Elements.</p>
+<p>Element need their non standard attributes returned in a dict named
+properties.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="element.Gadget">
+<em class="property">class </em><tt class="descclassname">element.</tt><tt class="descname">Gadget</tt><big>(</big><em>url</em>, <em>props=None</em><big>)</big><a class="headerlink" href="#element.Gadget" title="Permalink to this definition">¶</a></dt>
+<dd><p>A gadget element.</p>
+<dl class="classmethod">
+<dt id="element.Gadget.from_props">
+<em class="property">classmethod </em><tt class="descname">from_props</tt><big>(</big><em>props</em><big>)</big><a class="headerlink" href="#element.Gadget.from_props" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="element.Image">
+<em class="property">class </em><tt class="descclassname">element.</tt><tt class="descname">Image</tt><big>(</big><em>url=''</em>, <em>width=None</em>, <em>height=None</em>, <em>attachmentId=None</em>, <em>caption=None</em><big>)</big><a class="headerlink" href="#element.Image" title="Permalink to this definition">¶</a></dt>
+<dd><p>An image element.</p>
+<dl class="classmethod">
+<dt id="element.Image.from_props">
+<em class="property">classmethod </em><tt class="descname">from_props</tt><big>(</big><em>props</em><big>)</big><a class="headerlink" href="#element.Image.from_props" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="element.Input">
+<em class="property">class </em><tt class="descclassname">element.</tt><tt class="descname">Input</tt><big>(</big><em>name</em>, <em>value=''</em>, <em>label=''</em><big>)</big><a class="headerlink" href="#element.Input" title="Permalink to this definition">¶</a></dt>
+<dd><p>A single-line input element.</p>
+<dl class="classmethod">
+<dt id="element.Input.from_props">
+<em class="property">classmethod </em><tt class="descname">from_props</tt><big>(</big><em>props</em><big>)</big><a class="headerlink" href="#element.Input.from_props" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="element.Installer">
+<em class="property">class </em><tt class="descclassname">element.</tt><tt class="descname">Installer</tt><big>(</big><em>manifest</em><big>)</big><a class="headerlink" href="#element.Installer" title="Permalink to this definition">¶</a></dt>
+<dd><p>An installer element.</p>
+<dl class="classmethod">
+<dt id="element.Installer.from_props">
+<em class="property">classmethod </em><tt class="descname">from_props</tt><big>(</big><em>props</em><big>)</big><a class="headerlink" href="#element.Installer.from_props" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="element.Label">
+<em class="property">class </em><tt class="descclassname">element.</tt><tt class="descname">Label</tt><big>(</big><em>label_for</em>, <em>caption</em><big>)</big><a class="headerlink" href="#element.Label" title="Permalink to this definition">¶</a></dt>
+<dd><p>A label element.</p>
+<dl class="classmethod">
+<dt id="element.Label.from_props">
+<em class="property">classmethod </em><tt class="descname">from_props</tt><big>(</big><em>props</em><big>)</big><a class="headerlink" href="#element.Label.from_props" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="element.Line">
+<em class="property">class </em><tt class="descclassname">element.</tt><tt class="descname">Line</tt><big>(</big><em>line_type=None</em>, <em>indent=None</em>, <em>alignment=None</em>, <em>direction=None</em><big>)</big><a class="headerlink" href="#element.Line" title="Permalink to this definition">¶</a></dt>
+<dd><p>A line element.</p>
+<p>Note that Lines are represented in the text as newlines.</p>
+<dl class="classmethod">
+<dt id="element.Line.from_props">
+<em class="property">classmethod </em><tt class="descname">from_props</tt><big>(</big><em>props</em><big>)</big><a class="headerlink" href="#element.Line.from_props" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="element.Password">
+<em class="property">class </em><tt class="descclassname">element.</tt><tt class="descname">Password</tt><big>(</big><em>name</em>, <em>value</em><big>)</big><a class="headerlink" href="#element.Password" title="Permalink to this definition">¶</a></dt>
+<dd><p>A password element.</p>
+<dl class="classmethod">
+<dt id="element.Password.from_props">
+<em class="property">classmethod </em><tt class="descname">from_props</tt><big>(</big><em>props</em><big>)</big><a class="headerlink" href="#element.Password.from_props" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="element.RadioButton">
+<em class="property">class </em><tt class="descclassname">element.</tt><tt class="descname">RadioButton</tt><big>(</big><em>name</em>, <em>group</em><big>)</big><a class="headerlink" href="#element.RadioButton" title="Permalink to this definition">¶</a></dt>
+<dd><p>A radio button element.</p>
+<dl class="classmethod">
+<dt id="element.RadioButton.from_props">
+<em class="property">classmethod </em><tt class="descname">from_props</tt><big>(</big><em>props</em><big>)</big><a class="headerlink" href="#element.RadioButton.from_props" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="element.RadioButtonGroup">
+<em class="property">class </em><tt class="descclassname">element.</tt><tt class="descname">RadioButtonGroup</tt><big>(</big><em>name</em>, <em>value</em><big>)</big><a class="headerlink" href="#element.RadioButtonGroup" title="Permalink to this definition">¶</a></dt>
+<dd><p>A group of radio buttons.</p>
+<dl class="classmethod">
+<dt id="element.RadioButtonGroup.from_props">
+<em class="property">classmethod </em><tt class="descname">from_props</tt><big>(</big><em>props</em><big>)</big><a class="headerlink" href="#element.RadioButtonGroup.from_props" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="element.TextArea">
+<em class="property">class </em><tt class="descclassname">element.</tt><tt class="descname">TextArea</tt><big>(</big><em>name</em>, <em>value</em><big>)</big><a class="headerlink" href="#element.TextArea" title="Permalink to this definition">¶</a></dt>
+<dd><p>A text area element.</p>
+<dl class="classmethod">
+<dt id="element.TextArea.from_props">
+<em class="property">classmethod </em><tt class="descname">from_props</tt><big>(</big><em>props</em><big>)</big><a class="headerlink" href="#element.TextArea.from_props" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="element.is_element">
+<tt class="descclassname">element.</tt><tt class="descname">is_element</tt><big>(</big><em>cls</em><big>)</big><a class="headerlink" href="#element.is_element" title="Permalink to this definition">¶</a></dt>
+<dd>Returns whether the passed class is an element.</dd></dl>
+
+</div>
+<div class="section" id="module-events">
+<h2>The <tt class="xref docutils literal"><span class="pre">events</span></tt> Module<a class="headerlink" href="#module-events" title="Permalink to this headline">¶</a></h2>
+<p>Defines event types that are sent from the wave server.</p>
+<p>This module defines all of the event types currently supported by the wave
+server. Each event type is sub classed from Event and has its own
+properties depending on the type.</p>
+<dl class="class">
+<dt id="events.AnnotatedTextChanged">
+<em class="property">class </em><tt class="descclassname">events.</tt><tt class="descname">AnnotatedTextChanged</tt><big>(</big><em>json</em>, <em>wavelet</em><big>)</big><a class="headerlink" href="#events.AnnotatedTextChanged" title="Permalink to this definition">¶</a></dt>
+<dd><p>Event triggered when text with an annotation has changed.</p>
+<p>This is mainly useful in combination with a filter on the
+name of the annotation.</p>
+<dl class="docutils">
+<dt>Attributes:</dt>
+<dd><p class="first">name: The name of the annotation.</p>
+<p class="last">value: The value of the annotation that changed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="events.BlipContributorsChanged">
+<em class="property">class </em><tt class="descclassname">events.</tt><tt class="descname">BlipContributorsChanged</tt><big>(</big><em>json</em>, <em>wavelet</em><big>)</big><a class="headerlink" href="#events.BlipContributorsChanged" title="Permalink to this definition">¶</a></dt>
+<dd><p>Event triggered when the contributors to this blip change.</p>
+<dl class="docutils">
+<dt>Attributes:</dt>
+<dd><p class="first">contributors_added: List of contributors that were added.</p>
+<p class="last">contributors_removed: List of contributors that were removed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="events.BlipSubmitted">
+<em class="property">class </em><tt class="descclassname">events.</tt><tt class="descname">BlipSubmitted</tt><big>(</big><em>json</em>, <em>wavelet</em><big>)</big><a class="headerlink" href="#events.BlipSubmitted" title="Permalink to this definition">¶</a></dt>
+<dd>Event triggered when a blip is submitted.</dd></dl>
+
+<dl class="class">
+<dt id="events.Context">
+<em class="property">class </em><tt class="descclassname">events.</tt><tt class="descname">Context</tt><a class="headerlink" href="#events.Context" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specifies constants representing different context requests.</p>
+<dl class="attribute">
+<dt id="events.Context.ALL">
+<tt class="descname">ALL</tt><a class="headerlink" href="#events.Context.ALL" title="Permalink to this definition">¶</a></dt>
+<dd>Requests all of the blips of the event wavelet.</dd></dl>
+
+<dl class="attribute">
+<dt id="events.Context.CHILDREN">
+<tt class="descname">CHILDREN</tt><a class="headerlink" href="#events.Context.CHILDREN" title="Permalink to this definition">¶</a></dt>
+<dd>Requests the child blips of the event blip.</dd></dl>
+
+<dl class="attribute">
+<dt id="events.Context.PARENT">
+<tt class="descname">PARENT</tt><a class="headerlink" href="#events.Context.PARENT" title="Permalink to this definition">¶</a></dt>
+<dd>Requests the parent blip of the event blip.</dd></dl>
+
+<dl class="attribute">
+<dt id="events.Context.ROOT">
+<tt class="descname">ROOT</tt><a class="headerlink" href="#events.Context.ROOT" title="Permalink to this definition">¶</a></dt>
+<dd>Requests the root blip.</dd></dl>
+
+<dl class="attribute">
+<dt id="events.Context.SELF">
+<tt class="descname">SELF</tt><a class="headerlink" href="#events.Context.SELF" title="Permalink to this definition">¶</a></dt>
+<dd>Requests the event blip itself.</dd></dl>
+
+<dl class="attribute">
+<dt id="events.Context.SIBLINGS">
+<tt class="descname">SIBLINGS</tt><a class="headerlink" href="#events.Context.SIBLINGS" title="Permalink to this definition">¶</a></dt>
+<dd>Requests the siblings blip of the event blip.</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="events.DocumentChanged">
+<em class="property">class </em><tt class="descclassname">events.</tt><tt class="descname">DocumentChanged</tt><big>(</big><em>json</em>, <em>wavelet</em><big>)</big><a class="headerlink" href="#events.DocumentChanged" title="Permalink to this definition">¶</a></dt>
+<dd><p>Event triggered when a document is changed.</p>
+<p>This event is fired after any changes in the document and should be used
+carefully to keep the amount of traffic to the robot reasonable. Use
+filters where appropriate.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="events.Event">
+<em class="property">class </em><tt class="descclassname">events.</tt><tt class="descname">Event</tt><big>(</big><em>json</em>, <em>wavelet</em><big>)</big><a class="headerlink" href="#events.Event" title="Permalink to this definition">¶</a></dt>
+<dd><p>Object describing a single event.</p>
+<dl class="docutils">
+<dt>Attributes:</dt>
+<dd><p class="first">modified_by: Participant id that caused this event.</p>
+<p>timestamp: Timestamp that this event occurred on the server.</p>
+<p>type: Type string of this event.</p>
+<dl class="docutils">
+<dt>properties: Dictionary of all extra properties. Typically the derrived</dt>
+<dd>event type should have these explicitly set as attributes, but
+experimental features might appear in properties before that.</dd>
+<dt>blip_id: The blip_id of the blip for blip related events or the root</dt>
+<dd>blip for wavelet related events.</dd>
+</dl>
+<p>blip: If available, the blip with id equal to the events blip_id.</p>
+<p class="last">proxying_for: If available, the proxyingFor id of the robot that caused the
+event.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="events.FormButtonClicked">
+<em class="property">class </em><tt class="descclassname">events.</tt><tt class="descname">FormButtonClicked</tt><big>(</big><em>json</em>, <em>wavelet</em><big>)</big><a class="headerlink" href="#events.FormButtonClicked" title="Permalink to this definition">¶</a></dt>
+<dd><p>Event triggered when a form button is clicked.</p>
+<dl class="docutils">
+<dt>Attributes:</dt>
+<dd>button_name: The name of the button that was clicked.</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="events.GadgetStateChanged">
+<em class="property">class </em><tt class="descclassname">events.</tt><tt class="descname">GadgetStateChanged</tt><big>(</big><em>json</em>, <em>wavelet</em><big>)</big><a class="headerlink" href="#events.GadgetStateChanged" title="Permalink to this definition">¶</a></dt>
+<dd><p>Event triggered when the state of a gadget changes.</p>
+<dl class="docutils">
+<dt>Attributes:</dt>
+<dd><p class="first">index: The index of the gadget that changed in the document.</p>
+<p class="last">old_state: The old state of the gadget.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="events.OperationError">
+<em class="property">class </em><tt class="descclassname">events.</tt><tt class="descname">OperationError</tt><big>(</big><em>json</em>, <em>wavelet</em><big>)</big><a class="headerlink" href="#events.OperationError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Triggered when an event on the server occurred.</p>
+<dl class="docutils">
+<dt>Attributes:</dt>
+<dd><p class="first">operation_id: The operation id of the failing operation.</p>
+<p class="last">error_message: More information as to what went wrong.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="events.WaveletBlipCreated">
+<em class="property">class </em><tt class="descclassname">events.</tt><tt class="descname">WaveletBlipCreated</tt><big>(</big><em>json</em>, <em>wavelet</em><big>)</big><a class="headerlink" href="#events.WaveletBlipCreated" title="Permalink to this definition">¶</a></dt>
+<dd><p>Event triggered when a new blip is created.</p>
+<dl class="docutils">
+<dt>Attributes:</dt>
+<dd><p class="first">new_blip_id: The id of the newly created blip.</p>
+<p class="last">new_blip: If in context, the actual new blip.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="events.WaveletBlipRemoved">
+<em class="property">class </em><tt class="descclassname">events.</tt><tt class="descname">WaveletBlipRemoved</tt><big>(</big><em>json</em>, <em>wavelet</em><big>)</big><a class="headerlink" href="#events.WaveletBlipRemoved" title="Permalink to this definition">¶</a></dt>
+<dd><p>Event triggered when a new blip is removed.</p>
+<dl class="docutils">
+<dt>Attributes:</dt>
+<dd><p class="first">removed_blip_id: the id of the removed blip</p>
+<p class="last">removed_blip: if in context, the removed blip</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="events.WaveletCreated">
+<em class="property">class </em><tt class="descclassname">events.</tt><tt class="descname">WaveletCreated</tt><big>(</big><em>json</em>, <em>wavelet</em><big>)</big><a class="headerlink" href="#events.WaveletCreated" title="Permalink to this definition">¶</a></dt>
+<dd><p>Triggered when a new wavelet is created.</p>
+<p>This event is only triggered if the robot creates a new
+wavelet and can be used to initialize the newly created wave.
+wavelets created by other participants remain invisible
+to the robot until the robot is added to the wave in
+which case WaveletSelfAdded is triggered.</p>
+<dl class="docutils">
+<dt>Attributes:</dt>
+<dd><dl class="first last docutils">
+<dt>message: Whatever string was passed into the new_wave</dt>
+<dd>call as message (if any).</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="events.WaveletFetched">
+<em class="property">class </em><tt class="descclassname">events.</tt><tt class="descname">WaveletFetched</tt><big>(</big><em>json</em>, <em>wavelet</em><big>)</big><a class="headerlink" href="#events.WaveletFetched" title="Permalink to this definition">¶</a></dt>
+<dd><p>Triggered when a new wavelet is fetched.</p>
+<p>This event is triggered after a robot requests to
+see another wavelet. The robot has to be on the other
+wavelet already.</p>
+<dl class="docutils">
+<dt>Attributes:</dt>
+<dd><dl class="first last docutils">
+<dt>message: Whatever string was passed into the new_wave</dt>
+<dd>call as message (if any).</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="events.WaveletParticipantsChanged">
+<em class="property">class </em><tt class="descclassname">events.</tt><tt class="descname">WaveletParticipantsChanged</tt><big>(</big><em>json</em>, <em>wavelet</em><big>)</big><a class="headerlink" href="#events.WaveletParticipantsChanged" title="Permalink to this definition">¶</a></dt>
+<dd><p>Event triggered when the participants on a wave change.</p>
+<dl class="docutils">
+<dt>Attributes:</dt>
+<dd><p class="first">participants_added: List of participants added.</p>
+<p class="last">participants_removed: List of participants removed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="events.WaveletSelfAdded">
+<em class="property">class </em><tt class="descclassname">events.</tt><tt class="descname">WaveletSelfAdded</tt><big>(</big><em>json</em>, <em>wavelet</em><big>)</big><a class="headerlink" href="#events.WaveletSelfAdded" title="Permalink to this definition">¶</a></dt>
+<dd>Event triggered when the robot is added to the wavelet.</dd></dl>
+
+<dl class="class">
+<dt id="events.WaveletSelfRemoved">
+<em class="property">class </em><tt class="descclassname">events.</tt><tt class="descname">WaveletSelfRemoved</tt><big>(</big><em>json</em>, <em>wavelet</em><big>)</big><a class="headerlink" href="#events.WaveletSelfRemoved" title="Permalink to this definition">¶</a></dt>
+<dd>Event triggered when the robot is removed from the wavelet.</dd></dl>
+
+<dl class="class">
+<dt id="events.WaveletTitleChanged">
+<em class="property">class </em><tt class="descclassname">events.</tt><tt class="descname">WaveletTitleChanged</tt><big>(</big><em>json</em>, <em>wavelet</em><big>)</big><a class="headerlink" href="#events.WaveletTitleChanged" title="Permalink to this definition">¶</a></dt>
+<dd><p>Event triggered when the title of the wavelet has changed.</p>
+<dl class="docutils">
+<dt>Attributes:</dt>
+<dd>title: The new title.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="events.is_event">
+<tt class="descclassname">events.</tt><tt class="descname">is_event</tt><big>(</big><em>cls</em><big>)</big><a class="headerlink" href="#events.is_event" title="Permalink to this definition">¶</a></dt>
+<dd>Returns whether the passed class is an event.</dd></dl>
+
+</div>
+<div class="section" id="module-errors">
+<h2>The <tt class="xref docutils literal"><span class="pre">errors</span></tt> Module<a class="headerlink" href="#module-errors" title="Permalink to this headline">¶</a></h2>
+<p>Contains various API-specific exception classes.</p>
+<p>This module contains various specific exception classes that are raised by
+the library back to the client.</p>
+<dl class="exception">
+<dt id="errors.Error">
+<em class="property">exception </em><tt class="descclassname">errors.</tt><tt class="descname">Error</tt><a class="headerlink" href="#errors.Error" title="Permalink to this definition">¶</a></dt>
+<dd>Base library error type.</dd></dl>
+
+</div>
+<div class="section" id="module-ops">
+<h2>The <tt class="xref docutils literal"><span class="pre">ops</span></tt> Module<a class="headerlink" href="#module-ops" title="Permalink to this headline">¶</a></h2>
+<p>Support for operations that can be applied to the server.</p>
+<p>Contains classes and utilities for creating operations that are to be
+applied on the server.</p>
+<dl class="class">
+<dt id="ops.Operation">
+<em class="property">class </em><tt class="descclassname">ops.</tt><tt class="descname">Operation</tt><big>(</big><em>method</em>, <em>opid</em>, <em>params</em><big>)</big><a class="headerlink" href="#ops.Operation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Represents a generic operation applied on the server.</p>
+<p>This operation class contains data that is filled in depending on the
+operation type.</p>
+<p>It can be used directly, but doing so will not result
+in local, transient reflection of state on the blips. In other words,
+creating a &#8216;delete blip&#8217; operation will not remove the blip from the local
+context for the duration of this session. It is better to use the OpBased
+model classes directly instead.</p>
+<dl class="method">
+<dt id="ops.Operation.set_param">
+<tt class="descname">set_param</tt><big>(</big><em>param</em>, <em>value</em><big>)</big><a class="headerlink" href="#ops.Operation.set_param" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ops.Operation.serialize">
+<tt class="descname">serialize</tt><big>(</big><em>method_prefix=''</em><big>)</big><a class="headerlink" href="#ops.Operation.serialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serialize the operation.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>method_prefix: prefixed for each method name to allow for specifying
+a namespace.</dd>
+<dt>Returns:</dt>
+<dd>a dict representation of the operation.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="ops.Operation.set_optional">
+<tt class="descname">set_optional</tt><big>(</big><em>param</em>, <em>value</em><big>)</big><a class="headerlink" href="#ops.Operation.set_optional" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets an optional parameter.</p>
+<p>If value is None or &#8220;&#8221;, this is a no op. Otherwise it calls
+set_param.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ops.OperationQueue">
+<em class="property">class </em><tt class="descclassname">ops.</tt><tt class="descname">OperationQueue</tt><big>(</big><em>proxy_for_id=None</em><big>)</big><a class="headerlink" href="#ops.OperationQueue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wraps the queuing of operations using easily callable functions.</p>
+<p>The operation queue wraps single operations as functions and queues the
+resulting operations in-order. Typically there shouldn&#8217;t be a need to
+call this directly unless operations are needed on entities outside
+of the scope of the robot. For example, to modify a blip that
+does not exist in the current context, you might specify the wave, wavelet
+and blip id to generate an operation.</p>
+<p>Any calls to this will not be reflected in the robot in any way.
+For example, calling wavelet_append_blip will not result in a new blip
+being added to the robot, only an operation to be applied on the
+server.</p>
+<dl class="method">
+<dt id="ops.OperationQueue.clear">
+<tt class="descname">clear</tt><big>(</big><big>)</big><a class="headerlink" href="#ops.OperationQueue.clear" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ops.OperationQueue.proxy_for">
+<tt class="descname">proxy_for</tt><big>(</big><em>proxy</em><big>)</big><a class="headerlink" href="#ops.OperationQueue.proxy_for" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a view of this operation queue with the proxying for set to proxy.</p>
+<p>This method returns a new instance of an operation queue that shares the
+operation list, but has a different proxying_for_id set so the robot using
+this new queue will send out operations with the proxying_for field set.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ops.OperationQueue.set_capability_hash">
+<tt class="descname">set_capability_hash</tt><big>(</big><em>capability_hash</em><big>)</big><a class="headerlink" href="#ops.OperationQueue.set_capability_hash" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ops.OperationQueue.serialize">
+<tt class="descname">serialize</tt><big>(</big><big>)</big><a class="headerlink" href="#ops.OperationQueue.serialize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ops.OperationQueue.copy_operations">
+<tt class="descname">copy_operations</tt><big>(</big><em>other_queue</em><big>)</big><a class="headerlink" href="#ops.OperationQueue.copy_operations" title="Permalink to this definition">¶</a></dt>
+<dd>Copy the pending operations from other_queue into this one.</dd></dl>
+
+<dl class="method">
+<dt id="ops.OperationQueue.new_operation">
+<tt class="descname">new_operation</tt><big>(</big><em>method</em>, <em>wave_id</em>, <em>wavelet_id</em>, <em>props=None</em>, <em>**kwprops</em><big>)</big><a class="headerlink" href="#ops.OperationQueue.new_operation" title="Permalink to this definition">¶</a></dt>
+<dd>Creates and adds a new operation to the operation list.</dd></dl>
+
+<dl class="method">
+<dt id="ops.OperationQueue.wavelet_append_blip">
+<tt class="descname">wavelet_append_blip</tt><big>(</big><em>wave_id</em>, <em>wavelet_id</em>, <em>initial_content=''</em><big>)</big><a class="headerlink" href="#ops.OperationQueue.wavelet_append_blip" title="Permalink to this definition">¶</a></dt>
+<dd><p>Appends a blip to a wavelet.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>wave_id: The wave id owning the containing wavelet.
+wavelet_id: The wavelet id that this blip should be appended to.
+initial_content: optionally the content to start with</dd>
+<dt>Returns:</dt>
+<dd>JSON representing the information of the new blip.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="ops.OperationQueue.wavelet_add_participant">
+<tt class="descname">wavelet_add_participant</tt><big>(</big><em>wave_id</em>, <em>wavelet_id</em>, <em>participant_id</em><big>)</big><a class="headerlink" href="#ops.OperationQueue.wavelet_add_participant" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a participant to a wavelet.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>wave_id: The wave id owning that this operation is applied to.
+wavelet_id: The wavelet id that this operation is applied to.
+participant_id: Id of the participant to add.</dd>
+<dt>Returns:</dt>
+<dd>data for the root_blip, wavelet</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="ops.OperationQueue.wavelet_datadoc_set">
+<tt class="descname">wavelet_datadoc_set</tt><big>(</big><em>wave_id</em>, <em>wavelet_id</em>, <em>name</em>, <em>data</em><big>)</big><a class="headerlink" href="#ops.OperationQueue.wavelet_datadoc_set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets a key/value pair on the data document of a wavelet.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>wave_id: The wave id owning that this operation is applied to.
+wavelet_id: The wavelet id that this operation is applied to.
+name: The key name for this data.
+data: The value of the data to set.</dd>
+<dt>Returns:</dt>
+<dd>The operation created.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="ops.OperationQueue.robot_create_wavelet">
+<tt class="descname">robot_create_wavelet</tt><big>(</big><em>domain</em>, <em>participants=None</em>, <em>message=''</em><big>)</big><a class="headerlink" href="#ops.OperationQueue.robot_create_wavelet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new wavelet.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">domain: the domain to create the wave in
+participants: initial participants on this wavelet or None if none
+message: an optional payload that is returned with the corresponding</p>
+<blockquote class="last">
+event.</blockquote>
+</dd>
+<dt>Returns:</dt>
+<dd>data for the root_blip, wavelet</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="ops.OperationQueue.robot_fetch_wave">
+<tt class="descname">robot_fetch_wave</tt><big>(</big><em>wave_id</em>, <em>wavelet_id</em><big>)</big><a class="headerlink" href="#ops.OperationQueue.robot_fetch_wave" title="Permalink to this definition">¶</a></dt>
+<dd><p>Requests a snapshot of the specified wave.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>wave_id: The wave id owning that this operation is applied to.
+wavelet_id: The wavelet id that this operation is applied to.</dd>
+<dt>Returns:</dt>
+<dd>The operation created.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="ops.OperationQueue.wavelet_set_title">
+<tt class="descname">wavelet_set_title</tt><big>(</big><em>wave_id</em>, <em>wavelet_id</em>, <em>title</em><big>)</big><a class="headerlink" href="#ops.OperationQueue.wavelet_set_title" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the title of a wavelet.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>wave_id: The wave id owning that this operation is applied to.
+wavelet_id: The wavelet id that this operation is applied to.
+title: The title to set.</dd>
+<dt>Returns:</dt>
+<dd>The operation created.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="ops.OperationQueue.wavelet_modify_tag">
+<tt class="descname">wavelet_modify_tag</tt><big>(</big><em>wave_id</em>, <em>wavelet_id</em>, <em>tag</em>, <em>modify_how=None</em><big>)</big><a class="headerlink" href="#ops.OperationQueue.wavelet_modify_tag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Modifies a tag in a wavelet.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">wave_id: The wave id owning that this operation is applied to.
+wavelet_id: The wavelet id that this operation is applied to.
+tag: The tag (a string).
+modify_how: (optional) how to apply the tag. The default is to add</p>
+<blockquote class="last">
+the tag. Specify &#8216;remove&#8217; to remove. Specify None or &#8216;add&#8217; to
+add.</blockquote>
+</dd>
+<dt>Returns:</dt>
+<dd>The operation created.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="ops.OperationQueue.blip_create_child">
+<tt class="descname">blip_create_child</tt><big>(</big><em>wave_id</em>, <em>wavelet_id</em>, <em>blip_id</em><big>)</big><a class="headerlink" href="#ops.OperationQueue.blip_create_child" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a child blip of another blip.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>wave_id: The wave id owning that this operation is applied to.
+wavelet_id: The wavelet id that this operation is applied to.
+blip_id: The blip id that this operation is applied to.</dd>
+<dt>Returns:</dt>
+<dd>JSON of blip for which further operations can be applied.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="ops.OperationQueue.blip_delete">
+<tt class="descname">blip_delete</tt><big>(</big><em>wave_id</em>, <em>wavelet_id</em>, <em>blip_id</em><big>)</big><a class="headerlink" href="#ops.OperationQueue.blip_delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes the specified blip.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>wave_id: The wave id owning that this operation is applied to.
+wavelet_id: The wavelet id that this operation is applied to.
+blip_id: The blip id that this operation is applied to.</dd>
+<dt>Returns:</dt>
+<dd>The operation created.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="ops.OperationQueue.document_append_markup">
+<tt class="descname">document_append_markup</tt><big>(</big><em>wave_id</em>, <em>wavelet_id</em>, <em>blip_id</em>, <em>content</em><big>)</big><a class="headerlink" href="#ops.OperationQueue.document_append_markup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Appends content with markup to a document.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>wave_id: The wave id owning that this operation is applied to.
+wavelet_id: The wavelet id that this operation is applied to.
+blip_id: The blip id that this operation is applied to.
+content: The markup content to append.</dd>
+<dt>Returns:</dt>
+<dd>The operation created.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="ops.OperationQueue.document_modify">
+<tt class="descname">document_modify</tt><big>(</big><em>wave_id</em>, <em>wavelet_id</em>, <em>blip_id</em><big>)</big><a class="headerlink" href="#ops.OperationQueue.document_modify" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates and queues a document modify operation</p>
+<p>The returned operation still needs to be filled with details before
+it makes sense.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>wave_id: The wave id owning that this operation is applied to.
+wavelet_id: The wavelet id that this operation is applied to.
+blip_id: The blip id that this operation is applied to.</dd>
+<dt>Returns:</dt>
+<dd>The operation created.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="ops.OperationQueue.document_inline_blip_insert">
+<tt class="descname">document_inline_blip_insert</tt><big>(</big><em>wave_id</em>, <em>wavelet_id</em>, <em>blip_id</em>, <em>position</em><big>)</big><a class="headerlink" href="#ops.OperationQueue.document_inline_blip_insert" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inserts an inline blip at a specific location.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>wave_id: The wave id owning that this operation is applied to.
+wavelet_id: The wavelet id that this operation is applied to.
+blip_id: The blip id that this operation is applied to.
+position: The position in the document to insert the blip.</dd>
+<dt>Returns:</dt>
+<dd>JSON data for the blip that was created for further operations.</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-util">
+<h2>The <tt class="xref docutils literal"><span class="pre">util</span></tt> Module<a class="headerlink" href="#module-util" title="Permalink to this headline">¶</a></h2>
+<p>Utility library containing various helpers used by the API.</p>
+<dl class="class">
+<dt id="util.StringEnum">
+<em class="property">class </em><tt class="descclassname">util.</tt><tt class="descname">StringEnum</tt><big>(</big><em>*values</em><big>)</big><a class="headerlink" href="#util.StringEnum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enum like class that is configured with a list of values.</p>
+<p>This class effectively implements an enum for Elements, except for that
+the actual values of the enums will be the string values.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="util.default_keywriter">
+<tt class="descclassname">util.</tt><tt class="descname">default_keywriter</tt><big>(</big><em>key_name</em><big>)</big><a class="headerlink" href="#util.default_keywriter" title="Permalink to this definition">¶</a></dt>
+<dd><p>This key writer rewrites keys as lower camel case.</p>
+<p>Expects that the input is formed by &#8216;_&#8217; delimited words.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>key_name: Name of the key to serialize.</dd>
+<dt>Returns:</dt>
+<dd>Key name in lower camel-cased form.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="util.is_dict">
+<tt class="descclassname">util.</tt><tt class="descname">is_dict</tt><big>(</big><em>inst</em><big>)</big><a class="headerlink" href="#util.is_dict" title="Permalink to this definition">¶</a></dt>
+<dd>Returns whether or not the specified instance is a dict.</dd></dl>
+
+<dl class="function">
+<dt id="util.is_iterable">
+<tt class="descclassname">util.</tt><tt class="descname">is_iterable</tt><big>(</big><em>inst</em><big>)</big><a class="headerlink" href="#util.is_iterable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns whether or not this is a list, tuple, set or dict .</p>
+<p>Note that this does not return true for strings.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="util.is_user_defined_new_style_class">
+<tt class="descclassname">util.</tt><tt class="descname">is_user_defined_new_style_class</tt><big>(</big><em>obj</em><big>)</big><a class="headerlink" href="#util.is_user_defined_new_style_class" title="Permalink to this definition">¶</a></dt>
+<dd>Returns whether or not the specified instance is a user-defined type.</dd></dl>
+
+<dl class="function">
+<dt id="util.lower_camel_case">
+<tt class="descclassname">util.</tt><tt class="descname">lower_camel_case</tt><big>(</big><em>s</em><big>)</big><a class="headerlink" href="#util.lower_camel_case" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts a string to lower camel case.</p>
+<dl class="docutils">
+<dt>Examples:</dt>
+<dd>foo =&gt; foo
+foo_bar =&gt; fooBar
+foo__bar =&gt; fooBar
+foo_bar_baz =&gt; fooBarBaz</dd>
+<dt>Args:</dt>
+<dd>s: The string to convert to lower camel case.</dd>
+<dt>Returns:</dt>
+<dd>The lower camel cased string.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="util.parse_markup">
+<tt class="descclassname">util.</tt><tt class="descname">parse_markup</tt><big>(</big><em>markup</em><big>)</big><a class="headerlink" href="#util.parse_markup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses a bit of markup into robot compatible text.</p>
+<p>For now this is a rough approximation.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="util.serialize">
+<tt class="descclassname">util.</tt><tt class="descname">serialize</tt><big>(</big><em>obj</em>, <em>key_writer=&lt;function default_keywriter at 0x126e6e0&gt;</em><big>)</big><a class="headerlink" href="#util.serialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serializes any instance.</p>
+<p>If this is a user-defined instance
+type, it will first check for a custom Serialize() function and use that
+if it exists. Otherwise, it will invoke serialize all of its public
+attributes. Lists and dicts are serialized trivially.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>obj: The instance to serialize.
+key_writer: Optional key writer function.</dd>
+<dt>Returns:</dt>
+<dd>The serialized object.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="util.upper_camel_case">
+<tt class="descclassname">util.</tt><tt class="descname">upper_camel_case</tt><big>(</big><em>s</em><big>)</big><a class="headerlink" href="#util.upper_camel_case" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts a string to upper camel case.</p>
+<dl class="docutils">
+<dt>Examples:</dt>
+<dd>foo =&gt; Foo
+foo_bar =&gt; FooBar
+foo__bar =&gt; FooBar
+foo_bar_baz =&gt; FooBarBaz</dd>
+<dt>Args:</dt>
+<dd>s: The string to convert to upper camel case.</dd>
+<dt>Returns:</dt>
+<dd>The upper camel cased string.</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-appengine_robot_runner">
+<h2>The <tt class="xref docutils literal"><span class="pre">appengine_robot_runner</span></tt> Module<a class="headerlink" href="#module-appengine_robot_runner" title="Permalink to this headline">¶</a></h2>
+<p>A module to run wave robots on app engine.</p>
+<dl class="class">
+<dt id="appengine_robot_runner.GetHandler">
+<em class="property">class </em><tt class="descclassname">appengine_robot_runner.</tt><tt class="descname">GetHandler</tt><big>(</big><em>method</em>, <em>contenttype</em><big>)</big><a class="headerlink" href="#appengine_robot_runner.GetHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handler to forward a request ot a handler of a robot.</p>
+<dl class="method">
+<dt id="appengine_robot_runner.GetHandler.get">
+<tt class="descname">get</tt><big>(</big><big>)</big><a class="headerlink" href="#appengine_robot_runner.GetHandler.get" title="Permalink to this definition">¶</a></dt>
+<dd>Handles HTTP GET request.</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="appengine_robot_runner.RobotEventHandler">
+<em class="property">class </em><tt class="descclassname">appengine_robot_runner.</tt><tt class="descname">RobotEventHandler</tt><big>(</big><em>robot</em><big>)</big><a class="headerlink" href="#appengine_robot_runner.RobotEventHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handler for the dispatching of events to various handlers to a robot.</p>
+<p>This handler only responds to post events with a JSON post body. Its primary
+task is to separate out the context data from the events in the post body
+and dispatch all events in order. Once all events have been dispatched
+it serializes the context data and its associated operations as a response.</p>
+<dl class="method">
+<dt id="appengine_robot_runner.RobotEventHandler.get">
+<tt class="descname">get</tt><big>(</big><big>)</big><a class="headerlink" href="#appengine_robot_runner.RobotEventHandler.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handles the get event for debugging.</p>
+<p>This is useful for debugging but since event bundles tend to be
+rather big it often won&#8217;t fit for more complex requests.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="appengine_robot_runner.RobotEventHandler.post">
+<tt class="descname">post</tt><big>(</big><big>)</big><a class="headerlink" href="#appengine_robot_runner.RobotEventHandler.post" title="Permalink to this definition">¶</a></dt>
+<dd>Handles HTTP POST requests.</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="appengine_robot_runner.RobotVerifyTokenHandler">
+<em class="property">class </em><tt class="descclassname">appengine_robot_runner.</tt><tt class="descname">RobotVerifyTokenHandler</tt><big>(</big><em>robot</em><big>)</big><a class="headerlink" href="#appengine_robot_runner.RobotVerifyTokenHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handler for the token_verify request.</p>
+<dl class="method">
+<dt id="appengine_robot_runner.RobotVerifyTokenHandler.get">
+<tt class="descname">get</tt><big>(</big><big>)</big><a class="headerlink" href="#appengine_robot_runner.RobotVerifyTokenHandler.get" title="Permalink to this definition">¶</a></dt>
+<dd>Handles the get event for debugging. Ops usually too long.</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="appengine_robot_runner.appengine_post">
+<tt class="descclassname">appengine_robot_runner.</tt><tt class="descname">appengine_post</tt><big>(</big><em>url</em>, <em>data</em>, <em>headers</em><big>)</big><a class="headerlink" href="#appengine_robot_runner.appengine_post" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="appengine_robot_runner.create_robot_webapp">
+<tt class="descclassname">appengine_robot_runner.</tt><tt class="descname">create_robot_webapp</tt><big>(</big><em>robot</em>, <em>debug=False</em>, <em>extra_handlers=None</em><big>)</big><a class="headerlink" href="#appengine_robot_runner.create_robot_webapp" title="Permalink to this definition">¶</a></dt>
+<dd>Returns an instance of webapp.WSGIApplication with robot handlers.</dd></dl>
+
+<dl class="function">
+<dt id="appengine_robot_runner.operation_error_handler">
+<tt class="descclassname">appengine_robot_runner.</tt><tt class="descname">operation_error_handler</tt><big>(</big><em>event</em>, <em>wavelet</em><big>)</big><a class="headerlink" href="#appengine_robot_runner.operation_error_handler" title="Permalink to this definition">¶</a></dt>
+<dd>Default operation error handler, logging what went wrong.</dd></dl>
+
+<dl class="function">
+<dt id="appengine_robot_runner.run">
+<tt class="descclassname">appengine_robot_runner.</tt><tt class="descname">run</tt><big>(</big><em>robot</em>, <em>debug=False</em>, <em>log_errors=True</em>, <em>extra_handlers=None</em><big>)</big><a class="headerlink" href="#appengine_robot_runner.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets up the webapp handlers for this robot and starts listening.</p>
+<dl class="docutils">
+<dt>A robot is typically setup in the following steps:</dt>
+<dd><ol class="first last arabic simple">
+<li>Instantiate and define robot.</li>
+<li>Register various handlers that it is interested in.</li>
+<li>Call Run, which will setup the handlers for the app.</li>
+</ol>
+</dd>
+<dt>For example:</dt>
+<dd><dl class="first docutils">
+<dt>robot = Robot(&#8216;Terminator&#8217;,</dt>
+<dd>image_url=&#8217;<a class="reference external" href="http://www.sky.net/models/t800.png">http://www.sky.net/models/t800.png</a>&#8216;,
+profile_url=&#8217;<a class="reference external" href="http://www.sky.net/models/t800.html">http://www.sky.net/models/t800.html</a>&#8216;)</dd>
+</dl>
+<p class="last">robot.register_handler(WAVELET_PARTICIPANTS_CHANGED, KillParticipant)
+run(robot)</p>
+</dd>
+<dt>Args:</dt>
+<dd><dl class="first last docutils">
+<dt>robot: the robot to run. This robot is modified to use app engines</dt>
+<dd>urlfetch for posting http.</dd>
+<dt>debug: Optional variable that defaults to False and is passed through</dt>
+<dd>to the webapp application to determine if it should show debug info.</dd>
+<dt>log_errors: Optional flag that defaults to True and determines whether</dt>
+<dd>a default handlers to catch errors should be setup that uses the
+app engine logging to log errors.</dd>
+<dt>extra_handlers: Optional list of tuples that are passed to the webapp</dt>
+<dd><dl class="first last docutils">
+<dt>to install more handlers. For example, passing</dt>
+<dd>[(&#8216;/about&#8217;, AboutHandler),] would install an extra about handler
+for the robot.</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference external" href="">Google Wave Robot Python API v2</a><ul>
+<li><a class="reference external" href="#module-blip">The <tt class="docutils literal"><span class="pre">blip</span></tt> Module</a></li>
+<li><a class="reference external" href="#module-wavelet">The <tt class="docutils literal"><span class="pre">wavelet</span></tt> Module</a></li>
+<li><a class="reference external" href="#module-robot">The <tt class="docutils literal"><span class="pre">robot</span></tt> Module</a></li>
+<li><a class="reference external" href="#module-element">The <tt class="docutils literal"><span class="pre">element</span></tt> Module</a></li>
+<li><a class="reference external" href="#module-events">The <tt class="docutils literal"><span class="pre">events</span></tt> Module</a></li>
+<li><a class="reference external" href="#module-errors">The <tt class="docutils literal"><span class="pre">errors</span></tt> Module</a></li>
+<li><a class="reference external" href="#module-ops">The <tt class="docutils literal"><span class="pre">ops</span></tt> Module</a></li>
+<li><a class="reference external" href="#module-util">The <tt class="docutils literal"><span class="pre">util</span></tt> Module</a></li>
+<li><a class="reference external" href="#module-appengine_robot_runner">The <tt class="docutils literal"><span class="pre">appengine_robot_runner</span></tt> Module</a></li>
+</ul>
+</li>
+</ul>
+
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/index.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             >modules</a> |</li>
+        <li><a href="">Python SDK v.2 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2009, Douwe.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.3.
+    </div>
+  </body>
+</html>
