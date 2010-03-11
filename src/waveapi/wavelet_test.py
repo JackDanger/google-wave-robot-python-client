@@ -20,8 +20,11 @@
 import unittest
 
 import blip
+import element
 import ops
 import wavelet
+
+import simplejson
 
 ROBOT_NAME = 'robot@appspot.com'
 
@@ -118,7 +121,7 @@ class TestWavelet(unittest.TestCase):
     self.assertEquals(1, len(self.operation_queue))
     self.assertEquals('wavelet.setTitle',
                       self.operation_queue.serialize()[1]['method'])
-    self.assertEquals('\nNew title', self.blip._content)
+    self.assertEquals('\nNew title\n', self.blip._content)
 
   def testSetTitleAdjustEmptyRootBlipProperly(self):
     self.blip._content = '\n'
@@ -126,7 +129,7 @@ class TestWavelet(unittest.TestCase):
     self.assertEquals(1, len(self.operation_queue))
     self.assertEquals('wavelet.setTitle',
                       self.operation_queue.serialize()[1]['method'])
-    self.assertEquals('\nNew title', self.blip._content)
+    self.assertEquals('\nNew title\n', self.blip._content)
 
   def testTags(self):
     w = self.wavelet
@@ -138,6 +141,23 @@ class TestWavelet(unittest.TestCase):
     w.tags.remove('tag1')
     self.assertEquals(2, len(w.tags))
     self.assertEquals('tag2', w.tags[0])
+
+  def testSerialize(self):
+    self.blip.append(element.Gadget('http://test.com', {'a': 3}))
+    self.wavelet.title = 'A wavelet title'
+    self.blip.append(element.Image(url='http://www.google.com/logos/clickortreat1.gif',
+                              width=320, height=118))
+    self.blip.append(element.Line(line_type='li', indent='2'))
+    self.blip.append('bulleted!')
+    self.blip.append(element.Installer(
+        'http://wave-skynet.appspot.com/public/extensions/areyouin/manifest.xml'))
+    self.wavelet.proxy_for('proxy').reply().append('hi from douwe')
+    inlineBlip = self.blip.insert_inline_blip(5)
+    inlineBlip.append('hello again!')
+
+    serialized = self.wavelet.serialize()
+    serialized = simplejson.dumps(serialized)
+    self.assertTrue(serialized.find('test.com') > 0)
 
 if __name__ == '__main__':
   unittest.main()

@@ -239,14 +239,15 @@ class Wavelet(object):
 
     # Adjust the content of the root blip, if it is available in the context.
     if self._root_blip:
-      content = ''
+      content = '\n'
       splits = self._root_blip._content.split('\n', 2)
       if len(splits) == 3:
-        content = '\n' + splits[2]
+        content += splits[2]
       self._root_blip._content = '\n' + title + content
 
   #: Returns or sets the wavelet's title.
-  title = property(_get_title, _set_title)
+  title = property(_get_title, _set_title,
+                   doc='Get or set the title of the wavelet.')
 
   def _get_robot_address(self):
     return self._robot_address
@@ -256,8 +257,8 @@ class Wavelet(object):
       raise errors.Error('robot address already set')
     self._robot_address = address
 
-  """The address of the current robot."""
-  robot_address = property(_get_robot_address, _set_robot_address)
+  robot_address = property(_get_robot_address, _set_robot_address,
+                           doc='Get or set the address of the current robot.')
 
   @property
   def root_blip(self):

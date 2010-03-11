@@ -32,11 +32,10 @@ class TestElement(unittest.TestCase):
     self.assertEquals('value', el.key)
 
   def testFormElement(self):
-    el = element.Input('input', label='label')
+    el = element.Input('input')
     self.assertEquals(element.Input.type, el.type)
     self.assertEquals(el.value, '')
     self.assertEquals(el.name, 'input')
-    self.assertEquals(el.label, 'label')
 
   def testImage(self):
     image = element.Image('http://test.com/image.png', width=100, height=100)
@@ -66,6 +65,29 @@ class TestElement(unittest.TestCase):
     self.assertEquals(props['url'], 'http://test.com/image.png')
     self.assertEquals(props['width'], 100)
     self.assertEquals(props['height'], 100)
+
+  def testSerializeLine(self):
+    line = element.Line(element.Line.TYPE_H1, alignment=element.Line.ALIGN_LEFT)
+    s = util.serialize(line)
+    k = s.keys()
+    k.sort()
+    # we should really only have three things to serialize
+    props = s['properties']
+    self.assertEquals(len(props), 2)
+    self.assertEquals(props['alignment'], 'l')
+    self.assertEquals(props['lineType'], 'h1')
+
+  def testSerializeGadget(self):
+    gadget = element.Gadget('http://test.com', {'prop1': 'a', 'prop_cap': None}) 
+    s = util.serialize(gadget)
+    k = s.keys()
+    k.sort()
+    # we should really only have three things to serialize
+    props = s['properties']
+    self.assertEquals(len(props), 3)
+    self.assertEquals(props['url'], 'http://test.com')
+    self.assertEquals(props['prop1'], 'a')
+    self.assertEquals(props['prop_cap'], None)
 
   def testGadgetElementFromJson(self):
     url = 'http://www.foo.com/gadget.xml'
@@ -139,7 +161,10 @@ class TestElement(unittest.TestCase):
            element.Image(url='test.com/image.png', width=100, height=200)]
     types_constructed = set([type(x) for x in bag])
     types_required = set(element.ALL.values())
-    self.assertEquals(types_required, types_constructed)
+    missing_required = types_constructed.difference(types_required)
+    self.assertEquals(missing_required, set())
+    missing_constructed = types_required.difference(types_constructed)
+    self.assertEquals(missing_constructed, set())
 
 
 if __name__ == '__main__':

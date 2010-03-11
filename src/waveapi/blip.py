@@ -384,8 +384,10 @@ class BlipRefs(object):
     
     # For now, if we find one markup, we'll use it everywhere.
     next = None
+    hit_found = False
 
     for start, end in self._hits():
+      hit_found = True
       if start < 0:
         start += len(blip)
         if end == 0:
@@ -452,6 +454,10 @@ class BlipRefs(object):
           if isinstance(next, element.Element):
             blip._elements[start] = next
 
+    # No match found, return immediately without generating op.
+    if not hit_found:
+      return
+
     operation = blip._operation_queue.document_modify(blip.wave_id,
                                                       blip.wavelet_id,
                                                       blip.blip_id)
@@ -470,7 +476,7 @@ class BlipRefs(object):
         what = matched
       if what:
         if not isinstance(next, element.Element):
-          modify_action['values'] = [str(value) for value in what]
+          modify_action['values'] = [util.force_string(value) for value in what]
         else:
           modify_action['elements'] = what
     elif modify_how == BlipRefs.ANNOTATE:
@@ -553,6 +559,10 @@ class BlipRefs(object):
   def __cmp__(self, other):
     """Support comparision with target."""
     return cmp(self.value(), other)
+
+  def __iter__(self):
+    for start_end in self._hits():
+      yield start_end
 
 
 class Blip(object):
@@ -826,8 +836,7 @@ class Blip(object):
                                                  self.wavelet_id,
                                                  self.blip_id,
                                                  markup)
-    #TODO: at least strip the html out
-    self._content += markup
+    self._content += util.parse_markup(markup)
 
   def insert_inline_blip(self, position):
     """Inserts an inline blip into this blip at a specific position.

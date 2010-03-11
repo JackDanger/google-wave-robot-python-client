@@ -213,6 +213,18 @@ class TestBlip(unittest.TestCase):
     self.assertEquals('a thing thing with thing and then some thing',
                       blip.text)
 
+  def testIteration(self):
+    blip = self.new_blip(blipId=ROOT_BLIP_ID)
+    blip.all().replace('aaa 012 aaa 345 aaa 322')
+    count = 0
+    prev = -1
+    for start, end in blip.all('aaa'):
+      count += 1
+      self.assertTrue(prev < start)
+      prev = start
+    self.assertEquals(3, count)
+
+
   def testBlipRefValue(self):
     blip = self.new_blip(blipId=ROOT_BLIP_ID)
     content = blip.text
@@ -304,6 +316,13 @@ class TestBlip(unittest.TestCase):
     self.assertEqual(1, blip.annotations['style'][0].start)
     self.assertEqual(2, blip.annotations['style'][0].end)
 
+  def testSearchWithNoMatchShouldNotGenerateOperation(self):
+    blip = self.new_blip(blipId=ROOT_BLIP_ID)
+    self.assertEqual(-1, blip.text.find(':('))
+    self.assertEqual(0, len(self.operation_queue))
+    blip.all(':(').replace(':)')
+    self.assertEqual(0, len(self.operation_queue))
+
   def testBlipsRemoveWithId(self):
     blip_dict = {
         ROOT_BLIP_ID: self.new_blip(blipId=ROOT_BLIP_ID,
@@ -315,6 +334,13 @@ class TestBlip(unittest.TestCase):
     blips._remove_with_id(CHILD_BLIP_ID)
     self.assertEqual(1, len(blips))
     self.assertEqual(0, len(blips[ROOT_BLIP_ID].child_blip_ids))
+
+  def testAppendMarkup(self):
+    blip = self.new_blip(blipId=ROOT_BLIP_ID, content='\nFoo bar.')
+    markup = '<p><span>markup<span> content</p>'
+    blip.append_markup(markup)
+    self.assertEqual(1, len(self.operation_queue))
+    self.assertEqual('\nFoo bar.\nmarkup content', blip.text)
 
 if __name__ == '__main__':
   unittest.main()

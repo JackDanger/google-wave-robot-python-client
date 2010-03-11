@@ -271,9 +271,9 @@ class Robot(object):
       for payload in payloads:
         handler, event_class, context, filter = payload
         line = '  <w:capability name="%s"' % capability
-        if context and type(context) == list:
-          line += ' context="%s"' % (',').join(context)
-        elif context:
+        if context: 
+          if type(context) == list:
+            context = ','.join(context)
           line += ' context="%s"' % context
         if filter:
           line += ' filter="%s"' % filter

@@ -61,30 +61,6 @@ class TestUtils(unittest.TestCase):
     self.assertFalse(util.is_user_defined_new_style_class(42))
     self.assertFalse(util.is_user_defined_new_style_class('instance?'))
 
-  def testLowerCamelCase(self):
-    self.assertEquals('foo', util.lower_camel_case('foo'))
-    self.assertEquals('fooBar', util.lower_camel_case('foo_bar'))
-    self.assertEquals('fooBar', util.lower_camel_case('fooBar'))
-    self.assertEquals('blipId', util.lower_camel_case('blip_id'))
-    self.assertEquals('fooBar', util.lower_camel_case('foo__bar'))
-    self.assertEquals('fooBarBaz', util.lower_camel_case('foo_bar_baz'))
-    self.assertEquals('f', util.lower_camel_case('f'))
-    self.assertEquals('f', util.lower_camel_case('f_'))
-    self.assertEquals('', util.lower_camel_case(''))
-    self.assertEquals('', util.lower_camel_case('_'))
-    self.assertEquals('aBCDEF', util.lower_camel_case('_a_b_c_d_e_f_'))
-
-  def testUpperCamelCase(self):
-    self.assertEquals('Foo', util.upper_camel_case('foo'))
-    self.assertEquals('FooBar', util.upper_camel_case('foo_bar'))
-    self.assertEquals('FooBar', util.upper_camel_case('foo__bar'))
-    self.assertEquals('FooBarBaz', util.upper_camel_case('foo_bar_baz'))
-    self.assertEquals('F', util.upper_camel_case('f'))
-    self.assertEquals('F', util.upper_camel_case('f_'))
-    self.assertEquals('', util.upper_camel_case(''))
-    self.assertEquals('', util.upper_camel_case('_'))
-    self.assertEquals('ABCDEF', util.upper_camel_case('_a_b_c_d_e_f_'))
-
   def assertListsEqual(self, a, b):
     self.assertEquals(len(a), len(b))
     for i in range(len(a)):
@@ -101,9 +77,22 @@ class TestUtils(unittest.TestCase):
     self.assertListsEqual(data, output)
 
   def testSerializeDict(self):
-    data = {'key': 'value'}
+    data = {'key': 'value', 'under_score': 'value2'}
     output = util.serialize(data)
     self.assertDictsEqual(data, output)
+
+  def testNonNoneDict(self):
+    a = {'a': 1, 'b': 1}
+    self.assertDictsEqual(a, util.non_none_dict(a))
+    b = a.copy()
+    b['c'] = None
+    self.assertDictsEqual(a, util.non_none_dict(b))
+
+  def testForceString(self):
+    self.assertEquals("aaa", util.force_string("aaa"))
+    self.assertEquals("12", util.force_string(12))
+    self.assertEquals(u'\u30e6\u30cb\u30b3\u30fc\u30c9',
+                      util.force_string(u'\u30e6\u30cb\u30b3\u30fc\u30c9'))
 
   def testSerializeAttributes(self):
 
