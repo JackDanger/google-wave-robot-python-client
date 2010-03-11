@@ -506,7 +506,7 @@ To guarantee that all blips are available, specify Context.ALL for events.</p>
 <dl class="attribute">
 <dt id="wavelet.Wavelet.robot_address">
 <tt class="descname">robot_address</tt><a class="headerlink" href="#wavelet.Wavelet.robot_address" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd>Get or set the address of the current robot.</dd></dl>
 
 <dl class="attribute">
 <dt id="wavelet.Wavelet.root_blip">
@@ -859,6 +859,11 @@ the element represents.</p>
 <p>Properties of elements are both accessible directly (image.url) and through
 the properties dictionary (image.properties[&#8216;url&#8217;]). In general Element
 should not be instantiated by robots, but rather rely on the derived classes.</p>
+<dl class="attribute">
+<dt id="element.Element.type">
+<tt class="descname">type</tt><a class="headerlink" href="#element.Element.type" title="Permalink to this definition">¶</a></dt>
+<dd>The type of this element.</dd></dl>
+
 <dl class="classmethod">
 <dt id="element.Element.from_json">
 <em class="property">classmethod </em><tt class="descname">from_json</tt><big>(</big><em>json</em><big>)</big><a class="headerlink" href="#element.Element.from_json" title="Permalink to this definition">¶</a></dt>
@@ -872,10 +877,7 @@ should not be instantiated by robots, but rather rely on the derived classes.</p
 <dl class="method">
 <dt id="element.Element.serialize">
 <tt class="descname">serialize</tt><big>(</big><big>)</big><a class="headerlink" href="#element.Element.serialize" title="Permalink to this definition">¶</a></dt>
-<dd><p>Custom serializer for Elements.</p>
-<p>Element need their non standard attributes returned in a dict named
-properties.</p>
-</dd></dl>
+<dd>Custom serializer for Elements.</dd></dl>
 
 </dd></dl>
 
@@ -887,6 +889,16 @@ properties.</p>
 <dt id="element.Gadget.from_props">
 <em class="property">classmethod </em><tt class="descname">from_props</tt><big>(</big><em>props</em><big>)</big><a class="headerlink" href="#element.Gadget.from_props" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="element.Gadget.serialize">
+<tt class="descname">serialize</tt><big>(</big><big>)</big><a class="headerlink" href="#element.Gadget.serialize" title="Permalink to this definition">¶</a></dt>
+<dd>Gadgets allow for None values.</dd></dl>
+
+<dl class="method">
+<dt id="element.Gadget.keys">
+<tt class="descname">keys</tt><big>(</big><big>)</big><a class="headerlink" href="#element.Gadget.keys" title="Permalink to this definition">¶</a></dt>
+<dd>Get the valid keys for this gadget.</dd></dl>
 
 </dd></dl>
 
@@ -903,7 +915,7 @@ properties.</p>
 
 <dl class="class">
 <dt id="element.Input">
-<em class="property">class </em><tt class="descclassname">element.</tt><tt class="descname">Input</tt><big>(</big><em>name</em>, <em>value=''</em>, <em>label=''</em><big>)</big><a class="headerlink" href="#element.Input" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">element.</tt><tt class="descname">Input</tt><big>(</big><em>name</em>, <em>value=''</em><big>)</big><a class="headerlink" href="#element.Input" title="Permalink to this definition">¶</a></dt>
 <dd><p>A single-line input element.</p>
 <dl class="classmethod">
 <dt id="element.Input.from_props">
@@ -939,6 +951,56 @@ properties.</p>
 <em class="property">class </em><tt class="descclassname">element.</tt><tt class="descname">Line</tt><big>(</big><em>line_type=None</em>, <em>indent=None</em>, <em>alignment=None</em>, <em>direction=None</em><big>)</big><a class="headerlink" href="#element.Line" title="Permalink to this definition">¶</a></dt>
 <dd><p>A line element.</p>
 <p>Note that Lines are represented in the text as newlines.</p>
+<dl class="attribute">
+<dt id="element.Line.ALIGN_CENTER">
+<tt class="descname">ALIGN_CENTER</tt><a class="headerlink" href="#element.Line.ALIGN_CENTER" title="Permalink to this definition">¶</a></dt>
+<dd>Sets line alignment to centered.</dd></dl>
+
+<dl class="attribute">
+<dt id="element.Line.ALIGN_JUSTIFIED">
+<tt class="descname">ALIGN_JUSTIFIED</tt><a class="headerlink" href="#element.Line.ALIGN_JUSTIFIED" title="Permalink to this definition">¶</a></dt>
+<dd>Sets line alignment to justified.</dd></dl>
+
+<dl class="attribute">
+<dt id="element.Line.ALIGN_LEFT">
+<tt class="descname">ALIGN_LEFT</tt><a class="headerlink" href="#element.Line.ALIGN_LEFT" title="Permalink to this definition">¶</a></dt>
+<dd>Sets line alignment to left.</dd></dl>
+
+<dl class="attribute">
+<dt id="element.Line.ALIGN_RIGHT">
+<tt class="descname">ALIGN_RIGHT</tt><a class="headerlink" href="#element.Line.ALIGN_RIGHT" title="Permalink to this definition">¶</a></dt>
+<dd>Sets line alignment to right.</dd></dl>
+
+<dl class="attribute">
+<dt id="element.Line.TYPE_H1">
+<tt class="descname">TYPE_H1</tt><a class="headerlink" href="#element.Line.TYPE_H1" title="Permalink to this definition">¶</a></dt>
+<dd>Designates line as H1, largest heading.</dd></dl>
+
+<dl class="attribute">
+<dt id="element.Line.TYPE_H2">
+<tt class="descname">TYPE_H2</tt><a class="headerlink" href="#element.Line.TYPE_H2" title="Permalink to this definition">¶</a></dt>
+<dd>Designates line as H2 heading.</dd></dl>
+
+<dl class="attribute">
+<dt id="element.Line.TYPE_H3">
+<tt class="descname">TYPE_H3</tt><a class="headerlink" href="#element.Line.TYPE_H3" title="Permalink to this definition">¶</a></dt>
+<dd>Designates line as H3 heading.</dd></dl>
+
+<dl class="attribute">
+<dt id="element.Line.TYPE_H4">
+<tt class="descname">TYPE_H4</tt><a class="headerlink" href="#element.Line.TYPE_H4" title="Permalink to this definition">¶</a></dt>
+<dd>Designates line as H4 heading.</dd></dl>
+
+<dl class="attribute">
+<dt id="element.Line.TYPE_H5">
+<tt class="descname">TYPE_H5</tt><a class="headerlink" href="#element.Line.TYPE_H5" title="Permalink to this definition">¶</a></dt>
+<dd>Designates line as H5, smallest heading.</dd></dl>
+
+<dl class="attribute">
+<dt id="element.Line.TYPE_LI">
+<tt class="descname">TYPE_LI</tt><a class="headerlink" href="#element.Line.TYPE_LI" title="Permalink to this definition">¶</a></dt>
+<dd>Designates line as a bulleted list item.</dd></dl>
+
 <dl class="classmethod">
 <dt id="element.Line.from_props">
 <em class="property">classmethod </em><tt class="descname">from_props</tt><big>(</big><em>props</em><big>)</big><a class="headerlink" href="#element.Line.from_props" title="Permalink to this definition">¶</a></dt>
@@ -1531,17 +1593,9 @@ the actual values of the enums will be the string values.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="util.default_keywriter">
-<tt class="descclassname">util.</tt><tt class="descname">default_keywriter</tt><big>(</big><em>key_name</em><big>)</big><a class="headerlink" href="#util.default_keywriter" title="Permalink to this definition">¶</a></dt>
-<dd><p>This key writer rewrites keys as lower camel case.</p>
-<p>Expects that the input is formed by &#8216;_&#8217; delimited words.</p>
-<dl class="docutils">
-<dt>Args:</dt>
-<dd>key_name: Name of the key to serialize.</dd>
-<dt>Returns:</dt>
-<dd>Key name in lower camel-cased form.</dd>
-</dl>
-</dd></dl>
+<dt id="util.force_string">
+<tt class="descclassname">util.</tt><tt class="descname">force_string</tt><big>(</big><em>item</em><big>)</big><a class="headerlink" href="#util.force_string" title="Permalink to this definition">¶</a></dt>
+<dd>force into a string if it is not already a string or unicode.</dd></dl>
 
 <dl class="function">
 <dt id="util.is_dict">
@@ -1561,21 +1615,9 @@ the actual values of the enums will be the string values.</p>
 <dd>Returns whether or not the specified instance is a user-defined type.</dd></dl>
 
 <dl class="function">
-<dt id="util.lower_camel_case">
-<tt class="descclassname">util.</tt><tt class="descname">lower_camel_case</tt><big>(</big><em>s</em><big>)</big><a class="headerlink" href="#util.lower_camel_case" title="Permalink to this definition">¶</a></dt>
-<dd><p>Converts a string to lower camel case.</p>
-<dl class="docutils">
-<dt>Examples:</dt>
-<dd>foo =&gt; foo
-foo_bar =&gt; fooBar
-foo__bar =&gt; fooBar
-foo_bar_baz =&gt; fooBarBaz</dd>
-<dt>Args:</dt>
-<dd>s: The string to convert to lower camel case.</dd>
-<dt>Returns:</dt>
-<dd>The lower camel cased string.</dd>
-</dl>
-</dd></dl>
+<dt id="util.non_none_dict">
+<tt class="descclassname">util.</tt><tt class="descname">non_none_dict</tt><big>(</big><em>d</em><big>)</big><a class="headerlink" href="#util.non_none_dict" title="Permalink to this definition">¶</a></dt>
+<dd>return a copy of the dictionary without none values.</dd></dl>
 
 <dl class="function">
 <dt id="util.parse_markup">
@@ -1586,7 +1628,7 @@ foo_bar_baz =&gt; fooBarBaz</dd>
 
 <dl class="function">
 <dt id="util.serialize">
-<tt class="descclassname">util.</tt><tt class="descname">serialize</tt><big>(</big><em>obj</em>, <em>key_writer=&lt;function default_keywriter at 0x126e6e0&gt;</em><big>)</big><a class="headerlink" href="#util.serialize" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">util.</tt><tt class="descname">serialize</tt><big>(</big><em>obj</em><big>)</big><a class="headerlink" href="#util.serialize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Serializes any instance.</p>
 <p>If this is a user-defined instance
 type, it will first check for a custom Serialize() function and use that
@@ -1594,27 +1636,9 @@ if it exists. Otherwise, it will invoke serialize all of its public
 attributes. Lists and dicts are serialized trivially.</p>
 <dl class="docutils">
 <dt>Args:</dt>
-<dd>obj: The instance to serialize.
-key_writer: Optional key writer function.</dd>
+<dd>obj: The instance to serialize.</dd>
 <dt>Returns:</dt>
 <dd>The serialized object.</dd>
-</dl>
-</dd></dl>
-
-<dl class="function">
-<dt id="util.upper_camel_case">
-<tt class="descclassname">util.</tt><tt class="descname">upper_camel_case</tt><big>(</big><em>s</em><big>)</big><a class="headerlink" href="#util.upper_camel_case" title="Permalink to this definition">¶</a></dt>
-<dd><p>Converts a string to upper camel case.</p>
-<dl class="docutils">
-<dt>Examples:</dt>
-<dd>foo =&gt; Foo
-foo_bar =&gt; FooBar
-foo__bar =&gt; FooBar
-foo_bar_baz =&gt; FooBarBaz</dd>
-<dt>Args:</dt>
-<dd>s: The string to convert to upper camel case.</dd>
-<dt>Returns:</dt>
-<dd>The upper camel cased string.</dd>
 </dl>
 </dd></dl>
 
