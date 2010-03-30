@@ -77,7 +77,7 @@ class TestBlip(unittest.TestCase):
     self.assertEquals(TEST_BLIP_DATA['waveId'], root.wave_id)
     self.assertEquals(TEST_BLIP_DATA['waveletId'], root.wavelet_id)
     self.assertEquals(TEST_BLIP_DATA['content'][3], root[3])
-    self.assertEquals(element.Gadget.type, root[14].type)
+    self.assertEquals(element.Gadget.class_type, root[14].type)
     self.assertEquals('http://a/b.xml', root[14].url)
     self.assertEquals('a', root.text[14])
     self.assertEquals(len(TEST_BLIP_DATA['content']), len(root))
@@ -253,6 +253,10 @@ class TestBlip(unittest.TestCase):
     blip.append('geheim')
     self.assertTrue(blip.first('geheim'))
     self.assertFalse(blip.first(element.Button))
+    blip.append(element.Button(name='test1', value='Click'))
+    button = blip.first(element.Button)
+    button.update_element({'name': 'test2'})
+    self.assertEqual('test2', button.name)
 
   def testReplace(self):
     blip = self.new_blip(blipId=ROOT_BLIP_ID)
@@ -341,6 +345,13 @@ class TestBlip(unittest.TestCase):
     blip.append_markup(markup)
     self.assertEqual(1, len(self.operation_queue))
     self.assertEqual('\nFoo bar.\nmarkup content', blip.text)
+
+  def testBundledAnnotations(self):
+    blip = self.new_blip(blipId=ROOT_BLIP_ID, content='\nFoo bar.')
+    blip.append('not bold')
+    blip.append('bold', bundled_annotations=[('style/fontWeight', 'bold')])
+    self.assertEqual(2, len(blip.annotations))
+    self.assertEqual('bold', blip.annotations['style/fontWeight'][0].value)
 
 if __name__ == '__main__':
   unittest.main()

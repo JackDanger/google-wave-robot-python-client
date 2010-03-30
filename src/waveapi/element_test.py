@@ -27,31 +27,31 @@ class TestElement(unittest.TestCase):
   """Tests for the element.Element class."""
 
   def testProperties(self):
-    el = element.Element(element.Gadget.type,
+    el = element.Element(element.Gadget.class_type,
                          key='value')
     self.assertEquals('value', el.key)
 
   def testFormElement(self):
     el = element.Input('input')
-    self.assertEquals(element.Input.type, el.type)
+    self.assertEquals(element.Input.class_type, el.type)
     self.assertEquals(el.value, '')
     self.assertEquals(el.name, 'input')
 
   def testImage(self):
     image = element.Image('http://test.com/image.png', width=100, height=100)
-    self.assertEquals(element.Image.type, image.type)
+    self.assertEquals(element.Image.class_type, image.type)
     self.assertEquals(image.url, 'http://test.com/image.png')
     self.assertEquals(image.width, 100)
     self.assertEquals(image.height, 100)
 
   def testGadget(self):
     gadget = element.Gadget('http://test.com/gadget.xml')
-    self.assertEquals(element.Gadget.type, gadget.type)
+    self.assertEquals(element.Gadget.class_type, gadget.type)
     self.assertEquals(gadget.url, 'http://test.com/gadget.xml')
 
   def testInstaller(self):
     installer = element.Installer('http://test.com/installer.xml')
-    self.assertEquals(element.Installer.type, installer.type)
+    self.assertEquals(element.Installer.class_type, installer.type)
     self.assertEquals(installer.manifest, 'http://test.com/installer.xml')
 
   def testSerialize(self):
@@ -92,13 +92,13 @@ class TestElement(unittest.TestCase):
   def testGadgetElementFromJson(self):
     url = 'http://www.foo.com/gadget.xml'
     json = {
-      'type': element.Gadget.type,
+      'type': element.Gadget.class_type,
       'properties': {
         'url': url,
       }
     }
     gadget = element.Element.from_json(json)
-    self.assertEquals(element.Gadget.type, gadget.type)
+    self.assertEquals(element.Gadget.class_type, gadget.type)
     self.assertEquals(url, gadget.url)
 
   def testImageElementFromJson(self):
@@ -108,7 +108,7 @@ class TestElement(unittest.TestCase):
     attachment_id = '2'
     caption = 'Test Image'
     json = {
-      'type': element.Image.type,
+      'type': element.Image.class_type,
       'properties': {
         'url': url,
         'width': width,
@@ -118,7 +118,7 @@ class TestElement(unittest.TestCase):
       }
     }
     image = element.Element.from_json(json)
-    self.assertEquals(element.Image.type, image.type)
+    self.assertEquals(element.Image.class_type, image.type)
     self.assertEquals(url, image.url)
     self.assertEquals(width, image.width)
     self.assertEquals(height, image.height)
@@ -130,7 +130,7 @@ class TestElement(unittest.TestCase):
     value = 'value'
     default_value = 'foo'
     json = {
-      'type': element.Label.type,
+      'type': element.Label.class_type,
       'properties': {
         'name': name,
         'value': value,
@@ -138,13 +138,13 @@ class TestElement(unittest.TestCase):
       }
     }
     el = element.Element.from_json(json)
-    self.assertEquals(element.Label.type, el.type)
+    self.assertEquals(element.Label.class_type, el.type)
     self.assertEquals(name, el.name)
     self.assertEquals(value, el.value)
 
   def testCanInstantiate(self):
     bag = [element.Check(name='check', value='value'),
-           element.Button(name='button', caption='caption'),
+           element.Button(name='button', value='caption'),
            element.Input(name='input', value='caption'),
            element.Label(label_for='button', caption='caption'),
            element.RadioButton(name='name', group='group'),

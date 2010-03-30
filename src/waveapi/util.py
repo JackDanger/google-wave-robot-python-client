@@ -45,7 +45,6 @@ def is_iterable(inst):
   """
   return hasattr(inst, '__iter__')
 
-
 def is_dict(inst):
   """Returns whether or not the specified instance is a dict."""
   return hasattr(inst, 'iteritems')
@@ -54,6 +53,23 @@ def is_dict(inst):
 def is_user_defined_new_style_class(obj):
   """Returns whether or not the specified instance is a user-defined type."""
   return type(obj).__module__ != '__builtin__'
+
+def lower_camel_case(s):
+  """Converts a string to lower camel case.
+
+  Examples:
+    foo => foo
+    foo_bar => fooBar
+    foo__bar => fooBar
+    foo_bar_baz => fooBarBaz
+
+  Args:
+    s: The string to convert to lower camel case.
+
+  Returns:
+    The lower camel cased string.
+  """
+  return reduce(lambda a, b: a + (a and b.capitalize() or b), s.split('_'))
 
 def non_none_dict(d):
   """return a copy of the dictionary without none values."""
@@ -86,7 +102,7 @@ def _serialize_attributes(obj):
     if attr is None or callable(attr):
       continue
     # Looks okay, serialize it.
-    data[attr_name] = serialize(attr)
+    data[lower_camel_case(attr_name)] = serialize(attr)
   return data
 
 
@@ -101,7 +117,7 @@ def _serialize_dict(d):
   """
   data = {}
   for k, v in d.items():
-    data[k] = serialize(v)
+    data[lower_camel_case(k)] = serialize(v)
   return data
 
 
