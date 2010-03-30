@@ -45,7 +45,7 @@ wavelet.Wavelet.domain attribute index.html
 blip.BlipRefs.insert method index.html
 events.BlipSubmitted class index.html
 element.RadioButtonGroup.from_props classmethod index.html
-ops.OperationQueue.wavelet_append_blip method index.html
+ops.OperationQueue.blip_delete method index.html
 blip.Annotation.start attribute index.html
 element.Element.serialize method index.html
 blip.Blip.all method index.html
@@ -70,6 +70,7 @@ element.Line.ALIGN_RIGHT attribute index.html
 blip.Blip class index.html
 appengine_robot_runner.run function index.html
 element.Password.from_props classmethod index.html
+wavelet.Participants.set_role method index.html
 element.Element.get method index.html
 wavelet.Wavelet.participants attribute index.html
 blip.Blip.first method index.html
@@ -81,6 +82,7 @@ blip.Blip.range method index.html
 blip.Blip.is_root method index.html
 appengine_robot_runner.RobotEventHandler.post method index.html
 element.Line.ALIGN_JUSTIFIED attribute index.html
+util.lower_camel_case function index.html
 blip.Blip.find method index.html
 events.WaveletBlipCreated class index.html
 element.Line.TYPE_H1 attribute index.html
@@ -92,6 +94,7 @@ wavelet.Wavelet.wave_id attribute index.html
 errors.Error exception index.html
 blip.Blip.text attribute index.html
 robot.Robot.fetch_wavelet method index.html
+wavelet.DataDocs.keys method index.html
 blip.BlipRefs.insert_after method index.html
 blip.Blip.child_blips attribute index.html
 events.Context.SELF attribute index.html
@@ -104,6 +107,7 @@ util.parse_markup function index.html
 blip.Blips class index.html
 element.Password class index.html
 util.is_user_defined_new_style_class function index.html
+ops.OperationQueue.wavelet_modify_participant_role method index.html
 wavelet.DataDocs.serialize method index.html
 blip.Blip.serialize method index.html
 element.Element.from_json classmethod index.html
@@ -141,7 +145,7 @@ wavelet.Tags class index.html
 blip.Annotation.FONT_SIZE attribute index.html
 ops.OperationQueue.serialize method index.html
 blip.Annotation.COLOR attribute index.html
-wavelet.Wavelet.root_blip attribute index.html
+wavelet.Wavelet.delete method index.html
 element.Element class index.html
 ops.OperationQueue.blip_create_child method index.html
 blip.Blip.wave_id attribute index.html
@@ -149,6 +153,7 @@ wavelet.Wavelet.creator attribute index.html
 blip.BlipRefs.value method index.html
 blip.Blip.reply method index.html
 wavelet.Wavelet.serialize method index.html
+wavelet.Participants.get_role method index.html
 blip.Annotation.FONT_FAMILY attribute index.html
 events.WaveletSelfRemoved class index.html
 ops.Operation class index.html
@@ -169,9 +174,10 @@ ops.OperationQueue.document_inline_blip_insert method index.html
 robot.Robot.get_verification_token_info method index.html
 element.Gadget.keys method index.html
 robot.Robot.name attribute index.html
-wavelet.Wavelet.delete method index.html
+wavelet.Wavelet.root_blip attribute index.html
 blip.BlipRefs.delete method index.html
 wavelet.Participants.serialize method index.html
+ops.OperationQueue.wavelet_append_blip method index.html
 appengine_robot_runner.RobotEventHandler.get method index.html
 robot.Robot.capabilities_xml method index.html
 appengine_robot_runner.RobotEventHandler class index.html
@@ -204,7 +210,6 @@ events.Context.SIBLINGS attribute index.html
 util.is_iterable function index.html
 ops.OperationQueue.set_capability_hash method index.html
 robot.Robot.submit method index.html
-ops.OperationQueue.blip_delete method index.html
 robot.Robot.set_verification_token_info method index.html
 events.Context.ALL attribute index.html
 element.Image class index.html
