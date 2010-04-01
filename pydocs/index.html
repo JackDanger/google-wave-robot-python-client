@@ -433,22 +433,21 @@ A dict of serialized blips.</blockquote>
 <dt id="wavelet.Participants.add">
 <tt class="descname">add</tt><big>(</big><em>participant_id</em><big>)</big><a class="headerlink" href="#wavelet.Participants.add" title="Permalink to this definition">¶</a></dt>
 <dd>Adds a participant by their ID (address).</dd></dl>
-<!--
+
 <dl class="method">
 <dt id="wavelet.Participants.get_role">
 <tt class="descname">get_role</tt><big>(</big><em>participant_id</em><big>)</big><a class="headerlink" href="#wavelet.Participants.get_role" title="Permalink to this definition">¶</a></dt>
 <dd>Return the role for the given participant_id</dd></dl>
--->
+
 <dl class="method">
 <dt id="wavelet.Participants.serialize">
 <tt class="descname">serialize</tt><big>(</big><big>)</big><a class="headerlink" href="#wavelet.Participants.serialize" title="Permalink to this definition">¶</a></dt>
 <dd>Returns a list of the participants.</dd></dl>
-<!--
+
 <dl class="method">
 <dt id="wavelet.Participants.set_role">
 <tt class="descname">set_role</tt><big>(</big><em>participant_id</em>, <em>role</em><big>)</big><a class="headerlink" href="#wavelet.Participants.set_role" title="Permalink to this definition">¶</a></dt>
 <dd>Return the role for the given participant_id</dd></dl>
--->
 
 </dd></dl>
 
@@ -844,6 +843,11 @@ or new_wavelet.</p>
 <p>Elements are non-text bits living in blips like images, gadgets etc.</p>
 <p>This module defines the Element class and the derived classes.</p>
 <dl class="class">
+<dt id="element.Blink">
+<em class="property">class </em><tt class="descclassname">element.</tt><tt class="descname">Blink</tt><big>(</big><em>text=''</em><big>)</big><a class="headerlink" href="#element.Blink" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
 <dt id="element.Button">
 <em class="property">class </em><tt class="descclassname">element.</tt><tt class="descname">Button</tt><big>(</big><em>name</em>, <em>value</em><big>)</big><a class="headerlink" href="#element.Button" title="Permalink to this definition">¶</a></dt>
 <dd><p>A button element.</p>
@@ -1023,6 +1027,16 @@ should not be instantiated by robots, but rather rely on the derived classes.</p
 <dd></dd></dl>
 
 </dd></dl>
+
+<dl class="class">
+<dt id="element.LolCat">
+<em class="property">class </em><tt class="descclassname">element.</tt><tt class="descname">LolCat</tt><big>(</big><em>mini=False</em><big>)</big><a class="headerlink" href="#element.LolCat" title="Permalink to this definition">¶</a></dt>
+<dd>An image element.</dd></dl>
+
+<dl class="class">
+<dt id="element.Marquee">
+<em class="property">class </em><tt class="descclassname">element.</tt><tt class="descname">Marquee</tt><big>(</big><em>text=''</em><big>)</big><a class="headerlink" href="#element.Marquee" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="class">
 <dt id="element.Password">
