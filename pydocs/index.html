@@ -232,13 +232,21 @@ find a space as a place holder for the element.</p>
 If searching for an element, the restrictions can be used to specify
 additional element properties to filter on, like the url of a Gadget.</dd></dl>
 
+<dl class="attribute">
+<dt id="blip.Blip.inline_blip_offset">
+<tt class="descname">inline_blip_offset</tt><a class="headerlink" href="#blip.Blip.inline_blip_offset" title="Permalink to this definition">¶</a></dt>
+<dd><p>The offset in the parent if this blip is inline or -1 if not.</p>
+<p>If the parent is not in the context, this function will always
+return -1 since it can&#8217;t determine the inline blip status.</p>
+</dd></dl>
+
 <dl class="method">
 <dt id="blip.Blip.insert_inline_blip">
 <tt class="descname">insert_inline_blip</tt><big>(</big><em>position</em><big>)</big><a class="headerlink" href="#blip.Blip.insert_inline_blip" title="Permalink to this definition">¶</a></dt>
 <dd><p>Inserts an inline blip into this blip at a specific position.</p>
 <dl class="docutils">
 <dt>Args:</dt>
-<dd>position: Position to insert the blip at.</dd>
+<dd>position: Position to insert the blip at. This has to be greater than 0.</dd>
 <dt>Returns:</dt>
 <dd>The JSON data of the blip that was created.</dd>
 </dl>
@@ -334,7 +342,7 @@ usually instantiate a BlipRefs object directly.</p>
 <dd><p>Annotates the content at the matched positions.</p>
 <p>You can either specify both name and value to set the
 same annotation, or supply as the first parameter something
-that yields name/value pairs.</p>
+that yields name/value pairs. The name and value should both be strings.</p>
 </dd></dl>
 
 <dl class="method">
@@ -429,6 +437,16 @@ A dict of serialized blips.</blockquote>
 <dt id="wavelet.Participants">
 <em class="property">class </em><tt class="descclassname">wavelet.</tt><tt class="descname">Participants</tt><big>(</big><em>participants</em>, <em>roles</em>, <em>wave_id</em>, <em>wavelet_id</em>, <em>operation_queue</em><big>)</big><a class="headerlink" href="#wavelet.Participants" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class modelling a set of participants in pythonic way.</p>
+<dl class="attribute">
+<dt id="wavelet.Participants.ROLE_FULL">
+<tt class="descname">ROLE_FULL</tt><a class="headerlink" href="#wavelet.Participants.ROLE_FULL" title="Permalink to this definition">¶</a></dt>
+<dd>Designates full access (read/write) role.</dd></dl>
+
+<dl class="attribute">
+<dt id="wavelet.Participants.ROLE_READ_ONLY">
+<tt class="descname">ROLE_READ_ONLY</tt><a class="headerlink" href="#wavelet.Participants.ROLE_READ_ONLY" title="Permalink to this definition">¶</a></dt>
+<dd>Designates read-only role.</dd></dl>
+
 <dl class="method">
 <dt id="wavelet.Participants.add">
 <tt class="descname">add</tt><big>(</big><em>participant_id</em><big>)</big><a class="headerlink" href="#wavelet.Participants.add" title="Permalink to this definition">¶</a></dt>
@@ -437,7 +455,7 @@ A dict of serialized blips.</blockquote>
 <dl class="method">
 <dt id="wavelet.Participants.get_role">
 <tt class="descname">get_role</tt><big>(</big><em>participant_id</em><big>)</big><a class="headerlink" href="#wavelet.Participants.get_role" title="Permalink to this definition">¶</a></dt>
-<dd>Return the role for the given participant_id</dd></dl>
+<dd>Return the role for the given participant_id.</dd></dl>
 
 <dl class="method">
 <dt id="wavelet.Participants.serialize">
@@ -447,7 +465,7 @@ A dict of serialized blips.</blockquote>
 <dl class="method">
 <dt id="wavelet.Participants.set_role">
 <tt class="descname">set_role</tt><big>(</big><em>participant_id</em>, <em>role</em><big>)</big><a class="headerlink" href="#wavelet.Participants.set_role" title="Permalink to this definition">¶</a></dt>
-<dd>Return the role for the given participant_id</dd></dl>
+<dd>Sets the role for the given participant_id.</dd></dl>
 
 </dd></dl>
 
@@ -552,7 +570,7 @@ be used.</p>
 <dd><p>Replies to the conversation in this wavelet.</p>
 <dl class="docutils">
 <dt>Args:</dt>
-<dd>initial_content: if set, start with this content.</dd>
+<dd>initial_content: If set, start with this (string) content.</dd>
 <dt>Returns:</dt>
 <dd>A transient version of the blip that contains the reply.</dd>
 </dl>
@@ -843,11 +861,6 @@ or new_wavelet.</p>
 <p>Elements are non-text bits living in blips like images, gadgets etc.</p>
 <p>This module defines the Element class and the derived classes.</p>
 <dl class="class">
-<dt id="element.Blink">
-<em class="property">class </em><tt class="descclassname">element.</tt><tt class="descname">Blink</tt><big>(</big><em>text=''</em><big>)</big><a class="headerlink" href="#element.Blink" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="class">
 <dt id="element.Button">
 <em class="property">class </em><tt class="descclassname">element.</tt><tt class="descname">Button</tt><big>(</big><em>name</em>, <em>value</em><big>)</big><a class="headerlink" href="#element.Button" title="Permalink to this definition">¶</a></dt>
 <dd><p>A button element.</p>
@@ -1027,16 +1040,6 @@ should not be instantiated by robots, but rather rely on the derived classes.</p
 <dd></dd></dl>
 
 </dd></dl>
-
-<dl class="class">
-<dt id="element.LolCat">
-<em class="property">class </em><tt class="descclassname">element.</tt><tt class="descname">LolCat</tt><big>(</big><em>mini=False</em><big>)</big><a class="headerlink" href="#element.LolCat" title="Permalink to this definition">¶</a></dt>
-<dd>An image element.</dd></dl>
-
-<dl class="class">
-<dt id="element.Marquee">
-<em class="property">class </em><tt class="descclassname">element.</tt><tt class="descname">Marquee</tt><big>(</big><em>text=''</em><big>)</big><a class="headerlink" href="#element.Marquee" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 <dl class="class">
 <dt id="element.Password">
@@ -1308,6 +1311,11 @@ wavelet already.</p>
 <dt id="events.WaveletSelfRemoved">
 <em class="property">class </em><tt class="descclassname">events.</tt><tt class="descname">WaveletSelfRemoved</tt><big>(</big><em>json</em>, <em>wavelet</em><big>)</big><a class="headerlink" href="#events.WaveletSelfRemoved" title="Permalink to this definition">¶</a></dt>
 <dd>Event triggered when the robot is removed from the wavelet.</dd></dl>
+
+<dl class="class">
+<dt id="events.WaveletTagsChanged">
+<em class="property">class </em><tt class="descclassname">events.</tt><tt class="descname">WaveletTagsChanged</tt><big>(</big><em>json</em>, <em>wavelet</em><big>)</big><a class="headerlink" href="#events.WaveletTagsChanged" title="Permalink to this definition">¶</a></dt>
+<dd>Event triggered when the tags on a wavelet change.</dd></dl>
 
 <dl class="class">
 <dt id="events.WaveletTitleChanged">
@@ -1628,80 +1636,58 @@ title: The title to set.</dd>
 </div>
 <div class="section" id="module-util">
 <h2>The <tt class="xref docutils literal"><span class="pre">util</span></tt> Module<a class="headerlink" href="#module-util" title="Permalink to this headline">¶</a></h2>
-<p>Utility library containing various helpers used by the API.</p>
+<p>Miscellaneous WSGI-related Utilities</p>
 <dl class="class">
-<dt id="util.StringEnum">
-<em class="property">class </em><tt class="descclassname">util.</tt><tt class="descname">StringEnum</tt><big>(</big><em>*values</em><big>)</big><a class="headerlink" href="#util.StringEnum" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enum like class that is configured with a list of values.</p>
-<p>This class effectively implements an enum for Elements, except for that
-the actual values of the enums will be the string values.</p>
+<dt id="util.FileWrapper">
+<em class="property">class </em><tt class="descclassname">util.</tt><tt class="descname">FileWrapper</tt><big>(</big><em>filelike</em>, <em>blksize=8192</em><big>)</big><a class="headerlink" href="#util.FileWrapper" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrapper to convert file-like objects to iterables</p>
+<dl class="method">
+<dt id="util.FileWrapper.next">
+<tt class="descname">next</tt><big>(</big><big>)</big><a class="headerlink" href="#util.FileWrapper.next" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="function">
-<dt id="util.force_string">
-<tt class="descclassname">util.</tt><tt class="descname">force_string</tt><big>(</big><em>item</em><big>)</big><a class="headerlink" href="#util.force_string" title="Permalink to this definition">¶</a></dt>
-<dd>force into a string if it is not already a string or unicode.</dd></dl>
+<dt id="util.guess_scheme">
+<tt class="descclassname">util.</tt><tt class="descname">guess_scheme</tt><big>(</big><em>environ</em><big>)</big><a class="headerlink" href="#util.guess_scheme" title="Permalink to this definition">¶</a></dt>
+<dd>Return a guess for whether &#8216;wsgi.url_scheme&#8217; should be &#8216;http&#8217; or &#8216;https&#8217;</dd></dl>
 
 <dl class="function">
-<dt id="util.is_dict">
-<tt class="descclassname">util.</tt><tt class="descname">is_dict</tt><big>(</big><em>inst</em><big>)</big><a class="headerlink" href="#util.is_dict" title="Permalink to this definition">¶</a></dt>
-<dd>Returns whether or not the specified instance is a dict.</dd></dl>
+<dt id="util.application_uri">
+<tt class="descclassname">util.</tt><tt class="descname">application_uri</tt><big>(</big><em>environ</em><big>)</big><a class="headerlink" href="#util.application_uri" title="Permalink to this definition">¶</a></dt>
+<dd>Return the application&#8217;s base URI (no PATH_INFO or QUERY_STRING)</dd></dl>
 
 <dl class="function">
-<dt id="util.is_iterable">
-<tt class="descclassname">util.</tt><tt class="descname">is_iterable</tt><big>(</big><em>inst</em><big>)</big><a class="headerlink" href="#util.is_iterable" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns whether or not this is a list, tuple, set or dict .</p>
-<p>Note that this does not return true for strings.</p>
+<dt id="util.request_uri">
+<tt class="descclassname">util.</tt><tt class="descname">request_uri</tt><big>(</big><em>environ</em>, <em>include_query=1</em><big>)</big><a class="headerlink" href="#util.request_uri" title="Permalink to this definition">¶</a></dt>
+<dd>Return the full request URI, optionally including the query string</dd></dl>
+
+<dl class="function">
+<dt id="util.shift_path_info">
+<tt class="descclassname">util.</tt><tt class="descname">shift_path_info</tt><big>(</big><em>environ</em><big>)</big><a class="headerlink" href="#util.shift_path_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shift a name from PATH_INFO to SCRIPT_NAME, returning it</p>
+<p>If there are no remaining path segments in PATH_INFO, return None.
+Note: &#8216;environ&#8217; is modified in-place; use a copy if you need to keep
+the original PATH_INFO or SCRIPT_NAME.</p>
+<p>Note: when PATH_INFO is just a &#8216;/&#8217;, this returns &#8216;&#8217; and appends a trailing
+&#8216;/&#8217; to SCRIPT_NAME, even though empty path segments are normally ignored,
+and SCRIPT_NAME doesn&#8217;t normally end in a &#8216;/&#8217;.  This is intentional
+behavior, to ensure that an application can tell the difference between
+&#8216;/x&#8217; and &#8216;/x/&#8217; when traversing to objects.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="util.is_user_defined_new_style_class">
-<tt class="descclassname">util.</tt><tt class="descname">is_user_defined_new_style_class</tt><big>(</big><em>obj</em><big>)</big><a class="headerlink" href="#util.is_user_defined_new_style_class" title="Permalink to this definition">¶</a></dt>
-<dd>Returns whether or not the specified instance is a user-defined type.</dd></dl>
-
-<dl class="function">
-<dt id="util.lower_camel_case">
-<tt class="descclassname">util.</tt><tt class="descname">lower_camel_case</tt><big>(</big><em>s</em><big>)</big><a class="headerlink" href="#util.lower_camel_case" title="Permalink to this definition">¶</a></dt>
-<dd><p>Converts a string to lower camel case.</p>
-<dl class="docutils">
-<dt>Examples:</dt>
-<dd>foo =&gt; foo
-foo_bar =&gt; fooBar
-foo__bar =&gt; fooBar
-foo_bar_baz =&gt; fooBarBaz</dd>
-<dt>Args:</dt>
-<dd>s: The string to convert to lower camel case.</dd>
-<dt>Returns:</dt>
-<dd>The lower camel cased string.</dd>
-</dl>
-</dd></dl>
-
-<dl class="function">
-<dt id="util.non_none_dict">
-<tt class="descclassname">util.</tt><tt class="descname">non_none_dict</tt><big>(</big><em>d</em><big>)</big><a class="headerlink" href="#util.non_none_dict" title="Permalink to this definition">¶</a></dt>
-<dd>return a copy of the dictionary without none values.</dd></dl>
-
-<dl class="function">
-<dt id="util.parse_markup">
-<tt class="descclassname">util.</tt><tt class="descname">parse_markup</tt><big>(</big><em>markup</em><big>)</big><a class="headerlink" href="#util.parse_markup" title="Permalink to this definition">¶</a></dt>
-<dd><p>Parses a bit of markup into robot compatible text.</p>
-<p>For now this is a rough approximation.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="util.serialize">
-<tt class="descclassname">util.</tt><tt class="descname">serialize</tt><big>(</big><em>obj</em><big>)</big><a class="headerlink" href="#util.serialize" title="Permalink to this definition">¶</a></dt>
-<dd><p>Serializes any instance.</p>
-<p>If this is a user-defined instance
-type, it will first check for a custom Serialize() function and use that
-if it exists. Otherwise, it will invoke serialize all of its public
-attributes. Lists and dicts are serialized trivially.</p>
-<dl class="docutils">
-<dt>Args:</dt>
-<dd>obj: The instance to serialize.</dd>
-<dt>Returns:</dt>
-<dd>The serialized object.</dd>
-</dl>
+<dt id="util.setup_testing_defaults">
+<tt class="descclassname">util.</tt><tt class="descname">setup_testing_defaults</tt><big>(</big><em>environ</em><big>)</big><a class="headerlink" href="#util.setup_testing_defaults" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update &#8216;environ&#8217; with trivial defaults for testing purposes</p>
+<p>This adds various parameters required for WSGI, including HTTP_HOST,
+SERVER_NAME, SERVER_PORT, REQUEST_METHOD, SCRIPT_NAME, PATH_INFO,
+and all of the wsgi.* variables.  It only supplies default values,
+and does not replace any existing settings for these variables.</p>
+<p>This routine is intended to make it easier for unit tests of WSGI
+servers and applications to set up dummy environments.  It should <em>not</em>
+be used by actual WSGI servers or applications, since the data is fake!</p>
 </dd></dl>
 
 </div>
@@ -1709,12 +1695,23 @@ attributes. Lists and dicts are serialized trivially.</p>
 <h2>The <tt class="xref docutils literal"><span class="pre">appengine_robot_runner</span></tt> Module<a class="headerlink" href="#module-appengine_robot_runner" title="Permalink to this headline">¶</a></h2>
 <p>A module to run wave robots on app engine.</p>
 <dl class="class">
-<dt id="appengine_robot_runner.GetHandler">
-<em class="property">class </em><tt class="descclassname">appengine_robot_runner.</tt><tt class="descname">GetHandler</tt><big>(</big><em>method</em>, <em>contenttype</em><big>)</big><a class="headerlink" href="#appengine_robot_runner.GetHandler" title="Permalink to this definition">¶</a></dt>
+<dt id="appengine_robot_runner.CapabilitiesHandler">
+<em class="property">class </em><tt class="descclassname">appengine_robot_runner.</tt><tt class="descname">CapabilitiesHandler</tt><big>(</big><em>method</em>, <em>contenttype</em><big>)</big><a class="headerlink" href="#appengine_robot_runner.CapabilitiesHandler" title="Permalink to this definition">¶</a></dt>
 <dd><p>Handler to forward a request ot a handler of a robot.</p>
 <dl class="method">
-<dt id="appengine_robot_runner.GetHandler.get">
-<tt class="descname">get</tt><big>(</big><big>)</big><a class="headerlink" href="#appengine_robot_runner.GetHandler.get" title="Permalink to this definition">¶</a></dt>
+<dt id="appengine_robot_runner.CapabilitiesHandler.get">
+<tt class="descname">get</tt><big>(</big><big>)</big><a class="headerlink" href="#appengine_robot_runner.CapabilitiesHandler.get" title="Permalink to this definition">¶</a></dt>
+<dd>Handles HTTP GET request.</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="appengine_robot_runner.ProfileHandler">
+<em class="property">class </em><tt class="descclassname">appengine_robot_runner.</tt><tt class="descname">ProfileHandler</tt><big>(</big><em>method</em>, <em>contenttype</em><big>)</big><a class="headerlink" href="#appengine_robot_runner.ProfileHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handler to forward a request ot a handler of a robot.</p>
+<dl class="method">
+<dt id="appengine_robot_runner.ProfileHandler.get">
+<tt class="descname">get</tt><big>(</big><big>)</big><a class="headerlink" href="#appengine_robot_runner.ProfileHandler.get" title="Permalink to this definition">¶</a></dt>
 <dd>Handles HTTP GET request.</dd></dl>
 
 </dd></dl>
