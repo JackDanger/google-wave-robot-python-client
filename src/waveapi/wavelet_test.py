@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python2.4
 #
 # Copyright (C) 2009 Google Inc.
 #
@@ -113,11 +113,12 @@ class TestWavelet(unittest.TestCase):
 
   def testSetTitle(self):
     self.blip._content = '\nOld title\n\nContent'
-    self.wavelet.title = 'New title'
+    self.wavelet.title = 'New title \xd0\xb0\xd0\xb1\xd0\xb2'
     self.assertEquals(1, len(self.operation_queue))
     self.assertEquals('wavelet.setTitle',
                       self.operation_queue.serialize()[1]['method'])
-    self.assertEquals('\nNew title\n\nContent', self.blip._content)
+    self.assertEquals(u'\nNew title \u0430\u0431\u0432\n\nContent',
+                      self.blip._content)
 
   def testSetTitleAdjustRootBlipWithOneLineProperly(self):
     self.blip._content = '\nOld title'

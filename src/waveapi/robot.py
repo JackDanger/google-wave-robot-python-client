@@ -243,7 +243,8 @@ class Robot(object):
         url=oauth_request.to_url(),
         data=post_body,
         headers={'Content-Type': 'application/json'})
-    logging.info(oauth_request.to_url())
+    logging.info('Active URL: %s'  % oauth_request.to_url())
+    logging.info('Active Outgoing: %s' % post_body)
     if code != 200:
       logging.info(oauth_request.to_url())
       logging.info(content)
