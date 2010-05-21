@@ -710,13 +710,12 @@ class Blip(object):
 
   @property
   def elements(self):
-    """The elements for this document.
-
-    The elements of a document are things like forms elements, gadgets
-    that cannot be expressed as plain text. The elements property of
-    a document is a dictionary like object from index in the document
-    to element instance. In the text of the document you'll typically
-    find a space as a place holder for the element.
+    """Returns a list of elements for this document.
+    The elements of a blip are things like forms elements and gadgets
+    that cannot be expressed as plain text. In the text of the blip, you'll
+    typically find a space as a place holder for the element.
+    If you want to retrieve the element at a particular index in the blip, use
+    blip[index].value().
     """
     return self._elements.values()
 

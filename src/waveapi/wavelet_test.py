@@ -160,6 +160,7 @@ class TestWavelet(unittest.TestCase):
     self.wavelet.title = 'A wavelet title'
     self.blip.append(element.Image(url='http://www.google.com/logos/clickortreat1.gif',
                               width=320, height=118))
+    self.blip.append(element.Attachment(caption='fake', data='fake data'))
     self.blip.append(element.Line(line_type='li', indent='2'))
     self.blip.append('bulleted!')
     self.blip.append(element.Installer(

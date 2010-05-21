@@ -327,6 +327,10 @@ class Wavelet(object):
     set. Any modifications made to this copy will be done using the
     proxy_for_id, i.e. the robot+<proxy_for_id>@appspot.com address will
     be used.
+
+    If the wavelet was retrieved using the Active Robot API, that is
+    by fetch_wavelet, then the address of the robot must be added to the
+    wavelet by setting wavelet.robot_address before calling proxy_for().
     """
     self.add_proxying_participant(proxy_for_id)
     operation_queue = self.get_operation_queue().proxy_for(proxy_for_id)
